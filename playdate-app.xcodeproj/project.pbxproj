@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7FA348332414700A00B00C31 /* Main.import.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA348312414700A00B00C31 /* Main.import.storyboard */; };
 		7FF919B023FCC56A004B8CF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919AF23FCC56A004B8CF9 /* AppDelegate.swift */; };
 		7FF919B223FCC56A004B8CF9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */; };
 		7FF919B423FCC56A004B8CF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919B323FCC56A004B8CF9 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7FA348322414700A00B00C31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.import.storyboard; sourceTree = "<group>"; };
 		7FF919AC23FCC56A004B8CF9 /* playdate-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "playdate-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF919AF23FCC56A004B8CF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */,
 				7FF919B323FCC56A004B8CF9 /* ViewController.swift */,
 				7FF919B523FCC56A004B8CF9 /* Main.storyboard */,
+				7FA348312414700A00B00C31 /* Main.import.storyboard */,
 				7FF919BB23FCC56B004B8CF9 /* Assets.xcassets */,
 				7FF919BD23FCC56B004B8CF9 /* LaunchScreen.storyboard */,
 				7FF919C023FCC56B004B8CF9 /* Info.plist */,
@@ -238,6 +241,7 @@
 				7FF919BF23FCC56B004B8CF9 /* LaunchScreen.storyboard in Resources */,
 				7FF919BC23FCC56B004B8CF9 /* Assets.xcassets in Resources */,
 				7FF919B723FCC56A004B8CF9 /* Main.storyboard in Resources */,
+				7FA348332414700A00B00C31 /* Main.import.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +305,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7FA348312414700A00B00C31 /* Main.import.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7FA348322414700A00B00C31 /* Base */,
+			);
+			name = Main.import.storyboard;
+			sourceTree = "<group>";
+		};
 		7FF919B523FCC56A004B8CF9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
