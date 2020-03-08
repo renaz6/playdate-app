@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7FA348332414700A00B00C31 /* Main.import.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA348312414700A00B00C31 /* Main.import.storyboard */; };
 		7FA34835241472E000B00C31 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34834241472E000B00C31 /* SettingsViewController.swift */; };
+		7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34838241473E900B00C31 /* MyEventsViewController.swift */; };
+		7FA3483E2414768A00B00C31 /* EventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3483D2414768A00B00C31 /* EventDataSource.swift */; };
+		7FA3483F2414768A00B00C31 /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3483C2414768A00B00C31 /* EventData.swift */; };
+		7FA348402414768A00B00C31 /* MockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3483B2414768A00B00C31 /* MockDataSource.swift */; };
 		7FF919B023FCC56A004B8CF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919AF23FCC56A004B8CF9 /* AppDelegate.swift */; };
 		7FF919B223FCC56A004B8CF9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */; };
 		7FF919B423FCC56A004B8CF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919B323FCC56A004B8CF9 /* ViewController.swift */; };
@@ -40,7 +44,11 @@
 /* Begin PBXFileReference section */
 		7FA348322414700A00B00C31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.import.storyboard; sourceTree = "<group>"; };
 		7FA34834241472E000B00C31 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		7FF919AC23FCC56A004B8CF9 /* playdate-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "playdate-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FA34838241473E900B00C31 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
+		7FA3483B2414768A00B00C31 /* MockDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataSource.swift; sourceTree = "<group>"; };
+		7FA3483C2414768A00B00C31 /* EventData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
+		7FA3483D2414768A00B00C31 /* EventDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataSource.swift; sourceTree = "<group>"; };
+		7FF919AC23FCC56A004B8CF9 /* PlayDate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayDate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF919AF23FCC56A004B8CF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7FF919B323FCC56A004B8CF9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +103,7 @@
 		7FF919AD23FCC56A004B8CF9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7FF919AC23FCC56A004B8CF9 /* playdate-app.app */,
+				7FF919AC23FCC56A004B8CF9 /* PlayDate.app */,
 				7FF919C523FCC56B004B8CF9 /* playdate-appTests.xctest */,
 				7FF919D023FCC56B004B8CF9 /* playdate-appUITests.xctest */,
 			);
@@ -107,8 +115,12 @@
 			children = (
 				7FF919AF23FCC56A004B8CF9 /* AppDelegate.swift */,
 				7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */,
+				7FA3483C2414768A00B00C31 /* EventData.swift */,
+				7FA3483D2414768A00B00C31 /* EventDataSource.swift */,
+				7FA3483B2414768A00B00C31 /* MockDataSource.swift */,
 				7FF919B323FCC56A004B8CF9 /* ViewController.swift */,
 				7FF919B523FCC56A004B8CF9 /* Main.storyboard */,
+				7FA34838241473E900B00C31 /* MyEventsViewController.swift */,
 				7FA34834241472E000B00C31 /* SettingsViewController.swift */,
 				7FA348312414700A00B00C31 /* Main.import.storyboard */,
 				7FF919BB23FCC56B004B8CF9 /* Assets.xcassets */,
@@ -154,7 +166,7 @@
 			);
 			name = "playdate-app";
 			productName = "playdate-app";
-			productReference = 7FF919AC23FCC56A004B8CF9 /* playdate-app.app */;
+			productReference = 7FF919AC23FCC56A004B8CF9 /* PlayDate.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7FF919C423FCC56B004B8CF9 /* playdate-appTests */ = {
@@ -269,10 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA348402414768A00B00C31 /* MockDataSource.swift in Sources */,
 				7FF919B423FCC56A004B8CF9 /* ViewController.swift in Sources */,
+				7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */,
 				7FF919BA23FCC56A004B8CF9 /* playdate_app.xcdatamodeld in Sources */,
 				7FF919B023FCC56A004B8CF9 /* AppDelegate.swift in Sources */,
 				7FA34835241472E000B00C31 /* SettingsViewController.swift in Sources */,
+				7FA3483E2414768A00B00C31 /* EventDataSource.swift in Sources */,
+				7FA3483F2414768A00B00C31 /* EventData.swift in Sources */,
 				7FF919B223FCC56A004B8CF9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,7 +477,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jd92k.playdate-app";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PlayDate;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -478,7 +494,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jd92k.playdate-app";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PlayDate;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

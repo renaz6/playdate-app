@@ -170,7 +170,7 @@
         <!--My Events-->
         <scene sceneID="hPn-Ai-AP9">
             <objects>
-                <viewController id="PmZ-hY-uUc" customClass="MyEventsViewController" customModule="PlayDate" sceneMemberID="viewController">
+                <viewController id="PmZ-hY-uUc" customClass="MyEventsViewController" customModule="playdate_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uw3-Ux-12V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -750,7 +750,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="o0N-Kk-TAR"/>
-        <segue reference="K6Y-3j-XIl"/>
+        <segue reference="HbN-ia-Wl7"/>
+        <segue reference="ir9-kE-S4a"/>
     </inferredMetricsTieBreakers>
 </document>
