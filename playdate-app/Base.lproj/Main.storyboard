@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="playdate_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,6 +122,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="VDe-iY-a3p" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BPe-iM-6UQ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="High Contrast Accent"/>
@@ -170,7 +171,7 @@
         <!--My Events-->
         <scene sceneID="hPn-Ai-AP9">
             <objects>
-                <viewController id="PmZ-hY-uUc" customClass="MyEventsViewController" customModule="playdate_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PmZ-hY-uUc" customClass="MyEventsViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uw3-Ux-12V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -408,7 +409,7 @@
         <!--Settings-->
         <scene sceneID="iWG-IV-ujZ">
             <objects>
-                <tableViewController id="b9l-mR-iQf" customClass="SettingsViewController" customModule="playdate_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="b9l-mR-iQf" customClass="SettingsViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="T6k-Bd-agx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
