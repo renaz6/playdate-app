@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		202F54C0B0EE5F68515293C9 /* Pods_playdate_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3562E0F7E2F4D0CAC342E83 /* Pods_playdate_app.framework */; };
+		2395479624229355007D0EAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395479524229355007D0EAD /* LoginViewController.swift */; };
 		6DBB768A012FF76E9D27D6CD /* Pods_playdate_app_playdate_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86A54DA98FAA723E151B7D6 /* Pods_playdate_app_playdate_appUITests.framework */; };
 		7FA34835241472E000B00C31 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34834241472E000B00C31 /* SettingsViewController.swift */; };
 		7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34838241473E900B00C31 /* MyEventsViewController.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2395479524229355007D0EAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7F8EB47573C19437B0ECFF1D /* Pods-playdate-app-playdate-appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playdate-app-playdate-appUITests.debug.xcconfig"; path = "Target Support Files/Pods-playdate-app-playdate-appUITests/Pods-playdate-app-playdate-appUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FA34834241472E000B00C31 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7FA34838241473E900B00C31 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				7FA3483B2414768A00B00C31 /* MockDataSource.swift */,
 				7FF919B323FCC56A004B8CF9 /* ViewController.swift */,
 				7FF919B523FCC56A004B8CF9 /* Main.storyboard */,
+				2395479524229355007D0EAD /* LoginViewController.swift */,
 				7FE878E72416901A00EE8E3B /* GoogleService-Info.plist */,
 				7FA34838241473E900B00C31 /* MyEventsViewController.swift */,
 				7FA34834241472E000B00C31 /* SettingsViewController.swift */,
@@ -441,6 +444,7 @@
 				7FA34835241472E000B00C31 /* SettingsViewController.swift in Sources */,
 				7FA3483E2414768A00B00C31 /* EventDataSource.swift in Sources */,
 				7FA3483F2414768A00B00C31 /* EventData.swift in Sources */,
+				2395479624229355007D0EAD /* LoginViewController.swift in Sources */,
 				7FF919B223FCC56A004B8CF9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
