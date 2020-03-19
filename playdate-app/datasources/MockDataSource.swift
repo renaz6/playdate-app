@@ -11,9 +11,9 @@ import Foundation
 public class MockDataSource: EventDataSource {
     
     let events = [
-        EventData(title: "Event 1", venue: "asdf", imageId: "calendar", startDate: Date()),
-        EventData(title: "Event 2", venue: "ghjkl", imageId: "calendar", startDate: Date()),
-        EventData(title: "Event 3", venue: "qwerty", imageId: "calendar", startDate: Date())
+        EventData(title: "Event 1", venue: "Venue 1", imageId: "calendar", startDate: Date()),
+        EventData(title: "Event 2", venue: "Venue 2", imageId: "calendar", startDate: Date()),
+        EventData(title: "Event 3", venue: "Venue 3", imageId: "calendar", startDate: Date())
     ]
     
     public func homePageEvents() -> [EventData] {
