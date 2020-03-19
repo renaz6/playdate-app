@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
           auth, user in
           
           if user != nil {
-            self.performSegue(withIdentifier: "segueIdentifier", sender: nil)
+            self.performSegue(withIdentifier: "myEventsIdentifier", sender: nil)
             self.textFieldLoginEmail.text = nil
             self.textFieldLoginPassword.text = nil
           }
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
         else {
           return
         }
-        
+
         Auth.auth().signIn(withEmail: email, password: password) {
           user, error in
           if let error = error, user == nil {
