@@ -10,5 +10,11 @@ import Foundation
 
 public protocol EventDataSource {
     
-    func homePageEvents() -> [EventData]
+    func homePageEvents() -> [[String: Any]]
+    
+    func searchEvents(_: String) -> [[String: Any]]
+    
+    func searchEvents(_: String, withCategory: String) -> [[String: Any]]
+    
+    func event(withId: String) -> [String: Any]?
 }

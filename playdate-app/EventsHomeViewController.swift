@@ -9,11 +9,11 @@
 import UIKit
 
 class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    private let eventDetailSegueId = "meToEventDetail"
+    
+    private let eventDetailSegueId = "homeToEventDetail"
     
     private var dataSource: EventDataSource!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -32,10 +32,11 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         let eventData = dataSource.homePageEvents()[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-        (cell.contentView.viewWithTag(1) as? UIImageView)?.image = UIImage(systemName: eventData.imageId)
-        (cell.contentView.viewWithTag(2) as? UILabel)?.text = eventData.title
-        (cell.contentView.viewWithTag(3) as? UILabel)?.text = eventData.venueName
-        (cell.contentView.viewWithTag(4) as? UILabel)?.text = eventData.startDate.description(with: .current)
+        (cell.contentView.viewWithTag(1) as? UIImageView)?.image = UIImage(systemName: eventData["imageId"] as! String)
+        (cell.contentView.viewWithTag(2) as? UILabel)?.text = eventData["title"] as? String
+        (cell.contentView.viewWithTag(3) as? UILabel)?.text = eventData["venue"] as? String
+        (cell.contentView.viewWithTag(4) as? UILabel)?.text =
+            (eventData["startDate"] as? Date)?.description(with: .current)
         return cell
     }
     
@@ -52,5 +53,4 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
 //            dest.event = dataSource.homePageEvents()[ip.row]
 //        }
     }
-
 }
