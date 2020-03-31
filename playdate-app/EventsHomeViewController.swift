@@ -1,19 +1,19 @@
 //
-//  MyEventsViewController.swift
-//  playdate-sandbox
+//  EventsHomeViewController.swift
+//  playdate-app
 //
-//  Created by Jared Rankin on 2020-03-03.
+//  Created by Jared Rankin on 2020-03-18.
 //  Copyright © 2020 Jared Rankin. All rights reserved.
 //
 
 import UIKit
 
-class MyEventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    private let eventDetailSegueId = "meToEventDetail"
+class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    private let eventDetailSegueId = "homeToEventDetail"
     
     private var dataSource: EventDataSource!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

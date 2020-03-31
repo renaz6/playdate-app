@@ -9,6 +9,8 @@ target 'playdate-app' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
 
+  pod 'Alamofire'
+
   target 'playdate-appTests' do
     inherit! :search_paths
     # Pods for testing
