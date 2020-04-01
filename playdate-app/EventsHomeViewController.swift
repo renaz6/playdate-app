@@ -31,12 +31,16 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let eventData = dataSource.homePageEvents()[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-        (cell.contentView.viewWithTag(1) as? UIImageView)?.image = UIImage(systemName: eventData["imageId"] as! String)
-        (cell.contentView.viewWithTag(2) as? UILabel)?.text = eventData["title"] as? String
-        (cell.contentView.viewWithTag(3) as? UILabel)?.text = eventData["venue"] as? String
-        (cell.contentView.viewWithTag(4) as? UILabel)?.text = describeDate(eventData["startDate"] as? Date)
-        return cell
+        let reusableCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+        if let cell = reusableCell as? EventTableViewCell {
+            cell.eventImageView.image = UIImage(systemName: eventData["imageId"] as! String)
+            cell.eventTitleLabel.text = eventData["title"] as? String
+            cell.eventVenueLabel.text = eventData["venue"] as? String
+            cell.setDate(eventData["startDate"] as? Date)
+            return cell
+        } else {
+            return reusableCell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

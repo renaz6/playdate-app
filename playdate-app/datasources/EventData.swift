@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class EventData {
+class EventData {
     
     public var title: String
     public var venueName: String

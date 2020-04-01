@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol EventDataSource {
+protocol EventDataSource {
     
     func homePageEvents() -> [[String: Any]]
     
