@@ -35,8 +35,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         (cell.contentView.viewWithTag(1) as? UIImageView)?.image = UIImage(systemName: eventData["imageId"] as! String)
         (cell.contentView.viewWithTag(2) as? UILabel)?.text = eventData["title"] as? String
         (cell.contentView.viewWithTag(3) as? UILabel)?.text = eventData["venue"] as? String
-        (cell.contentView.viewWithTag(4) as? UILabel)?.text =
-            (eventData["startDate"] as? Date)?.description(with: .current)
+        (cell.contentView.viewWithTag(4) as? UILabel)?.text = describeDate(eventData["startDate"] as? Date)
         return cell
     }
     
@@ -52,5 +51,18 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
 //
 //            dest.event = dataSource.homePageEvents()[ip.row]
 //        }
+    }
+    
+    private func describeDate(_ date: Date?) -> String {
+        if let date = date {
+            let dateFormat = DateFormatter()
+            let timeFormat = DateFormatter()
+            dateFormat.dateStyle = .medium
+            timeFormat.timeStyle = .short
+            
+            return dateFormat.string(from: date) + ", " + timeFormat.string(from: date)
+        } else {
+            return ""
+        }
     }
 }
