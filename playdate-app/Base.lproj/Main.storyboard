@@ -234,6 +234,9 @@
                         <viewLayoutGuide key="safeArea" id="zxr-9a-WhR"/>
                     </view>
                     <navigationItem key="navigationItem" title="PlayDate" id="8w1-Mb-vW1"/>
+                    <connections>
+                        <outlet property="tableView" destination="kLg-rg-uKz" id="pdt-m7-paf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5y-XU-qUz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -988,6 +991,11 @@
                         <viewLayoutGuide key="safeArea" id="PBw-mL-4NB"/>
                     </view>
                     <navigationItem key="navigationItem" id="p8P-Ih-Pop"/>
+                    <connections>
+                        <outlet property="eventLocation" destination="Hho-AR-49d" id="vyZ-1I-pgG"/>
+                        <outlet property="eventName" destination="hBk-tz-loa" id="de0-qG-PdQ"/>
+                        <outlet property="imageOutlet" destination="CZ1-MI-2eC" id="7Pv-MJ-ueY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRj-eg-wf3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1012,7 +1020,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="knY-UG-1vL"/>
+        <segue reference="Hwx-dX-2Iz"/>
         <segue reference="XCQ-jW-38s"/>
         <segue reference="fZM-ec-Jqf"/>
         <segue reference="49C-DC-4xg"/>

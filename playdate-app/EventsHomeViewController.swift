@@ -11,6 +11,7 @@ import UIKit
 class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private let eventDetailSegueId = "homeToEventDetail"
+    @IBOutlet weak var tableView: UITableView!
     
     private var dataSource: EventDataSource!
     
@@ -51,9 +52,9 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == eventDetailSegueId,
             let dest = segue.destination as? EventDetailViewController,
-            let ip = sender as? IndexPath {
+            let ip = tableView.indexPathForSelectedRow?.row{
 
-            dest.event = dataSource.homePageEvents()[ip.row]
+            dest.event = ip
         }
     }
     
