@@ -387,6 +387,7 @@
                                             <outlet property="eventImageView" destination="p1e-dY-4PL" id="Md0-C1-sMc"/>
                                             <outlet property="eventTitleLabel" destination="JLU-vQ-m20" id="APY-It-WE7"/>
                                             <outlet property="eventVenueLabel" destination="gdb-hD-PST" id="q3O-wl-jP8"/>
+                                            <segue destination="jEi-hy-iJ5" kind="show" identifier="meToEventDetail" id="knY-UG-1vL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -923,7 +924,7 @@
         <!--Event Detail-->
         <scene sceneID="lTo-Pf-hYg">
             <objects>
-                <viewController title="Event Detail" id="jEi-hy-iJ5" sceneMemberID="viewController">
+                <viewController title="Event Detail" id="jEi-hy-iJ5" customClass="EventDetailViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="playback" id="72n-6Y-jm0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1011,6 +1012,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="knY-UG-1vL"/>
         <segue reference="XCQ-jW-38s"/>
         <segue reference="fZM-ec-Jqf"/>
         <segue reference="49C-DC-4xg"/>

@@ -16,7 +16,6 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         dataSource = MockDataSource()
     }
     
@@ -43,18 +42,19 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: eventDetailSegueId, sender: indexPath)
-    }
+//    private func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)-> IndexPath {
+//        return indexPath
+//
+//       performSegue(withIdentifier: eventDetailSegueId, sender: indexPath)
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == eventDetailSegueId,
-//            let dest = segue.destination as? EventDetailViewController,
-//            let ip = sender as? IndexPath {
-//
-//            dest.event = dataSource.homePageEvents()[ip.row]
-//        }
+        if segue.identifier == eventDetailSegueId,
+            let dest = segue.destination as? EventDetailViewController,
+            let ip = sender as? IndexPath {
+
+            dest.event = dataSource.homePageEvents()[ip.row]
+        }
     }
     
     private func describeDate(_ date: Date?) -> String {

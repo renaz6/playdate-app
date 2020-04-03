@@ -29,6 +29,7 @@
 		7FF919CA23FCC56B004B8CF9 /* playdate_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919C923FCC56B004B8CF9 /* playdate_appTests.swift */; };
 		7FF919D523FCC56B004B8CF9 /* playdate_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919D423FCC56B004B8CF9 /* playdate_appUITests.swift */; };
 		A5DA8CF32436F5CF008A313C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DA8CF22436F5CF008A313C /* GoogleService-Info.plist */; };
+		A5DA8CF52436FC94008A313C /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA8CF42436FC94008A313C /* EventDetailViewController.swift */; };
 		D46290A6AA97F44C17B9A995 /* Pods_playdate_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A151C8994C2C3155AC1DE50E /* Pods_playdate_appTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		89DB6171908BED8E45B4F700 /* Pods-playdate-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playdate-app.debug.xcconfig"; path = "Target Support Files/Pods-playdate-app/Pods-playdate-app.debug.xcconfig"; sourceTree = "<group>"; };
 		A151C8994C2C3155AC1DE50E /* Pods_playdate_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_playdate_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DA8CF22436F5CF008A313C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A5DA8CF42436FC94008A313C /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		D41C3A4E50F1E87D418F911B /* Pods-playdate-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playdate-appTests.debug.xcconfig"; path = "Target Support Files/Pods-playdate-appTests/Pods-playdate-appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D74A81A5ACFC1DEADD162D8C /* Pods-playdate-app-playdate-appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playdate-app-playdate-appUITests.release.xcconfig"; path = "Target Support Files/Pods-playdate-app-playdate-appUITests/Pods-playdate-app-playdate-appUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D86A54DA98FAA723E151B7D6 /* Pods_playdate_app_playdate_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_playdate_app_playdate_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +185,7 @@
 				2395479524229355007D0EAD /* LoginViewController.swift */,
 				7F4A61142422B8C000E9C206 /* EventsHomeViewController.swift */,
 				7FA34838241473E900B00C31 /* MyEventsViewController.swift */,
+				A5DA8CF42436FC94008A313C /* EventDetailViewController.swift */,
 				7FA34834241472E000B00C31 /* SettingsViewController.swift */,
 				7FF919BB23FCC56B004B8CF9 /* Assets.xcassets */,
 				7FF919BD23FCC56B004B8CF9 /* LaunchScreen.storyboard */,
@@ -466,6 +469,7 @@
 				7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */,
 				7FF4BAC82434E67200A2F595 /* EventTableViewCell.swift in Sources */,
 				7FF4BAA62434DD3000A2F595 /* StyledNavigationController.swift in Sources */,
+				A5DA8CF52436FC94008A313C /* EventDetailViewController.swift in Sources */,
 				7FF919BA23FCC56A004B8CF9 /* playdate_app.xcdatamodeld in Sources */,
 				7FF919B023FCC56A004B8CF9 /* AppDelegate.swift in Sources */,
 				7FA34835241472E000B00C31 /* SettingsViewController.swift in Sources */,
