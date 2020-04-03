@@ -15,6 +15,9 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var imageOutlet: UIImageView!
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventLocation: UILabel!
+    @IBOutlet weak var favButton: UIButton!
+    
+    var favBtnImage = UIImage(named: "favIcon")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +27,30 @@ class EventDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        // Set Event Data
         let eventData = dataSource.homePageEvents()[event]
         
         imageOutlet.image = UIImage(systemName: eventData["imageId"] as! String)
         eventName.text = eventData["title"] as? String
         eventLocation.text = eventData["venue"] as? String
+        
+        // Buttons
+
+        favButton.setImage(favBtnImage , for: .normal)
+        
+    }
+    
+    
+    @IBAction func favButtonClicked(_ sender: Any) {
+        if favBtnImage == UIImage(named: "favIcon"){
+            favBtnImage = UIImage(named: "favIconSelected")
+ 
+        }
+        else{
+            favBtnImage = UIImage(named: "favIcon")
+        }
+        favButton.setImage(favBtnImage , for: .normal)
         
     }
     
