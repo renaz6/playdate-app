@@ -469,7 +469,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTI-fW-ghn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cCV-ht-GVF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="932" y="2449"/>
+            <point key="canvasLocation" x="509" y="2310"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="lnO-Qg-YLF">
@@ -555,7 +555,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZ0-Aw-Qkm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1945" y="2449"/>
+            <point key="canvasLocation" x="1823" y="2310"/>
         </scene>
         <!--Settings-->
         <scene sceneID="iWG-IV-ujZ">
@@ -746,7 +746,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4H4-FT-TqW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2004" y="1452"/>
+            <point key="canvasLocation" x="1852" y="1452"/>
         </scene>
         <!--Change Details-->
         <scene sceneID="zvB-j1-bsJ">
@@ -978,7 +978,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="knY-UG-1vL"/>
-        <segue reference="fZM-ec-Jqf"/>
+        <segue reference="o0N-Kk-TAR"/>
         <segue reference="K6Y-3j-XIl"/>
     </inferredMetricsTieBreakers>
 </document>
