@@ -39,6 +39,13 @@ class SignUpViewController: UIViewController {
                 if error == nil {
                     Auth.auth().signIn(withEmail: self.textFieldLoginEmail.text!,
                                        password: self.textFieldLoginPassword.text!)
+                    let alert = UIAlertController(
+                        title: "Sign Up Successful",
+                        message: "Return to My Events",
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(UIAlertAction(title:"OK",style:.default))
+                    self.present(alert, animated: true, completion: nil)
                 }
                 else {
                     let alert = UIAlertController(

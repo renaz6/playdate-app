@@ -8,16 +8,32 @@
 
 import UIKit
 
-class MyEventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+protocol LogIn {
+    func signedIn()
+}
 
+class MyEventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, LogIn {
+    
+
+    @IBOutlet weak var myEventsVCNotSignedIn: UIView!
+    @IBOutlet weak var myEventsVCSignedIn: UITableView!
     private let eventDetailSegueId = "meToEventDetail"
+    private let loginSegueId = "LogInIdentifier"
     
     private var dataSource: EventDataSource!
+    
+    private var loggedIn: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = MockDataSource()
+        
+        if(loggedIn == false) {
+            myEventsVCNotSignedIn.isHidden = false
+            myEventsVCSignedIn.isHidden = true
+        }
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.homePageEvents().count
@@ -54,6 +70,10 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
 //
 //            dest.event = dataSource.homePageEvents()[ip.row]
 //        }
+        if segue.identifier == loginSegueId {
+            let destination = segue.destination as! LoginViewController
+            destination.delegate = self
+        }
     }
     
     private func describeDate(_ date: Date?) -> String {
@@ -67,5 +87,11 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         } else {
             return ""
         }
+    }
+    
+    func signedIn() {
+        loggedIn = true
+        myEventsVCNotSignedIn.isHidden = true
+        myEventsVCSignedIn.isHidden = false
     }
 }
