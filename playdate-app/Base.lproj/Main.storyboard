@@ -159,7 +159,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kLg-rg-uKz" userLabel="Events Table View">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
+                                <rect key="frame" x="-1" y="-1" width="414" height="722"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -298,26 +298,26 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
-                                            <segue destination="aKS-RF-XRG" kind="show" id="fZM-ec-Jqf"/>
+                                            <segue destination="aKS-RF-XRG" kind="show" identifier="SignUpIdentifier" id="fZM-ec-Jqf"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pAq-Tf-1SN" userLabel="Events Table View">
-                                <rect key="frame" x="0.0" y="3" width="414" height="722"/>
+                                <rect key="frame" x="-2" y="2" width="416" height="722"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="100" id="Lbh-8c-20n" customClass="EventTableViewCell" customModule="PlayDate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="416" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lbh-8c-20n" id="WdB-L6-vkc">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="385" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLU-vQ-m20">
-                                                    <rect key="frame" x="106" y="8" width="269" height="29"/>
+                                                    <rect key="frame" x="106" y="8" width="271" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="YjC-M6-AwW"/>
                                                     </constraints>
@@ -326,7 +326,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-hD-PST">
-                                                    <rect key="frame" x="106" y="42" width="269" height="21"/>
+                                                    <rect key="frame" x="106" y="42" width="271" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="3eK-Wn-pca"/>
                                                     </constraints>
@@ -335,7 +335,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lez-SS-obu">
-                                                    <rect key="frame" x="106" y="68" width="269" height="21"/>
+                                                    <rect key="frame" x="106" y="68" width="271" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="uC1-Iy-O3M"/>
                                                     </constraints>
@@ -383,7 +383,7 @@
                     <navigationItem key="navigationItem" title="My Events" id="DS6-wZ-TX4">
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="wrench.fill" catalog="system" id="s5M-b0-deJ">
                             <connections>
-                                <segue destination="b9l-mR-iQf" kind="show" id="XCQ-jW-38s"/>
+                                <segue destination="b9l-mR-iQf" kind="show" identifier="SettingsIdentifier" id="XCQ-jW-38s"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -441,25 +441,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dma-jF-ppW">
-                                <rect key="frame" x="104" y="242" width="206" height="30"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Don't have an account?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XXU-1h-GlK">
-                                        <rect key="frame" x="0.0" y="0.0" width="152" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jay-H8-NjX">
-                                        <rect key="frame" x="152" y="0.0" width="54" height="30"/>
-                                        <state key="normal" title="Sign Up">
-                                            <color key="titleColor" name="High Contrast Accent"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="aKS-RF-XRG" kind="show" id="zlO-uF-Rdr"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -467,9 +448,7 @@
                             <constraint firstItem="Cpb-p5-bcy" firstAttribute="leading" secondItem="yHI-f1-GIn" secondAttribute="leading" id="47T-HP-p0T"/>
                             <constraint firstItem="Cpb-p5-bcy" firstAttribute="trailing" secondItem="yHI-f1-GIn" secondAttribute="trailing" id="7YU-Pc-Mex"/>
                             <constraint firstItem="Cpb-p5-bcy" firstAttribute="trailing" secondItem="1VR-SH-29m" secondAttribute="trailing" id="9gx-36-jnW"/>
-                            <constraint firstItem="XXU-1h-GlK" firstAttribute="top" secondItem="Cpb-p5-bcy" secondAttribute="bottom" constant="8" id="Cnl-BX-OdD"/>
                             <constraint firstItem="xr3-FY-rmd" firstAttribute="top" secondItem="yHI-f1-GIn" secondAttribute="bottom" constant="8" id="M7j-Ie-o7c"/>
-                            <constraint firstItem="Cpb-p5-bcy" firstAttribute="centerX" secondItem="dma-jF-ppW" secondAttribute="centerX" id="TNb-Mk-q1E"/>
                             <constraint firstItem="Cpb-p5-bcy" firstAttribute="top" secondItem="1VR-SH-29m" secondAttribute="bottom" constant="40" id="YNq-Xr-XPI"/>
                             <constraint firstItem="Cpb-p5-bcy" firstAttribute="leading" secondItem="fZV-k8-Or2" secondAttribute="leadingMargin" id="gON-M9-axY"/>
                             <constraint firstItem="Cpb-p5-bcy" firstAttribute="leading" secondItem="UOf-tl-8ez" secondAttribute="leading" id="le8-aI-jdh"/>
@@ -490,7 +469,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTI-fW-ghn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cCV-ht-GVF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-226" y="2377"/>
+            <point key="canvasLocation" x="932" y="2449"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="lnO-Qg-YLF">
@@ -576,7 +555,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZ0-Aw-Qkm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2081" y="2267"/>
+            <point key="canvasLocation" x="1945" y="2449"/>
         </scene>
         <!--Settings-->
         <scene sceneID="iWG-IV-ujZ">
@@ -767,7 +746,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4H4-FT-TqW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="1452"/>
+            <point key="canvasLocation" x="2004" y="1452"/>
         </scene>
         <!--Change Details-->
         <scene sceneID="zvB-j1-bsJ">
@@ -818,7 +797,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ebs-rX-esu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2955" y="1452"/>
+            <point key="canvasLocation" x="3251" y="1278"/>
         </scene>
         <!--Change Password-->
         <scene sceneID="lek-15-N4d">
@@ -882,7 +861,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azS-4G-VqR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2896" y="2267"/>
+            <point key="canvasLocation" x="3251" y="1963"/>
         </scene>
         <!--Me-->
         <scene sceneID="16e-Bb-vPJ">
@@ -999,7 +978,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="knY-UG-1vL"/>
-        <segue reference="zlO-uF-Rdr"/>
-        <segue reference="49C-DC-4xg"/>
+        <segue reference="fZM-ec-Jqf"/>
+        <segue reference="K6Y-3j-XIl"/>
     </inferredMetricsTieBreakers>
 </document>

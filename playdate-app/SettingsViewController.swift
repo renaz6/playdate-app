@@ -10,8 +10,9 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
-    let signedIn = true
+    var signedIn = true
     let sectionTitles = ["User Account", "Miscellaneous"]
+    var delegate: UIViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()

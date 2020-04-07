@@ -16,6 +16,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var textFieldLoginPasswordRepeat: UITextField!
     @IBOutlet weak var textFieldName: UITextField!
     
+    var delegate: UIViewController!
+    var theMessage = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,9 +42,17 @@ class SignUpViewController: UIViewController {
                 if error == nil {
                     Auth.auth().signIn(withEmail: self.textFieldLoginEmail.text!,
                                        password: self.textFieldLoginPassword.text!)
+                    if(self.delegate != nil) {
+                        let otherVC = self.delegate as! LogIn
+                        otherVC.signedIn()
+                        self.theMessage = "Return to My Events"
+                    }
+                    else {
+                        self.theMessage = "Return to Log In"
+                    }
                     let alert = UIAlertController(
                         title: "Sign Up Successful",
-                        message: "Return to My Events",
+                        message: self.theMessage,
                         preferredStyle: .alert
                     )
                     alert.addAction(UIAlertAction(title:"OK",style:.default))

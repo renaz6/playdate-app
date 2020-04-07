@@ -19,6 +19,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var myEventsVCSignedIn: UITableView!
     private let eventDetailSegueId = "meToEventDetail"
     private let loginSegueId = "LogInIdentifier"
+    private let settingsSegueId = "SettingsIdentifier"
+    private let signUpSegueId = "SignUpIdentifier"
     
     private var dataSource: EventDataSource!
     
@@ -72,6 +74,15 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
 //        }
         if segue.identifier == loginSegueId {
             let destination = segue.destination as! LoginViewController
+            destination.delegate = self
+        }
+        if segue.identifier == settingsSegueId {
+            let destination = segue.destination as! SettingsViewController
+            destination.delegate = self
+            destination.signedIn = loggedIn
+        }
+        if segue.identifier == signUpSegueId {
+            let destination = segue.destination as! SignUpViewController
             destination.delegate = self
         }
     }
