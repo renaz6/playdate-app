@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		202F54C0B0EE5F68515293C9 /* Pods_playdate_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3562E0F7E2F4D0CAC342E83 /* Pods_playdate_app.framework */; };
+		233BDD9E243E922100D299B6 /* TM-API-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 233BDD9D243E922100D299B6 /* TM-API-Info.plist */; };
 		2395479624229355007D0EAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395479524229355007D0EAD /* LoginViewController.swift */; };
 		23A15B2924240FD3003E7151 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A15B2824240FD3003E7151 /* SignUpViewController.swift */; };
 		6DBB768A012FF76E9D27D6CD /* Pods_playdate_app_playdate_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86A54DA98FAA723E151B7D6 /* Pods_playdate_app_playdate_appUITests.framework */; };
@@ -25,7 +26,6 @@
 		7FF4BAEE2437CC0B00A2F595 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FF4BAEC2437CC0B00A2F595 /* GoogleService-Info.plist */; };
 		7FF4BAEF2437CC0B00A2F595 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FF4BAEC2437CC0B00A2F595 /* GoogleService-Info.plist */; };
 		7FF4BB11243D51A600A2F595 /* FirestoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4BB10243D51A600A2F595 /* FirestoreDataSource.swift */; };
-		7FF4BB13243D53BF00A2F595 /* TM-API-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FF4BB12243D53BF00A2F595 /* TM-API-Info.plist */; };
 		7FF919B023FCC56A004B8CF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919AF23FCC56A004B8CF9 /* AppDelegate.swift */; };
 		7FF919B223FCC56A004B8CF9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */; };
 		7FF919B723FCC56A004B8CF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FF919B523FCC56A004B8CF9 /* Main.storyboard */; };
@@ -56,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		233BDD9D243E922100D299B6 /* TM-API-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "TM-API-Info.plist"; path = "../../../../../Downloads/TM-API-Info.plist"; sourceTree = "<group>"; };
 		2395479524229355007D0EAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23A15B2824240FD3003E7151 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6FB30AF0243D2E0800C5C945 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		7FF4BAEA2434EC6C00A2F595 /* SettingsUserInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserInfoTableViewCell.swift; sourceTree = "<group>"; };
 		7FF4BAEC2437CC0B00A2F595 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7FF4BB10243D51A600A2F595 /* FirestoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreDataSource.swift; sourceTree = "<group>"; };
-		7FF4BB12243D53BF00A2F595 /* TM-API-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TM-API-Info.plist"; sourceTree = "<group>"; };
 		7FF919AC23FCC56A004B8CF9 /* PlayDate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayDate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF919AF23FCC56A004B8CF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,9 +198,9 @@
 				7FA34834241472E000B00C31 /* SettingsViewController.swift */,
 				7FF919BB23FCC56B004B8CF9 /* Assets.xcassets */,
 				7FF919BD23FCC56B004B8CF9 /* LaunchScreen.storyboard */,
+				233BDD9D243E922100D299B6 /* TM-API-Info.plist */,
 				7FF919C023FCC56B004B8CF9 /* Info.plist */,
 				7FF4BAEC2437CC0B00A2F595 /* GoogleService-Info.plist */,
-				7FF4BB12243D53BF00A2F595 /* TM-API-Info.plist */,
 				7FF919B823FCC56A004B8CF9 /* playdate_app.xcdatamodeld */,
 			);
 			path = "playdate-app";
@@ -344,7 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FF919BF23FCC56B004B8CF9 /* LaunchScreen.storyboard in Resources */,
-				7FF4BB13243D53BF00A2F595 /* TM-API-Info.plist in Resources */,
+				233BDD9E243E922100D299B6 /* TM-API-Info.plist in Resources */,
 				7FF4BAED2437CC0B00A2F595 /* GoogleService-Info.plist in Resources */,
 				7FF919BC23FCC56B004B8CF9 /* Assets.xcassets in Resources */,
 				7FF919B723FCC56A004B8CF9 /* Main.storyboard in Resources */,

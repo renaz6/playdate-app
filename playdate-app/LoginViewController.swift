@@ -9,13 +9,18 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+protocol NotLoggedIn {
+    func isLogged()
+}
+
+class LoginViewController: UIViewController, NotLoggedIn {
 
     @IBOutlet weak var textFieldLoginEmail: UITextField!
     
     @IBOutlet weak var textFieldLoginPassword: UITextField!
     
     var delegate: UIViewController!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +79,23 @@ class LoginViewController: UIViewController {
                 alert.addAction(UIAlertAction(title:"OK",style:.default))
                 self.present(alert, animated: true, completion: nil)
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SignUpIdentifier" {
+            let destination = segue.destination as! SignUpViewController
+            destination.logInDelegate = self
+        }
+        if let navigator = navigationController {
+            navigator.popViewController(animated: true)
+        }
+    }
+    
+    func isLogged() {
+        if (delegate != nil) {
+            let otherVC = self.delegate as! LogIn
+            otherVC.signedIn()
         }
     }
 }

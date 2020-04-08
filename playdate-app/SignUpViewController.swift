@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var textFieldName: UITextField!
     
     var delegate: UIViewController!
+    var logInDelegate: UIViewController!
     var theMessage = ""
     
     override func viewDidLoad() {
@@ -47,8 +48,10 @@ class SignUpViewController: UIViewController {
                         otherVC.signedIn()
                         self.theMessage = "Return to My Events"
                     }
-                    else {
-                        self.theMessage = "Return to Log In"
+                    if(self.logInDelegate != nil) {
+                        let otherVC = self.logInDelegate as! NotLoggedIn
+                        otherVC.isLogged()
+                        self.theMessage = "Return to My Events"
                     }
                     let alert = UIAlertController(
                         title: "Sign Up Successful",
