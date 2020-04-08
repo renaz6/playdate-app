@@ -28,7 +28,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = MockDataSource()
+        dataSource = AppDelegate.instance.dataSource
         
         if(loggedIn == false) {
             myEventsVCNotSignedIn.isHidden = false
