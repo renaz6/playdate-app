@@ -12,10 +12,18 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    class var instance: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    var dataSource: EventDataSource!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        dataSource = MockDataSource()
         return true
     }
 
@@ -77,6 +85,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 

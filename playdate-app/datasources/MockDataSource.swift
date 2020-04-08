@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MockDataSource: EventDataSource, EventUserInteractionManager {
+class MockDataSource: EventDataSource {
     
     let events = [
         ["id": "tm-IW93nFI39j2oFNie", "title": "Event 1", "venue": "Venue 1", "imageId": "calendar", "startDate": Date(timeIntervalSince1970: 1591736400)],

@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import Alamofire
 
-class FirestoreDataSource: EventDataSource, EventUserInteractionManager {
+class FirestoreDataSource: EventDataSource {
     
     let tmFilterClassification = "KZFzniwnSyZfZ7v7na" // "Arts & Theatre"
     let tmGeoPoint = "9v6kpz7ds" // rough approximation of Texas Capitol Building, Austin, TX

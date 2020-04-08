@@ -19,4 +19,6 @@ protocol EventDataSource {
     func searchEvents(_: String, withCategory: String) -> [[String: Any]]
     
     func event(withId: String) -> [String: Any]?
+    
+    func setEventStarred(withId id: String, starred: Bool) -> Bool
 }

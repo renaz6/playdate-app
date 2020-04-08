@@ -8,6 +8,7 @@
 
 import Foundation
 
+// to be deprecated or reworked into new data scheme
 class EventData {
     
     public var title: String

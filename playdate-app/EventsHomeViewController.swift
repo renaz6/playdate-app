@@ -17,7 +17,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = MockDataSource()
+        dataSource = AppDelegate.instance.dataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
