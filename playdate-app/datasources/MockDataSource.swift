@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MockDataSource: EventDataSource {
+class MockDataSource: EventDataSource, EventUserInteractionManager {
     
     let events = [
         ["id": "tm-IW93nFI39j2oFNie", "title": "Event 1", "venue": "Venue 1", "imageId": "calendar", "startDate": Date(timeIntervalSince1970: 1591736400)],
@@ -30,6 +30,10 @@ class MockDataSource: EventDataSource {
         return events
     }
     
+    public func starredEvents() -> [[String : Any]] {
+        return events
+    }
+    
     public func searchEvents(_ query: String) -> [[String: Any]] {
         return events
     }
@@ -44,5 +48,9 @@ class MockDataSource: EventDataSource {
         } else {
             return nil
         }
+    }
+    
+    public func setEventStarred(withId id: String, starred: Bool) -> Bool {
+        return false
     }
 }

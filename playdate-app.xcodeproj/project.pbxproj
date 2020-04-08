@@ -24,6 +24,9 @@
 		7FF4BAED2437CC0B00A2F595 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FF4BAEC2437CC0B00A2F595 /* GoogleService-Info.plist */; };
 		7FF4BAEE2437CC0B00A2F595 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FF4BAEC2437CC0B00A2F595 /* GoogleService-Info.plist */; };
 		7FF4BAEF2437CC0B00A2F595 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FF4BAEC2437CC0B00A2F595 /* GoogleService-Info.plist */; };
+		7FF4BB11243D51A600A2F595 /* FirestoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4BB10243D51A600A2F595 /* FirestoreDataSource.swift */; };
+		7FF4BB13243D53BF00A2F595 /* TM-API-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FF4BB12243D53BF00A2F595 /* TM-API-Info.plist */; };
+		7FF4BB15243D571300A2F595 /* EventUserInteractionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4BB14243D571300A2F595 /* EventUserInteractionManager.swift */; };
 		7FF919B023FCC56A004B8CF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919AF23FCC56A004B8CF9 /* AppDelegate.swift */; };
 		7FF919B223FCC56A004B8CF9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */; };
 		7FF919B723FCC56A004B8CF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FF919B523FCC56A004B8CF9 /* Main.storyboard */; };
@@ -68,6 +71,9 @@
 		7FF4BAC72434E67200A2F595 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		7FF4BAEA2434EC6C00A2F595 /* SettingsUserInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserInfoTableViewCell.swift; sourceTree = "<group>"; };
 		7FF4BAEC2437CC0B00A2F595 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7FF4BB10243D51A600A2F595 /* FirestoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreDataSource.swift; sourceTree = "<group>"; };
+		7FF4BB12243D53BF00A2F595 /* TM-API-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TM-API-Info.plist"; sourceTree = "<group>"; };
+		7FF4BB14243D571300A2F595 /* EventUserInteractionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUserInteractionManager.swift; sourceTree = "<group>"; };
 		7FF919AC23FCC56A004B8CF9 /* PlayDate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayDate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF919AF23FCC56A004B8CF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +145,8 @@
 			children = (
 				7FA3483C2414768A00B00C31 /* EventData.swift */,
 				7FA3483D2414768A00B00C31 /* EventDataSource.swift */,
+				7FF4BB14243D571300A2F595 /* EventUserInteractionManager.swift */,
+				7FF4BB10243D51A600A2F595 /* FirestoreDataSource.swift */,
 				7FA3483B2414768A00B00C31 /* MockDataSource.swift */,
 			);
 			path = datasources;
@@ -195,6 +203,7 @@
 				7FF919BD23FCC56B004B8CF9 /* LaunchScreen.storyboard */,
 				7FF919C023FCC56B004B8CF9 /* Info.plist */,
 				7FF4BAEC2437CC0B00A2F595 /* GoogleService-Info.plist */,
+				7FF4BB12243D53BF00A2F595 /* TM-API-Info.plist */,
 				7FF919B823FCC56A004B8CF9 /* playdate_app.xcdatamodeld */,
 			);
 			path = "playdate-app";
@@ -338,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FF919BF23FCC56B004B8CF9 /* LaunchScreen.storyboard in Resources */,
+				7FF4BB13243D53BF00A2F595 /* TM-API-Info.plist in Resources */,
 				7FF4BAED2437CC0B00A2F595 /* GoogleService-Info.plist in Resources */,
 				7FF919BC23FCC56B004B8CF9 /* Assets.xcassets in Resources */,
 				7FF919B723FCC56A004B8CF9 /* Main.storyboard in Resources */,
@@ -472,6 +482,7 @@
 			files = (
 				23A15B2924240FD3003E7151 /* SignUpViewController.swift in Sources */,
 				7F4A61152422B8C000E9C206 /* EventsHomeViewController.swift in Sources */,
+				7FF4BB15243D571300A2F595 /* EventUserInteractionManager.swift in Sources */,
 				7FA348402414768A00B00C31 /* MockDataSource.swift in Sources */,
 				7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */,
 				7FF4BAC82434E67200A2F595 /* EventTableViewCell.swift in Sources */,
@@ -479,6 +490,7 @@
 				A5DA8CF52436FC94008A313C /* EventDetailViewController.swift in Sources */,
 				7FF919BA23FCC56A004B8CF9 /* playdate_app.xcdatamodeld in Sources */,
 				7FF919B023FCC56A004B8CF9 /* AppDelegate.swift in Sources */,
+				7FF4BB11243D51A600A2F595 /* FirestoreDataSource.swift in Sources */,
 				7FA34835241472E000B00C31 /* SettingsViewController.swift in Sources */,
 				6FB30AF1243D2E0800C5C945 /* SearchViewController.swift in Sources */,
 				7FF4BAEB2434EC6C00A2F595 /* SettingsUserInfoTableViewCell.swift in Sources */,

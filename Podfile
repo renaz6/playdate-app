@@ -7,7 +7,8 @@ target 'playdate-app' do
 
   # Pods for playdate-app
   pod 'Firebase/Auth'
-  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 
   pod 'Alamofire'
 

@@ -12,6 +12,8 @@ protocol EventDataSource {
     
     func homePageEvents() -> [[String: Any]]
     
+    func starredEvents() -> [[String: Any]]
+    
     func searchEvents(_: String) -> [[String: Any]]
     
     func searchEvents(_: String, withCategory: String) -> [[String: Any]]
