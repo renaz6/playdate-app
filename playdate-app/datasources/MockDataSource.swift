@@ -11,11 +11,19 @@ import Foundation
 class MockDataSource: EventDataSource {
     
     let events = [
-        ["title": "Event 1", "venue": "Venue 1", "imageId": "calendar", "startDate": Date(timeIntervalSince1970: 1591736400)],
-        ["title": "Event 2", "venue": "Venue 1", "imageId": "music.mic", "startDate": Date(timeIntervalSince1970: 1591736400)],
-        ["title": "Event 3", "venue": "Venue 2", "imageId": "calendar", "startDate": Date(timeIntervalSince1970: 1591736400)],
-        ["title": "Event 4", "venue": "Venue 3", "imageId": "person.2.fill", "startDate": Date(timeIntervalSince1970: 1591736400)],
-        ["title": "Event 5", "venue": "Venue 3", "imageId": "calendar", "startDate": Date(timeIntervalSince1970: 1591736400)]
+        ["id": "tm-IW93nFI39j2oFNie", "title": "Event 1", "venue": "Venue 1", "imageId": "calendar", "startDate": Date(timeIntervalSince1970: 1591736400)],
+        ["id": "tm-M939VNnkwjMWoje2", "title": "Event 2", "venue": "Venue 1", "imageId": "music.mic", "startDate": Date(timeIntervalSince1970: 1591736400)],
+        ["id": "tm-mOOmiinF93n92nki", "title": "Event 3", "venue": "Venue 2", "imageId": "calendar", "startDate": Date(timeIntervalSince1970: 1591736400)],
+        ["id": "tm-xMi20NVooqmbwkCo", "title": "Event 4", "venue": "Venue 3", "imageId": "person.2.fill", "startDate": Date(timeIntervalSince1970: 1591736400)],
+        ["id": "utg-gMc3OmCz", "title": "Event 5", "venue": "Venue 3", "imageId": "calendar", "startDate": Date(timeIntervalSince1970: 1591736400)]
+    ]
+    
+    let idLookupTable = [
+        "tm-IW93nFI39j2oFNie": 0,
+        "tm-M939VNnkwjMWoje2": 1,
+        "tm-mOOmiinF93n92nki": 2,
+        "tm-xMi20NVooqmbwkCo": 3,
+        "utg-gMc3OmCz": 4
     ]
     
     public func homePageEvents() -> [[String: Any]] {
@@ -31,7 +39,7 @@ class MockDataSource: EventDataSource {
     }
     
     public func event(withId id: String) -> [String: Any]? {
-        if let index = Int(id), index < events.count {
+        if let index = idLookupTable[id] {
             return events[index]
         } else {
             return nil

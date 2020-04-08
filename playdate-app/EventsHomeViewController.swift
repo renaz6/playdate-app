@@ -33,6 +33,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         if let cell = reusableCell as? EventTableViewCell {
+            cell.eventId = (eventData["id"] as! String)
             cell.eventImageView.image = UIImage(systemName: eventData["imageId"] as! String)
             cell.eventTitleLabel.text = eventData["title"] as? String
             cell.eventVenueLabel.text = eventData["venue"] as? String
@@ -43,11 +44,10 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-//    private func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)-> IndexPath {
-//        return indexPath
-//
-//       performSegue(withIdentifier: eventDetailSegueId, sender: indexPath)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // so the row doesn't stay selected
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == eventDetailSegueId,
