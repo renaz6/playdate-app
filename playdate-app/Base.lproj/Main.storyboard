@@ -477,6 +477,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="1Qi-c4-WSM"/>
                     <connections>
+                        <outlet property="signUpButton" destination="gWR-r5-lc6" id="Ymp-UA-QUC"/>
+                        <outlet property="signUpLabel" destination="W2g-CN-Q1u" id="TDt-k3-125"/>
                         <outlet property="textFieldLoginEmail" destination="yHI-f1-GIn" id="LEt-Cp-egf"/>
                         <outlet property="textFieldLoginPassword" destination="1VR-SH-29m" id="YRL-M8-ggy"/>
                     </connections>
@@ -728,7 +730,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="hUk-7s-cMF" kind="show" id="K6Y-3j-XIl"/>
+                                    <segue destination="hUk-7s-cMF" kind="show" identifier="SettingstoSignInSegue" id="K6Y-3j-XIl"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="signUpCell" textLabel="vWn-td-inP" style="IBUITableViewCellStyleDefault" id="pX8-KV-Gr7">
@@ -993,7 +995,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Hwx-dX-2Iz"/>
-        <segue reference="o0N-Kk-TAR"/>
+        <segue reference="LrH-rr-oYR"/>
         <segue reference="K6Y-3j-XIl"/>
     </inferredMetricsTieBreakers>
 </document>

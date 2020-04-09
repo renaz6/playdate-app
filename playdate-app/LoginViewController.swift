@@ -17,9 +17,12 @@ class LoginViewController: UIViewController, NotLoggedIn {
 
     @IBOutlet weak var textFieldLoginEmail: UITextField!
     
+    @IBOutlet weak var signUpLabel: UILabel!
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var textFieldLoginPassword: UITextField!
     
     var delegate: UIViewController!
+    var settingsDelegate: UIViewController!
     
     
     override func viewDidLoad() {
@@ -44,6 +47,14 @@ class LoginViewController: UIViewController, NotLoggedIn {
 //            self.textFieldLoginPassword.text = nil
 //          }
 //        }
+        if(settingsDelegate != nil) {
+            signUpLabel.isHidden = true
+            signUpButton.isHidden = true
+        }
+        else {
+            signUpLabel.isHidden = false
+            signUpButton.isHidden = false
+        }
     }
     
     @IBAction func loginDidTouch(_ sender: Any) {
@@ -67,13 +78,21 @@ class LoginViewController: UIViewController, NotLoggedIn {
             self.present(alert, animated: true, completion: nil)
           }
           else {
+                var message = "Return to MyEvents Page"
                 print("Login In Successful!")
-                let otherVC = self.delegate as! LogIn
-                otherVC.signedIn()
+                if(self.delegate != nil) {
+                    let otherVC = self.delegate as! LogIn
+                    otherVC.signedIn()
+                }
+                else if(self.settingsDelegate != nil){
+                    let otherVC = self.settingsDelegate as! LoggedIn
+                    message = "Return to Settings Page"
+                    otherVC.isNowSignedIn()
+                }
                 //self.performSegue(withIdentifier: "LoggedIn", sender: nil)
                 let alert = UIAlertController(
                   title: "Sign in Successful",
-                  message: "Return to MyEvents Page",
+                  message: message,
                   preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title:"OK",style:.default))

@@ -9,7 +9,11 @@
 import UIKit
 import CoreData
 
-class SettingsViewController: UITableViewController {
+protocol LoggedIn {
+    func isNowSignedIn()
+}
+
+class SettingsViewController: UITableViewController, LoggedIn {
     
     var signedIn = true
     let sectionTitles = ["User Account", "Miscellaneous"]
@@ -26,6 +30,14 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    func isNowSignedIn() {
+        signedIn = true
+        if (delegate != nil) {
+            let otherVC = self.delegate as! LogIn
+            otherVC.signedIn()
+        }
+        tableView.reloadData()
+    }
     
     func fetchData() -> [NSManagedObject]{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -166,6 +178,13 @@ class SettingsViewController: UITableViewController {
         (cell.contentView.viewWithTag(3) as? UILabel)?.text = "user@example.com"
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SettingstoSignInSegue" {
+            let destination = segue.destination as! LoginViewController
+            destination.settingsDelegate = self
+        }
     }
     
     
