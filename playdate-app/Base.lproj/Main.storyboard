@@ -250,16 +250,6 @@
             </objects>
             <point key="canvasLocation" x="2002.8985507246377" y="-691.07142857142856"/>
         </scene>
-        <!--Me-->
-        <scene sceneID="EVm-x6-1aa">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Me" id="hXM-KD-xJR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="xg1-ih-R6o"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8z3-8G-3h2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1092" y="1470"/>
-        </scene>
         <!--My Events Not Signed in -->
         <scene sceneID="reP-AR-MiT">
             <objects>
@@ -445,7 +435,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zFy-do-rlx">
-                                <rect key="frame" x="83.999999999999986" y="242" width="247.66666666666663" height="30"/>
+                                <rect key="frame" x="84" y="242" width="247.66666666666663" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do not have an account? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2g-CN-Q1u">
                                         <rect key="frame" x="0.0" y="0.0" width="193.66666666666666" height="30"/>
@@ -1003,7 +993,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Hwx-dX-2Iz"/>
-        <segue reference="LrH-rr-oYR"/>
-        <segue reference="49C-DC-4xg"/>
+        <segue reference="o0N-Kk-TAR"/>
+        <segue reference="K6Y-3j-XIl"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,17 +7,67 @@
 //
 
 import UIKit
+import CoreData
 
 class SettingsViewController: UITableViewController {
     
     var signedIn = true
     let sectionTitles = ["User Account", "Miscellaneous"]
     var delegate: UIViewController!
+    var settings:[NSManagedObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        settings = fetchData()
+        if(settings.count == 0) {
+            createSettingsEntity()
+        }
+    }
+    
+    
+    func fetchData() -> [NSManagedObject]{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Settings")
+        var fetchedSettings:[NSManagedObject]? = nil
+        
+        do {
+            try fetchedSettings = context.fetch(request) as? [NSManagedObject]
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        return (fetchedSettings)!
+    }
+    
+    func createSettingsEntity() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let setting = NSEntityDescription.insertNewObject(
+            forEntityName: "Settings", into: context)
+
+        
+        // Set the attribute values
+        setting.setValue(false, forKey: "isDarkMode")
+        setting.setValue(false, forKey: "isNotifications")
+        
+        // Commit the changes
+        do {
+            try context.save()
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        //update the local copy
+        settings.append(setting)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -97,6 +147,9 @@ class SettingsViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             (cell.contentView.viewWithTag(1) as? UILabel)?.text = "Dark Mode"
+            (cell.contentView.viewWithTag(2) as? UISwitch)?.addTarget(self,action: #selector(switchValueDidChange(_:)), for: .valueChanged)
+            let isDarkMode = (settings[0].value(forKeyPath: "isDarkMode") as! Bool)
+            (cell.contentView.viewWithTag(2) as? UISwitch)?.setOn(isDarkMode, animated: false)
         case 1:
             (cell.contentView.viewWithTag(1) as? UILabel)?.text = "Send Push Notifications"
         default:
@@ -114,15 +167,49 @@ class SettingsViewController: UITableViewController {
         
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    
+    @objc func switchValueDidChange(_ sender: UISwitch!) {
+        if (sender.isOn == true){
+            //inDarkMode = true
+            //print("on!!!")
+            UIApplication.shared.windows.forEach { window in
+                window.overrideUserInterfaceStyle = .dark
+            }
+        }
+        else{
+            //inDarkMode = false
+            //print("off!!!!!!!")
+            UIApplication.shared.windows.forEach { window in
+                window.overrideUserInterfaceStyle = .light
+            }
+        }
+        updateDarkModeSettings(darkMode: sender.isOn)
     }
-    */
+
+    func updateDarkModeSettings(darkMode: Bool) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+               
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Settings")
+               
+        
+        var fetchedResults:[NSManagedObject]? = nil
+        do {
+            try fetchedResults = context.fetch(request) as? [NSManagedObject]
+            if(fetchedResults!.count != 0) {
+                let setting = fetchedResults![0]
+                setting.setValue(darkMode, forKey: "isDarkMode")
+            }
+            try context.save()
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        settings = fetchData()
+    }
 
 }

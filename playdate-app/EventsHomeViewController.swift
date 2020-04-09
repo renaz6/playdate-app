@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -18,6 +19,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = AppDelegate.instance.dataSource
+        fetchSettings()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,4 +72,35 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             return ""
         }
     }
+    
+    func fetchSettings() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Settings")
+        var fetchedSettings:[NSManagedObject]? = nil
+        
+        do {
+            try fetchedSettings = context.fetch(request) as? [NSManagedObject]
+        } catch {
+            // If an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        
+        if (fetchedSettings!.count != 0) {
+            if (fetchedSettings![0].value(forKeyPath: "isDarkMode") as! Bool) {
+                UIApplication.shared.windows.forEach { window in
+                    window.overrideUserInterfaceStyle = .dark
+                }
+            }
+            else {
+                UIApplication.shared.windows.forEach { window in
+                    window.overrideUserInterfaceStyle = .light
+                }
+            }
+        }
+    }
 }
+
