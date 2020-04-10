@@ -20,11 +20,13 @@ class SignUpViewController: UIViewController {
     var logInDelegate: UIViewController!
     var theMessage = ""
     
+    var firestore: Firestore!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    
+        firestore = Firestore.firestore()
     }
     
 
@@ -40,7 +42,17 @@ class SignUpViewController: UIViewController {
         }
         if(password == repeatPassword) {
             Auth.auth().createUser(withEmail: email, password: password) { user, error in
-                if error == nil {
+                if error == nil, let userInfo = user {
+                    // add display name
+                    let changeRequest = userInfo.user.createProfileChangeRequest()
+                    changeRequest.displayName = self.textFieldName.text
+                    changeRequest.commitChanges(completion: { error in
+                        print("Error setting your display name: ", error ?? "")
+                    })
+                    // create entry (saved events) in database
+                    let userDocRef = self.firestore.collection("users").document(userInfo.user.uid)
+                    userDocRef.setData(["savedEvents": []])
+                    
                     Auth.auth().signIn(withEmail: self.textFieldLoginEmail.text!,
                                        password: self.textFieldLoginPassword.text!)
                     if(self.delegate != nil) {
