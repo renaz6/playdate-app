@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol LogIn {
     func signedIn()
@@ -14,9 +15,9 @@ protocol LogIn {
 
 class MyEventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, LogIn {
     
-
     @IBOutlet weak var myEventsVCNotSignedIn: UIView!
     @IBOutlet weak var myEventsVCSignedIn: UITableView!
+    
     private let eventDetailSegueId = "meToEventDetail"
     private let loginSegueId = "LogInIdentifier"
     private let settingsSegueId = "SettingsIdentifier"
@@ -25,20 +26,29 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     private var dataSource: EventDataSource!
     
     private var loggedIn: Bool = false
+    private var myEvents: [EventDataType] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = AppDelegate.instance.dataSource
         
-        if(loggedIn == false) {
-            myEventsVCNotSignedIn.isHidden = false
-            myEventsVCSignedIn.isHidden = true
+        Auth.auth().addStateDidChangeListener { auth, user in
+            self.loggedIn = user != nil
+            
+            self.myEventsVCNotSignedIn.isHidden = self.loggedIn
+            self.myEventsVCSignedIn.isHidden = !self.loggedIn
+        }
+        
+        // TODO link this to My Events (not home page events)
+        dataSource.homePageEvents { events in
+            self.myEvents = events
+            self.myEventsVCSignedIn.reloadData()
         }
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.homePageEvents().count
+        return myEvents.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -46,10 +56,11 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let eventData = dataSource.homePageEvents()[indexPath.row] // TODO
+        let eventData = myEvents[indexPath.row] // TODO
         
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         if let cell = reusableCell as? EventTableViewCell {
+            cell.eventId = eventData["id"] as! String
             cell.eventImageView.image = UIImage(systemName: eventData["imageId"] as! String)
             cell.eventTitleLabel.text = eventData["title"] as? String
             cell.eventVenueLabel.text = eventData["venue"] as? String
@@ -66,22 +77,19 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == eventDetailSegueId,
-//            let dest = segue.destination as? EventDetailViewController,
-//            let ip = sender as? IndexPath {
-//
-//            dest.event = dataSource.homePageEvents()[ip.row]
-//        }
-        if segue.identifier == loginSegueId {
+        if segue.identifier == eventDetailSegueId,
+            let dest = segue.destination as? EventDetailViewController,
+            let ip = sender as? IndexPath {
+
+            dest.event = myEvents[ip.row]
+        } else if segue.identifier == loginSegueId {
             let destination = segue.destination as! LoginViewController
             destination.delegate = self
-        }
-        if segue.identifier == settingsSegueId {
+        } else if segue.identifier == settingsSegueId {
             let destination = segue.destination as! SettingsViewController
             destination.delegate = self
             destination.signedIn = loggedIn
-        }
-        if segue.identifier == signUpSegueId {
+        } else if segue.identifier == signUpSegueId {
             let destination = segue.destination as! SignUpViewController
             destination.delegate = self
         }

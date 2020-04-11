@@ -15,15 +15,21 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tableView: UITableView!
     
     private var dataSource: EventDataSource!
+    private var events: [EventDataType] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = AppDelegate.instance.dataSource
         fetchSettings()
+        
+        dataSource.homePageEvents { events in
+            self.events = events
+            self.tableView.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.homePageEvents().count
+        return events.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -31,7 +37,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let eventData = dataSource.homePageEvents()[indexPath.row]
+        let eventData = events[indexPath.row]
         
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         if let cell = reusableCell as? EventTableViewCell {
@@ -54,9 +60,9 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == eventDetailSegueId,
             let dest = segue.destination as? EventDetailViewController,
-            let ip = tableView.indexPathForSelectedRow?.row{
+            let ip = tableView.indexPathForSelectedRow?.row {
 
-            dest.event = ip
+            dest.event = events[ip]
         }
     }
     

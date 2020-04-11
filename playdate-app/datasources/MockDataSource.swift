@@ -26,31 +26,31 @@ class MockDataSource: EventDataSource {
         "utg-gMc3OmCz": 4
     ]
     
-    public func homePageEvents() -> [[String: Any]] {
-        return events
+    public func homePageEvents(completion handler: @escaping ([EventDataType]) -> Void) {
+        handler(events)
     }
     
-    public func starredEvents() -> [[String : Any]] {
-        return events
+    public func starredEvents(completion handler: @escaping ([EventDataType]) -> Void) {
+        handler(events)
     }
     
-    public func searchEvents(_ query: String) -> [[String: Any]] {
-        return events
+    public func searchEvents(_ query: String, completion handler: @escaping ([EventDataType]) -> Void) {
+        handler(events)
     }
     
-    public func searchEvents(_ query: String, withCategory category: String) -> [[String: Any]] {
-        return events
+    public func searchEvents(_ query: String, withCategory category: String, completion handler: @escaping ([EventDataType]) -> Void) {
+        handler(events)
     }
     
-    public func event(withId id: String) -> [String: Any]? {
+    public func event(withId id: String, completion handler: @escaping (EventDataType?) -> Void) {
         if let index = idLookupTable[id] {
-            return events[index]
+            handler(events[index])
         } else {
-            return nil
+            handler(nil)
         }
     }
     
-    public func setEventStarred(withId id: String, starred: Bool) -> Bool {
-        return false
+    public func setEventStarred(withId id: String, starred: Bool, completion handler: @escaping (Bool) -> Void) {
+        handler(false)
     }
 }

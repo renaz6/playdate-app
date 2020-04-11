@@ -10,7 +10,7 @@ import UIKit
 
 class EventDetailViewController: UIViewController {
 
-    var event: Int!
+    var event: EventDataType!
     private var dataSource: EventDataSource!
     @IBOutlet weak var imageOutlet: UIImageView!
     @IBOutlet weak var eventName: UILabel!
@@ -22,14 +22,13 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataSource = MockDataSource()
-
+        dataSource = AppDelegate.instance.dataSource
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         // Set Event Data
-        let eventData = dataSource.homePageEvents()[event]
+        let eventData = event!
         
         imageOutlet.image = UIImage(systemName: eventData["imageId"] as! String)
         eventName.text = eventData["title"] as? String

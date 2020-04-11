@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 protocol LoggedIn {
     func isNowSignedIn()
@@ -122,6 +123,20 @@ class SettingsViewController: UITableViewController, LoggedIn {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.reuseIdentifier == "signOutCell" {
+            // sign user out
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                print(error)
+            }
+            navigationController?.popViewController(animated: true)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     private func cellInUserAccountSectionSignedIn(for indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
@@ -131,9 +146,7 @@ class SettingsViewController: UITableViewController, LoggedIn {
         case 2:
             return tableView.dequeueReusableCell(withIdentifier: "changePasswordCell", for: indexPath)
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "basicCellNoDisclosure", for: indexPath)
-            cell.textLabel?.text = "Sign Out"
-            return cell
+            return tableView.dequeueReusableCell(withIdentifier: "signOutCell", for: indexPath)
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "basicCell", for: indexPath)
             cell.textLabel?.text = "Something else"
@@ -230,5 +243,4 @@ class SettingsViewController: UITableViewController, LoggedIn {
         }
         settings = fetchData()
     }
-
 }

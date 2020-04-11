@@ -10,15 +10,15 @@ import Foundation
 
 protocol EventDataSource {
     
-    func homePageEvents() -> [[String: Any]]
+    func homePageEvents(completion: @escaping ([EventDataType]) -> Void)
     
-    func starredEvents() -> [[String: Any]]
+    func starredEvents(completion: @escaping ([EventDataType]) -> Void)
     
-    func searchEvents(_: String) -> [[String: Any]]
+    func searchEvents(_: String, completion: @escaping ([EventDataType]) -> Void)
     
-    func searchEvents(_: String, withCategory: String) -> [[String: Any]]
+    func searchEvents(_: String, withCategory: String, completion: @escaping ([EventDataType]) -> Void)
     
-    func event(withId: String) -> [String: Any]?
+    func event(withId: String, completion: @escaping (EventDataType?) -> Void)
     
-    func setEventStarred(withId id: String, starred: Bool) -> Bool
+    func setEventStarred(withId id: String, starred: Bool, completion: @escaping (Bool) -> Void)
 }
