@@ -22,6 +22,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     private let loginSegueId = "LogInIdentifier"
     private let settingsSegueId = "SettingsIdentifier"
     private let signUpSegueId = "SignUpIdentifier"
+    private var userEmail = ""
+    private var displayName = ""
     
     private var dataSource: EventDataSource!
     
@@ -33,17 +35,38 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         dataSource = AppDelegate.instance.dataSource
         
         Auth.auth().addStateDidChangeListener { auth, user in
-            self.loggedIn = user != nil
-            
+            self.loggedIn = (user != nil)
+
             self.myEventsVCNotSignedIn.isHidden = self.loggedIn
             self.myEventsVCSignedIn.isHidden = !self.loggedIn
+            if(user != nil) {
+                self.userEmail = (user?.email)!
+                var multiFactorString = ""
+                for info in user!.multiFactor.enrolledFactors {
+                    multiFactorString += info.displayName ?? "[DispayName]"
+                    multiFactorString += ""
+                }
+                self.displayName = multiFactorString
+            }
         }
+        
+// TODO: if a account is deleted Listener still finds an User
+//        if(loggedIn == false) {
+//            self.myEventsVCNotSignedIn.isHidden = self.loggedIn
+//            self.myEventsVCSignedIn.isHidden = !self.loggedIn
+//        }
+//        else {
+//            self.myEventsVCNotSignedIn.isHidden = self.loggedIn
+//            self.myEventsVCSignedIn.isHidden = !self.loggedIn
+//        }
+        
         
         dataSource.starredEvents { events in
             self.myEvents = events
             self.myEventsVCSignedIn.reloadData()
         }
     }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,6 +111,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
             let destination = segue.destination as! SettingsViewController
             destination.delegate = self
             destination.signedIn = loggedIn
+            destination.userEmail = self.userEmail
+            destination.displayName = self.displayName
         } else if segue.identifier == signUpSegueId {
             let destination = segue.destination as! SignUpViewController
             destination.delegate = self

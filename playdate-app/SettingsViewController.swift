@@ -20,6 +20,8 @@ class SettingsViewController: UITableViewController, LoggedIn {
     let sectionTitles = ["User Account", "Miscellaneous"]
     var delegate: UIViewController!
     var settings:[NSManagedObject] = []
+    var userEmail: String = "user@example.com"
+    var displayName: String = "User Name"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,20 @@ class SettingsViewController: UITableViewController, LoggedIn {
         if(settings.count == 0) {
             createSettingsEntity()
         }
+        
+//        Auth.auth().addStateDidChangeListener { (auth, user) in
+//            if(user != nil) {
+//                self.userEmail = user!.email!
+//                var multiFactorString = ""
+//                for info in user!.multiFactor.enrolledFactors {
+//                  multiFactorString += info.displayName ?? "[DispayName]"
+//                  multiFactorString += ""
+//                }
+//                self.displayName = multiFactorString
+//            }
+//            
+//        }
+        
     }
     
     func isNowSignedIn() {
@@ -187,8 +203,8 @@ class SettingsViewController: UITableViewController, LoggedIn {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userInfoCell", for: indexPath)
         
         (cell.contentView.viewWithTag(1) as? UIImageView)?.image = UIImage(systemName: "person.fill")
-        (cell.contentView.viewWithTag(2) as? UILabel)?.text = "User Name"
-        (cell.contentView.viewWithTag(3) as? UILabel)?.text = "user@example.com"
+        (cell.contentView.viewWithTag(2) as? UILabel)?.text = "\(displayName)"
+        (cell.contentView.viewWithTag(3) as? UILabel)?.text = "\(userEmail)"
         
         return cell
     }
