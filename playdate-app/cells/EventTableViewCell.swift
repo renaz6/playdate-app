@@ -10,6 +10,7 @@ import UIKit
 
 class EventTableViewCell: UITableViewCell {
     
+    var index: Int!
     var eventId: String!
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
@@ -29,7 +30,7 @@ class EventTableViewCell: UITableViewCell {
             
             return dateFormat.string(from: date) + ", " + timeFormat.string(from: date)
         } else {
-            return ""
+            return "TBD"
         }
     }
 }

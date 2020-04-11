@@ -162,7 +162,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kLg-rg-uKz" userLabel="Events Table View">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="810"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -298,19 +298,19 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pAq-Tf-1SN" userLabel="Events Table View">
-                                <rect key="frame" x="-2" y="0.0" width="416" height="813"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="100" id="Lbh-8c-20n" customClass="EventTableViewCell" customModule="PlayDate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="416" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lbh-8c-20n" id="WdB-L6-vkc">
-                                            <rect key="frame" x="0.0" y="0.0" width="385" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLU-vQ-m20">
-                                                    <rect key="frame" x="106" y="8" width="271" height="29"/>
+                                                    <rect key="frame" x="106" y="8" width="269" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="YjC-M6-AwW"/>
                                                     </constraints>
@@ -319,7 +319,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-hD-PST">
-                                                    <rect key="frame" x="106" y="42" width="271" height="21"/>
+                                                    <rect key="frame" x="106" y="42" width="269" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="3eK-Wn-pca"/>
                                                     </constraints>
@@ -328,7 +328,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lez-SS-obu">
-                                                    <rect key="frame" x="106" y="68" width="271" height="21"/>
+                                                    <rect key="frame" x="106" y="68" width="269" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="uC1-Iy-O3M"/>
                                                     </constraints>
@@ -364,7 +364,7 @@
                                             <outlet property="eventImageView" destination="p1e-dY-4PL" id="Md0-C1-sMc"/>
                                             <outlet property="eventTitleLabel" destination="JLU-vQ-m20" id="APY-It-WE7"/>
                                             <outlet property="eventVenueLabel" destination="gdb-hD-PST" id="q3O-wl-jP8"/>
-                                            <segue destination="jEi-hy-iJ5" kind="show" identifier="meToEventDetail" id="knY-UG-1vL"/>
+                                            <segue destination="jEi-hy-iJ5" kind="show" identifier="meToEventDetail" id="nDb-ev-aBj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -998,9 +998,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="knY-UG-1vL"/>
-        <segue reference="o0N-Kk-TAR"/>
-        <segue reference="K6Y-3j-XIl"/>
+        <segue reference="nDb-ev-aBj"/>
+        <segue reference="fZM-ec-Jqf"/>
+        <segue reference="49C-DC-4xg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>

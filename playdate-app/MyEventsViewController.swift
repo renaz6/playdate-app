@@ -59,11 +59,12 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         if let cell = reusableCell as? EventTableViewCell {
-            cell.eventId = eventData["id"] as! String
-            cell.eventImageView.image = UIImage(systemName: eventData["imageId"] as! String)
-            cell.eventTitleLabel.text = eventData["title"] as? String
-            cell.eventVenueLabel.text = eventData["venue"] as? String
-            cell.setDate(eventData["startDate"] as? Date)
+            cell.index = indexPath.row
+            cell.eventId = eventData.id
+            cell.eventImageView.image = UIImage(systemName: eventData.imageId)
+            cell.eventTitleLabel.text = eventData.title
+            cell.eventVenueLabel.text = eventData.venueName
+            cell.setDate(eventData.datesStart?.dateValue())
             return cell
         } else {
             return reusableCell
@@ -71,16 +72,15 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: eventDetailSegueId, sender: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == eventDetailSegueId,
             let dest = segue.destination as? EventDetailViewController,
-            let ip = sender as? IndexPath {
+            let cell = sender as? EventTableViewCell {
 
-            dest.event = myEvents[ip.row]
+            dest.event = myEvents[cell.index]
         } else if segue.identifier == loginSegueId {
             let destination = segue.destination as! LoginViewController
             destination.delegate = self

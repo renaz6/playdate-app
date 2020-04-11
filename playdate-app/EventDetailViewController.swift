@@ -23,21 +23,20 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
         
         dataSource = AppDelegate.instance.dataSource
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         
         // Set Event Data
         let eventData = event!
         
-        imageOutlet.image = UIImage(systemName: eventData["imageId"] as! String)
-        eventName.text = eventData["title"] as? String
-        eventLocation.text = eventData["venue"] as? String
+        imageOutlet.image = UIImage(systemName: eventData.imageId)
+        eventName.text = eventData.title
+        eventLocation.text = eventData.venueName
         
         // Buttons
 
         favButton.setImage(favBtnImage , for: .normal)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
     }
     
     

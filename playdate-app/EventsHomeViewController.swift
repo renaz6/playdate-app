@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -41,11 +42,12 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         if let cell = reusableCell as? EventTableViewCell {
-            cell.eventId = (eventData["id"] as! String)
-            cell.eventImageView.image = UIImage(systemName: eventData["imageId"] as! String)
-            cell.eventTitleLabel.text = eventData["title"] as? String
-            cell.eventVenueLabel.text = eventData["venue"] as? String
-            cell.setDate(eventData["startDate"] as? Date)
+            cell.index = indexPath.row
+            cell.eventId = eventData.id
+            cell.eventImageView.image = UIImage(systemName: eventData.imageId)
+            cell.eventTitleLabel.text = eventData.title
+            cell.eventVenueLabel.text = eventData.venueName
+            cell.setDate(eventData.datesStart?.dateValue())
             return cell
         } else {
             return reusableCell
@@ -60,9 +62,9 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == eventDetailSegueId,
             let dest = segue.destination as? EventDetailViewController,
-            let ip = tableView.indexPathForSelectedRow?.row {
+            let cell = sender as? EventTableViewCell {
 
-            dest.event = events[ip]
+            dest.event = events[cell.index]
         }
     }
     
