@@ -12,6 +12,7 @@ import Alamofire
 
 class FirestoreDataSource: EventDataSource {
     
+    let homePageEventsCap = 20
     let tmFilterClassification = "KZFzniwnSyZfZ7v7na" // "Arts & Theatre"
     let tmGeoPoint = "9v6kpz7ds" // rough approximation of Texas Capitol Building, Austin, TX
     let tmMilesRadius = 50
@@ -32,12 +33,36 @@ class FirestoreDataSource: EventDataSource {
     }
     
     func homePageEvents(completion handler: @escaping ([EventDataType]) -> Void) {
-        // query: events happening now or in the future
-        handler([])
+        // query: at most N events happening now or in the future
+        firestore.collection("events")
+            .whereField(FieldPath(["dates", "start", "timestamp"]), isGreaterThanOrEqualTo: Timestamp())
+            .limit(to: homePageEventsCap)
+            .getDocuments(completion: { result, error in
+                if error == nil, let docs = result?.documents {
+                    handler(docs.map { $0.data() })
+                }
+            })
     }
     
     func starredEvents(completion handler: @escaping ([EventDataType]) -> Void) {
-        handler([])
+        if let user = Auth.auth().currentUser {
+            
+            firestore.collection("users").document(user.uid).getDocument { doc, error in
+                
+                if let savedEventIds = doc?.data()?["savedEvents"] as? [String] {
+                    self.firestore.collection("events")
+                        .whereField("id", in: savedEventIds)
+                        .getDocuments { result, error in
+                            
+                            if error == nil, let docs = result?.documents {
+                                handler(docs.map { $0.data() })
+                            }
+                    }
+                }
+            }
+        } else {
+            handler([])
+        }
     }
     
     func searchEvents(_ query: String, completion handler: @escaping ([EventDataType]) -> Void) {

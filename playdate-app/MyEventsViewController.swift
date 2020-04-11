@@ -39,8 +39,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
             self.myEventsVCSignedIn.isHidden = !self.loggedIn
         }
         
-        // TODO link this to My Events (not home page events)
-        dataSource.homePageEvents { events in
+        dataSource.starredEvents { events in
             self.myEvents = events
             self.myEventsVCSignedIn.reloadData()
         }
