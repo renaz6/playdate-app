@@ -41,12 +41,13 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
             self.myEventsVCSignedIn.isHidden = !self.loggedIn
             if(user != nil) {
                 self.userEmail = (user?.email)!
-                var multiFactorString = ""
-                for info in user!.multiFactor.enrolledFactors {
-                    multiFactorString += info.displayName ?? "[DispayName]"
-                    multiFactorString += ""
-                }
-                self.displayName = multiFactorString
+//                var multiFactorString = ""
+//                for info in user!.multiFactor.enrolledFactors {
+//                    multiFactorString += info.displayName ?? "[DispayName]"
+//                    multiFactorString += ""
+//                }
+//                self.displayName = multiFactorString
+                self.displayName = user?.displayName ?? ""
             }
         }
         
