@@ -7,36 +7,44 @@
 //
 
 import UIKit
+import Firebase
+import MapKit
 
 class EventDetailViewController: UIViewController {
 
     var event: EventDataType!
+    var coordinates: GeoPoint?
     private var dataSource: EventDataSource!
     @IBOutlet weak var imageOutlet: UIImageView!
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventLocation: UILabel!
     @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
     
     var favBtnImage = UIImage(named: "favIcon")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
         dataSource = AppDelegate.instance.dataSource
         
         // Set Event Data
         let eventData = event!
-        
         imageOutlet.image = UIImage(systemName: eventData.imageId)
         eventName.text = eventData.title
         eventLocation.text = eventData.venueName
         
+        // Map, Set location
+        coordinates = eventData.venueCoordinates
+        let initialLocation = CLLocation(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
+        mapView.centerToLocation(initialLocation)
+        
         // Buttons
-
         favButton.setImage(favBtnImage , for: .normal)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
     }
     
     
@@ -52,6 +60,7 @@ class EventDetailViewController: UIViewController {
         
     }
     
+    
 
     /*
     // MARK: - Navigation
@@ -64,3 +73,17 @@ class EventDetailViewController: UIViewController {
     */
 
 }
+
+private extension MKMapView {
+  func centerToLocation(
+    _ location: CLLocation,
+    regionRadius: CLLocationDistance = 1000
+  ) {
+    let coordinateRegion = MKCoordinateRegion(
+      center: location.coordinate,
+      latitudinalMeters: regionRadius,
+      longitudinalMeters: regionRadius)
+    setRegion(coordinateRegion, animated: true)
+  }
+}
+
