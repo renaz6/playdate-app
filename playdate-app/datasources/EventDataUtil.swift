@@ -55,4 +55,8 @@ extension EventDataType {
     var venueCoordinates: GeoPoint {
         return (self["venue"] as! [String: Any])["coordinates"] as! GeoPoint
     }
+    
+    var ticketsURL: String {
+        return self["buyTicketsURL"] as? String ?? ""
+    }
 }
