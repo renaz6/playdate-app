@@ -15,11 +15,20 @@ class EventDetailViewController: UIViewController {
     var event: EventDataType!
     var coordinates: GeoPoint?
     private var dataSource: EventDataSource!
+    
+    // Outlets
     @IBOutlet weak var imageOutlet: UIImageView!
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventLocation: UILabel!
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var locationIcon: UIImageView!
+    @IBOutlet weak var timeIcon: UIImageView!
+    @IBOutlet weak var urlIcon: UIImageView!
+    @IBOutlet weak var venueLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var urlLabel: UILabel!
+    
     
     var favBtnImage = UIImage(named: "favIcon")
     
@@ -31,14 +40,34 @@ class EventDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool)
     {
         dataSource = AppDelegate.instance.dataSource
+        let eventData = event!
         
         // Set Event Data
-        let eventData = event!
+        // Text Labels an Images
+        
+        // Large Heading: Main icon, name, location
         imageOutlet.image = UIImage(systemName: eventData.imageId)
         eventName.text = eventData.title
         eventLocation.text = eventData.venueName
         
-        // Map, Set location
+        // Location/venue: icon and headings
+        locationIcon.image = UIImage(named: "location")
+        venueLabel.text = eventData.venueName
+        
+        // Date/Time
+        timeIcon.image = UIImage(named: "time")
+        dateLabel.text = describeDate(eventData.datesStart?.dateValue())
+        
+        // URL
+        if(eventData.ticketsURL != "")
+        {
+            urlIcon.image = UIImage(named: "url")
+            urlLabel.text = eventData.ticketsURL
+        }
+        
+        
+        
+        // Set location on the map using MapKit and coordinates from the event
         coordinates = eventData.venueCoordinates
         let initialLocation = CLLocation(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
         mapView.centerToLocation(initialLocation)
@@ -58,6 +87,19 @@ class EventDetailViewController: UIViewController {
         }
         favButton.setImage(favBtnImage , for: .normal)
         
+    }
+    
+    private func describeDate(_ date: Date?) -> String {
+        if let date = date {
+            let dateFormat = DateFormatter()
+           // let timeFormat = DateFormatter()
+            dateFormat.dateStyle = .medium
+            //timeFormat.timeStyle = .short
+            
+            return dateFormat.string(from: date)
+        } else {
+            return ""
+        }
     }
     
     

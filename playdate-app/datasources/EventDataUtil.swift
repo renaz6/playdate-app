@@ -71,4 +71,8 @@ extension EventDataType {
     var venueAddressPostCode: String {
         return ((self["venue"] as! [String: Any])["address"] as! [String: Any])["postCode"] as! String
     }
+    
+    var ticketsURL: String {
+        return self["buyTicketsURL"] as? String ?? ""
+    }
 }
