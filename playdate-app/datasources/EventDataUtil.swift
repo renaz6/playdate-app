@@ -52,7 +52,23 @@ extension EventDataType {
         return (self["venue"] as! [String: Any])["name"] as! String
     }
     
-    var venueCoordinates: GeoPoint {
-        return (self["venue"] as! [String: Any])["coordinates"] as! GeoPoint
+    var venueCoordinates: GeoPoint? {
+        return (self["venue"] as! [String: Any])["coordinates"] as? GeoPoint
+    }
+    
+    var venueAddressStreet: [String] {
+        return ((self["venue"] as! [String: Any])["address"] as! [String: Any])["street"] as! [String]
+    }
+    
+    var venueAddressCity: String {
+        return ((self["venue"] as! [String: Any])["address"] as! [String: Any])["city"] as! String
+    }
+    
+    var venueAddressState: String {
+        return ((self["venue"] as! [String: Any])["address"] as! [String: Any])["state"] as! String
+    }
+    
+    var venueAddressPostCode: String {
+        return ((self["venue"] as! [String: Any])["address"] as! [String: Any])["postCode"] as! String
     }
 }

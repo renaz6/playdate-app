@@ -30,7 +30,13 @@ class FirestoreDataSource: EventDataSource {
             print("[FATAL] TM-API-Info not found or corrupt.")
             abort()
         }
+        
+        let eventsDownloadUrl = URL(string: "https://app.ticketmaster.com/discovery/v2/events.json"
+            + "?size=200&classificationId=\(tmFilterClassification)"
+            + "&geoPoint=\(tmGeoPoint)&radius=\(tmMilesRadius)&unit=miles&apikey=\(tmApiKey)")
     }
+    
+    // MARK: - EventDataSource implementation
     
     func homePageEvents(completion handler: @escaping ([EventDataType]) -> Void) {
         // query: at most N events happening now or in the future
@@ -89,6 +95,41 @@ class FirestoreDataSource: EventDataSource {
     }
     
     func setEventStarred(withId id: String, starred: Bool, completion handler: @escaping (Bool) -> Void) {
-        handler(false)
+        if let user = Auth.auth().currentUser {
+            
+            firestore.collection("users").document(user.uid).getDocument { doc, error in
+                if let savedEventIds = doc?.data()?["savedEvents"] as? [String] {
+                    var savedEventsMutable = savedEventIds
+                    if starred, !savedEventsMutable.contains(id) {
+                        savedEventsMutable.append(id)
+                    } else if !starred, let index = savedEventsMutable.firstIndex(of: id) {
+                        savedEventsMutable.remove(at: index)
+                    }
+                    self.firestore.collection("users").document(user.uid).updateData(["savedEvents": savedEventsMutable]) { error in
+                        handler(true)
+                    }
+                }
+            }
+        } else {
+            handler(false)
+        }
+    }
+    
+    // MARK: - Support methods
+    
+    func downloadPageOfTMEvents(completion handler: @escaping ([EventDataType]) -> Void) {
+        
+    }
+    
+    func downloadTMEvent(withId id: String, completion handler: @escaping (EventDataType?) -> Void) {
+        AF.request("https://app.ticketmaster.com/discovery/v2/events/\(id)?locale=en-us&apikey=\(tmApiKey)")
+            .responseDecodable(of: TMEvent.self) { response in
+                if response.error != nil {
+                    print("Invalid response received from TM, or no event found for id \(id)")
+                    handler(nil)
+                } else if let tmEvent = response.value {
+                    print(tmEvent)
+                }
+        }
     }
 }

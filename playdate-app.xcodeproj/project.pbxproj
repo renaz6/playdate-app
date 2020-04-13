@@ -15,6 +15,7 @@
 		7F4A61152422B8C000E9C206 /* EventsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A61142422B8C000E9C206 /* EventsHomeViewController.swift */; };
 		7F8182EB244123BE00F82AFC /* TM-API-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F8182EA244123BD00F82AFC /* TM-API-Info.plist */; };
 		7F8182ED24414CFB00F82AFC /* EventDataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8182EC24414CFB00F82AFC /* EventDataUtil.swift */; };
+		7F8182EF2443DC4300F82AFC /* TMEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8182EE2443DC4300F82AFC /* TMEvent.swift */; };
 		7FA34835241472E000B00C31 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34834241472E000B00C31 /* SettingsViewController.swift */; };
 		7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34838241473E900B00C31 /* MyEventsViewController.swift */; };
 		7FA3483E2414768A00B00C31 /* EventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3483D2414768A00B00C31 /* EventDataSource.swift */; };
@@ -63,6 +64,7 @@
 		7F4A61142422B8C000E9C206 /* EventsHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsHomeViewController.swift; sourceTree = "<group>"; };
 		7F8182EA244123BD00F82AFC /* TM-API-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TM-API-Info.plist"; sourceTree = "<group>"; };
 		7F8182EC24414CFB00F82AFC /* EventDataUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataUtil.swift; sourceTree = "<group>"; };
+		7F8182EE2443DC4300F82AFC /* TMEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMEvent.swift; sourceTree = "<group>"; };
 		7F8EB47573C19437B0ECFF1D /* Pods-playdate-app-playdate-appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playdate-app-playdate-appUITests.debug.xcconfig"; path = "Target Support Files/Pods-playdate-app-playdate-appUITests/Pods-playdate-app-playdate-appUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FA34834241472E000B00C31 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7FA34838241473E900B00C31 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				7FA3483C2414768A00B00C31 /* EventData.swift */,
 				7FA3483D2414768A00B00C31 /* EventDataSource.swift */,
 				7FF4BB10243D51A600A2F595 /* FirestoreDataSource.swift */,
+				7F8182EE2443DC4300F82AFC /* TMEvent.swift */,
 				7FA3483B2414768A00B00C31 /* MockDataSource.swift */,
 				7F8182EC24414CFB00F82AFC /* EventDataUtil.swift */,
 			);
@@ -484,6 +487,7 @@
 				7F4A61152422B8C000E9C206 /* EventsHomeViewController.swift in Sources */,
 				7FA348402414768A00B00C31 /* MockDataSource.swift in Sources */,
 				7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */,
+				7F8182EF2443DC4300F82AFC /* TMEvent.swift in Sources */,
 				7FF4BAC82434E67200A2F595 /* EventTableViewCell.swift in Sources */,
 				7FF4BAA62434DD3000A2F595 /* StyledNavigationController.swift in Sources */,
 				7F8182ED24414CFB00F82AFC /* EventDataUtil.swift in Sources */,
