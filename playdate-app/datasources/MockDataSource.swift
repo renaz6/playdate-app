@@ -50,6 +50,10 @@ class MockDataSource: EventDataSource {
         }
     }
     
+    public func isEventStarred(withId id: String, completion handler: @escaping (Bool) -> Void) {
+        handler(false)
+    }
+    
     public func setEventStarred(withId id: String, starred: Bool, completion handler: @escaping (Bool) -> Void) {
         handler(false)
     }
