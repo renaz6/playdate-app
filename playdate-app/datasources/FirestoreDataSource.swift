@@ -31,9 +31,12 @@ class FirestoreDataSource: EventDataSource {
             abort()
         }
         
-        let eventsDownloadUrl = URL(string: "https://app.ticketmaster.com/discovery/v2/events.json"
-            + "?size=200&classificationId=\(tmFilterClassification)"
-            + "&geoPoint=\(tmGeoPoint)&radius=\(tmMilesRadius)&unit=miles&apikey=\(tmApiKey)")
+        downloadPageOfTMEvents(limit: 50) { events in
+            events.forEach { event in
+                print(event.id, ": ", event.title, "@", event.datesStart?.dateValue())
+                self.firestore.collection("events").document(event.id).setData(event)
+            }
+        }
     }
     
     // MARK: - EventDataSource implementation
@@ -117,8 +120,22 @@ class FirestoreDataSource: EventDataSource {
     
     // MARK: - Support methods
     
-    func downloadPageOfTMEvents(completion handler: @escaping ([EventDataType]) -> Void) {
+    func downloadPageOfTMEvents(limit: Int, completion handler: @escaping ([EventDataType]) -> Void) {
+        let eventsDownloadUrl = "https://app.ticketmaster.com/discovery/v2/events.json"
+        + "?size=\(limit)&classificationId=\(tmFilterClassification)"
+        + "&geoPoint=\(tmGeoPoint)&radius=\(tmMilesRadius)&unit=miles&apikey=\(tmApiKey)"
         
+        AF.request(eventsDownloadUrl)
+            .responseDecodable(of: TMEventCollectionEmbedder.self) { response in
+                if response.error != nil {
+                    print("Invalid response received from TM")
+                    print(response.error!)
+                    handler([])
+                } else if let tmEventCollection = response.value?._embedded {
+                    print(tmEventCollection)
+                    handler(tmEventCollection.events.map { EventDataType.from($0) })
+                }
+        }
     }
     
     func downloadTMEvent(withId id: String, completion handler: @escaping (EventDataType?) -> Void) {
@@ -126,9 +143,10 @@ class FirestoreDataSource: EventDataSource {
             .responseDecodable(of: TMEvent.self) { response in
                 if response.error != nil {
                     print("Invalid response received from TM, or no event found for id \(id)")
+                    print(response.error!)
                     handler(nil)
                 } else if let tmEvent = response.value {
-                    print(tmEvent)
+                    handler(EventDataType.from(tmEvent))
                 }
         }
     }

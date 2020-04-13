@@ -18,6 +18,8 @@ class TMEvent: Decodable {
     
     var images: [TMImage]
     
+    var dates: TMDates
+    
     var _embedded: TMEventEmbedding
 }
 
@@ -53,8 +55,8 @@ class TMVenue: Decodable {
     }
     
     class TMGeoPoint: Decodable {
-        var latitude: Double
-        var longitude: Double
+        var latitude: String
+        var longitude: String
     }
 }
 
@@ -80,8 +82,8 @@ class TMDates: Decodable {
 class TMClassification: Decodable {
     var primary: Bool
     var segment: TMSubClassification
-    var genre: TMSubClassification
-    var subGenre: TMSubClassification
+    var genre: TMSubClassification?
+    var subGenre: TMSubClassification?
     var family: Bool
 }
 
