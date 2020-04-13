@@ -33,7 +33,6 @@ class FirestoreDataSource: EventDataSource {
         
         downloadPageOfTMEvents(limit: 50) { events in
             events.forEach { event in
-                print(event.id, ": ", event.title, "@", event.datesStart?.dateValue())
                 self.firestore.collection("events").document(event.id).setData(event)
             }
         }
@@ -94,6 +93,19 @@ class FirestoreDataSource: EventDataSource {
             } else {
                 handler(doc?.data())
             }
+        }
+    }
+    
+    func isEventStarred(withId id: String, completion handler: @escaping (Bool) -> Void) {
+        if let user = Auth.auth().currentUser {
+            
+            firestore.collection("users").document(user.uid).getDocument { doc, error in
+                if let savedEventIds = doc?.data()?["savedEvents"] as? [String] {
+                    handler(savedEventIds.contains(id))
+                }
+            }
+        } else {
+            handler(false)
         }
     }
     

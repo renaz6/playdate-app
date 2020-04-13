@@ -55,6 +55,12 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
 //                }
 //                self.displayName = multiFactorString
                 self.displayName = user?.displayName ?? ""
+                
+                // load favourite events if we're logged in
+                self.dataSource.starredEvents { events in
+                    self.myEvents = events
+                    self.myEventsVCSignedIn.reloadData()
+                }
             }
         }
         
@@ -69,10 +75,6 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
 //        }
 //
 //
-        dataSource.starredEvents { events in
-            self.myEvents = events
-            self.myEventsVCSignedIn.reloadData()
-        }
     }
     
     

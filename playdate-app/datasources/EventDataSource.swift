@@ -20,5 +20,7 @@ protocol EventDataSource {
     
     func event(withId: String, completion: @escaping (EventDataType?) -> Void)
     
-    func setEventStarred(withId id: String, starred: Bool, completion: @escaping (Bool) -> Void)
+    func isEventStarred(withId: String, completion: @escaping (Bool) -> Void)
+    
+    func setEventStarred(withId: String, starred: Bool, completion: @escaping (Bool) -> Void)
 }
