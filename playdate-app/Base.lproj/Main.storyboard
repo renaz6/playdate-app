@@ -46,7 +46,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="rV7-9m-9dr">
-                            <rect key="frame" x="0.0" y="0.0" width="336" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
@@ -704,7 +704,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="PMH-Ta-EeG" kind="show" id="Gs8-5b-LUc"/>
+                                    <segue destination="PMH-Ta-EeG" kind="show" identifier="changeDetailSegue" id="Gs8-5b-LUc"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="changePasswordCell" textLabel="gzt-gd-nAM" style="IBUITableViewCellStyleDefault" id="79H-dd-Snd">
@@ -724,7 +724,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="DxH-Ja-FfT" kind="show" id="Kdl-SH-pfm"/>
+                                    <segue destination="DxH-Ja-FfT" kind="show" identifier="ChangePasswordSegue" id="Kdl-SH-pfm"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="basicCell" textLabel="9Qa-Wf-JWP" style="IBUITableViewCellStyleDefault" id="WYx-Gm-gZh">
@@ -762,14 +762,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCell" id="nn5-42-bFw">
-                                <rect key="frame" x="0.0" y="370.66667175292969" width="375" height="43.333332061767578"/>
+                                <rect key="frame" x="0.0" y="370.66667175292969" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nn5-42-bFw" id="YHh-h0-n6c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell with Switch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPM-P4-1Ze">
-                                            <rect key="frame" x="20" y="10.999999999999998" width="183" height="21.333333333333329"/>
+                                            <rect key="frame" x="20" y="11.000000000000002" width="183" height="21.666666666666671"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="183" id="Uff-Iv-nKK"/>
                                             </constraints>
@@ -792,7 +792,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="signInCell" textLabel="shm-Z9-dEE" style="IBUITableViewCellStyleDefault" id="Nl7-f0-Ei2">
-                                <rect key="frame" x="0.0" y="414.00000381469727" width="375" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="414.33333969116211" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nl7-f0-Ei2" id="Q7J-xf-jWK">
                                     <rect key="frame" x="0.0" y="0.0" width="348" height="43.666667938232422"/>
@@ -812,7 +812,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="signUpCell" textLabel="vWn-td-inP" style="IBUITableViewCellStyleDefault" id="pX8-KV-Gr7">
-                                <rect key="frame" x="0.0" y="457.66667175292969" width="375" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="458.00000762939453" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pX8-KV-Gr7" id="ibm-Me-PL5">
                                     <rect key="frame" x="0.0" y="0.0" width="348" height="43.666667938232422"/>
@@ -832,7 +832,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="signOutCell" textLabel="JGU-2v-rv0" style="IBUITableViewCellStyleDefault" id="Nyf-U8-aQ1">
-                                <rect key="frame" x="0.0" y="501.33333969116211" width="375" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="501.66667556762695" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nyf-U8-aQ1" id="1t9-Zm-sN7">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
@@ -863,7 +863,7 @@
         <!--Change Details-->
         <scene sceneID="zvB-j1-bsJ">
             <objects>
-                <viewController id="PMH-Ta-EeG" sceneMemberID="viewController">
+                <viewController id="PMH-Ta-EeG" customClass="ChangeDetailsViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v3N-cL-K9O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -922,7 +922,7 @@
         <!--Change Password-->
         <scene sceneID="lek-15-N4d">
             <objects>
-                <viewController id="DxH-Ja-FfT" sceneMemberID="viewController">
+                <viewController id="DxH-Ja-FfT" customClass="ChangePasswordViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2ag-nc-DYP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -22,6 +22,8 @@ class SettingsViewController: UITableViewController, LoggedIn {
     var settings:[NSManagedObject] = []
     var userEmail: String = "user@example.com"
     var displayName: String = "User Name"
+    let changeDetailVC: String = "changeDetailSegue"
+    let changePasswordVC: String = "ChangePasswordSegue"
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,6 +10,8 @@
 		202F54C0B0EE5F68515293C9 /* Pods_playdate_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3562E0F7E2F4D0CAC342E83 /* Pods_playdate_app.framework */; };
 		2395479624229355007D0EAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395479524229355007D0EAD /* LoginViewController.swift */; };
 		23A15B2924240FD3003E7151 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A15B2824240FD3003E7151 /* SignUpViewController.swift */; };
+		23D6D72B2445057800C02A48 /* ChangeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6D72A2445057800C02A48 /* ChangeDetailsViewController.swift */; };
+		23D6D72D244505A500C02A48 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6D72C244505A500C02A48 /* ChangePasswordViewController.swift */; };
 		6DBB768A012FF76E9D27D6CD /* Pods_playdate_app_playdate_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86A54DA98FAA723E151B7D6 /* Pods_playdate_app_playdate_appUITests.framework */; };
 		6FB30AF1243D2E0800C5C945 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB30AF0243D2E0800C5C945 /* SearchViewController.swift */; };
 		7F4A61152422B8C000E9C206 /* EventsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A61142422B8C000E9C206 /* EventsHomeViewController.swift */; };
@@ -61,6 +63,8 @@
 /* Begin PBXFileReference section */
 		2395479524229355007D0EAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23A15B2824240FD3003E7151 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		23D6D72A2445057800C02A48 /* ChangeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeDetailsViewController.swift; path = datasources/ChangeDetailsViewController.swift; sourceTree = "<group>"; };
+		23D6D72C244505A500C02A48 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		6FB30AF0243D2E0800C5C945 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7F4A61142422B8C000E9C206 /* EventsHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsHomeViewController.swift; sourceTree = "<group>"; };
 		7F8182EA244123BD00F82AFC /* TM-API-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TM-API-Info.plist"; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 				7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */,
 				6FB30AF0243D2E0800C5C945 /* SearchViewController.swift */,
 				7FF919B523FCC56A004B8CF9 /* Main.storyboard */,
+				23D6D72C244505A500C02A48 /* ChangePasswordViewController.swift */,
+				23D6D72A2445057800C02A48 /* ChangeDetailsViewController.swift */,
 				7FF4BAA52434DD3000A2F595 /* StyledNavigationController.swift */,
 				23A15B2824240FD3003E7151 /* SignUpViewController.swift */,
 				2395479524229355007D0EAD /* LoginViewController.swift */,
@@ -497,6 +503,7 @@
 				7F8182ED24414CFB00F82AFC /* EventDataUtil.swift in Sources */,
 				A5DA8CF52436FC94008A313C /* EventDetailViewController.swift in Sources */,
 				7FF919BA23FCC56A004B8CF9 /* playdate_app.xcdatamodeld in Sources */,
+				23D6D72D244505A500C02A48 /* ChangePasswordViewController.swift in Sources */,
 				7FF919B023FCC56A004B8CF9 /* AppDelegate.swift in Sources */,
 				7FF4BB11243D51A600A2F595 /* FirestoreDataSource.swift in Sources */,
 				7FA34835241472E000B00C31 /* SettingsViewController.swift in Sources */,
@@ -506,6 +513,7 @@
 				7FA3483F2414768A00B00C31 /* EventData.swift in Sources */,
 				2395479624229355007D0EAD /* LoginViewController.swift in Sources */,
 				7FF919B223FCC56A004B8CF9 /* SceneDelegate.swift in Sources */,
+				23D6D72B2445057800C02A48 /* ChangeDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
