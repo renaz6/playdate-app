@@ -26,6 +26,8 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var venueLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var urlLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     
     var favBtnImage = UIImage(named: "favIcon")
@@ -49,9 +51,11 @@ class EventDetailViewController: UIViewController {
         
         // Location/venue: icon and headings
         venueLabel.text = eventData.venueName
+        addressLabel.text = eventData.venueAddressStreet[0]
         
         // Date/Time
         dateLabel.text = describeDate(eventData.datesStart?.dateValue())
+        timeLabel.text = describeTime(eventData.datesStart?.dateValue())
         
         // URL
         if(eventData.ticketsURL != "") {
@@ -86,6 +90,7 @@ class EventDetailViewController: UIViewController {
         
     }
     
+    // Function that formats the date for the date label
     private func describeDate(_ date: Date?) -> String {
         if let date = date {
             let dateFormat = DateFormatter()
@@ -94,6 +99,20 @@ class EventDetailViewController: UIViewController {
             //timeFormat.timeStyle = .short
             
             return dateFormat.string(from: date)
+            
+        } else {
+            return ""
+        }
+    }
+    
+    // Function that formats the time for the time label
+    private func describeTime(_ date: Date?) -> String {
+        if let date = date {
+            
+           let timeFormat = DateFormatter()
+            timeFormat.timeStyle = .short
+            
+            return timeFormat.string(from: date)
             
         } else {
             return ""
