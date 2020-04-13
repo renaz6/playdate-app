@@ -73,6 +73,6 @@ extension EventDataType {
     }
     
     var ticketsURL: String {
-        return self["buyTicketsURL"] as? String ?? ""
+        return self["buyTicketsUrl"] as? String ?? ""
     }
 }
