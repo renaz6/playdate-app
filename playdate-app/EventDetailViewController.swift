@@ -22,8 +22,6 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventLocation: UILabel!
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var locationIcon: UIImageView!
-    @IBOutlet weak var timeIcon: UIImageView!
     @IBOutlet weak var urlIcon: UIImageView!
     @IBOutlet weak var venueLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -37,8 +35,7 @@ class EventDetailViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool)
-    {
+    override func viewWillAppear(_ animated: Bool) {
         dataSource = AppDelegate.instance.dataSource
         let eventData = event!
         
@@ -51,21 +48,18 @@ class EventDetailViewController: UIViewController {
         eventLocation.text = eventData.venueName
         
         // Location/venue: icon and headings
-        locationIcon.image = UIImage(named: "location")
         venueLabel.text = eventData.venueName
         
         // Date/Time
-        timeIcon.image = UIImage(named: "time")
         dateLabel.text = describeDate(eventData.datesStart?.dateValue())
         
         // URL
-        if(eventData.ticketsURL != "")
-        {
-            urlIcon.image = UIImage(named: "url")
+        if(eventData.ticketsURL != "") {
             urlLabel.text = eventData.ticketsURL
         }
-        
-        
+        else {
+            urlIcon.isHidden = true
+        }
         
         // Set location on the map using MapKit and coordinates from the event
         coordinates = eventData.venueCoordinates
@@ -78,11 +72,14 @@ class EventDetailViewController: UIViewController {
     
     
     @IBAction func favButtonClicked(_ sender: Any) {
+        
         if favBtnImage == UIImage(named: "favIcon"){
+            
             favBtnImage = UIImage(named: "favIconSelected")
  
         }
         else{
+            
             favBtnImage = UIImage(named: "favIcon")
         }
         favButton.setImage(favBtnImage , for: .normal)
@@ -97,6 +94,7 @@ class EventDetailViewController: UIViewController {
             //timeFormat.timeStyle = .short
             
             return dateFormat.string(from: date)
+            
         } else {
             return ""
         }
