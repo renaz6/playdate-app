@@ -32,18 +32,13 @@ class SettingsViewController: UITableViewController, LoggedIn {
             createSettingsEntity()
         }
         
-//        Auth.auth().addStateDidChangeListener { (auth, user) in
-//            if(user != nil) {
-//                self.userEmail = user!.email!
-//                var multiFactorString = ""
-//                for info in user!.multiFactor.enrolledFactors {
-//                  multiFactorString += info.displayName ?? "[DispayName]"
-//                  multiFactorString += ""
-//                }
-//                self.displayName = multiFactorString
-//            }
-//            
-//        }
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if(user != nil) {
+                self.userEmail = user!.email!
+                self.displayName = user?.displayName ?? ""
+            }
+            
+        }
         
     }
     
