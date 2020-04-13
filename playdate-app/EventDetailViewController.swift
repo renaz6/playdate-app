@@ -22,12 +22,12 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventLocation: UILabel!
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var locationIcon: UIImageView!
-    @IBOutlet weak var timeIcon: UIImageView!
     @IBOutlet weak var urlIcon: UIImageView!
     @IBOutlet weak var venueLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var urlLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     
     var favBtnImage = UIImage(named: "favIcon")
@@ -37,8 +37,7 @@ class EventDetailViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool)
-    {
+    override func viewWillAppear(_ animated: Bool) {
         dataSource = AppDelegate.instance.dataSource
         let eventData = event!
         
@@ -51,21 +50,20 @@ class EventDetailViewController: UIViewController {
         eventLocation.text = eventData.venueName
         
         // Location/venue: icon and headings
-        locationIcon.image = UIImage(named: "location")
         venueLabel.text = eventData.venueName
+        addressLabel.text = eventData.venueAddressStreet[0]
         
         // Date/Time
-        timeIcon.image = UIImage(named: "time")
         dateLabel.text = describeDate(eventData.datesStart?.dateValue())
+        timeLabel.text = describeTime(eventData.datesStart?.dateValue())
         
         // URL
-        if(eventData.ticketsURL != "")
-        {
-            urlIcon.image = UIImage(named: "url")
+        if(eventData.ticketsURL != "") {
             urlLabel.text = eventData.ticketsURL
         }
-        
-        
+        else {
+            urlIcon.isHidden = true
+        }
         
         // Set location on the map using MapKit and coordinates from the event
         coordinates = eventData.venueCoordinates
@@ -78,17 +76,21 @@ class EventDetailViewController: UIViewController {
     
     
     @IBAction func favButtonClicked(_ sender: Any) {
+        
         if favBtnImage == UIImage(named: "favIcon"){
+            
             favBtnImage = UIImage(named: "favIconSelected")
  
         }
         else{
+            
             favBtnImage = UIImage(named: "favIcon")
         }
         favButton.setImage(favBtnImage , for: .normal)
         
     }
     
+    // Function that formats the date for the date label
     private func describeDate(_ date: Date?) -> String {
         if let date = date {
             let dateFormat = DateFormatter()
@@ -97,6 +99,21 @@ class EventDetailViewController: UIViewController {
             //timeFormat.timeStyle = .short
             
             return dateFormat.string(from: date)
+            
+        } else {
+            return ""
+        }
+    }
+    
+    // Function that formats the time for the time label
+    private func describeTime(_ date: Date?) -> String {
+        if let date = date {
+            
+           let timeFormat = DateFormatter()
+            timeFormat.timeStyle = .short
+            
+            return timeFormat.string(from: date)
+            
         } else {
             return ""
         }
