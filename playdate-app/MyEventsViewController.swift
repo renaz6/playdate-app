@@ -34,12 +34,12 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         dataSource = AppDelegate.instance.dataSource
         
-        do {
-            try Auth.auth().signOut()
-        } catch let signOutError as NSError {
-            // Show error message
-            print(signOutError)
-        }
+//        do {
+//            try Auth.auth().signOut()
+//        } catch let signOutError as NSError {
+//            // Show error message
+//            print(signOutError)
+//        }
         
         Auth.auth().addStateDidChangeListener { auth, user in
             self.loggedIn = (user != nil)

@@ -42,7 +42,9 @@ class SettingsViewController: UITableViewController, LoggedIn {
             
         }
         
+        
     }
+
     
     func isNowSignedIn() {
         signedIn = true
@@ -210,6 +212,16 @@ class SettingsViewController: UITableViewController, LoggedIn {
         if segue.identifier == "SettingstoSignInSegue" {
             let destination = segue.destination as! LoginViewController
             destination.settingsDelegate = self
+        }
+        if segue.identifier == changeDetailVC {
+            let destination = segue.destination as! ChangeDetailsViewController
+            destination.delegate = self
+            destination.displayName = self.displayName
+            destination.userEmail = self.userEmail
+        }
+        if segue.identifier == changePasswordVC {
+            let destination = segue.destination as! ChangePasswordViewController
+            destination.delegate = self
         }
     }
     

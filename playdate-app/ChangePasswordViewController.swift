@@ -10,6 +10,8 @@ import UIKit
 
 class ChangePasswordViewController: UIViewController {
 
+    var delegate: UIViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
