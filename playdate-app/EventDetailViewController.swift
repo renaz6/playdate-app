@@ -96,6 +96,7 @@ class EventDetailViewController: UIViewController {
             let dateFormat = DateFormatter()
            // let timeFormat = DateFormatter()
             dateFormat.dateStyle = .medium
+            dateFormat.timeZone = .autoupdatingCurrent
             //timeFormat.timeStyle = .short
             
             return dateFormat.string(from: date)
@@ -111,6 +112,7 @@ class EventDetailViewController: UIViewController {
             
            let timeFormat = DateFormatter()
             timeFormat.timeStyle = .short
+            timeFormat.timeZone = .autoupdatingCurrent
             
             return timeFormat.string(from: date)
             

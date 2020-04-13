@@ -135,6 +135,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
             let timeFormat = DateFormatter()
             dateFormat.dateStyle = .medium
             timeFormat.timeStyle = .short
+            dateFormat.timeZone = .autoupdatingCurrent
+            timeFormat.timeZone = .autoupdatingCurrent
             
             return dateFormat.string(from: date) + ", " + timeFormat.string(from: date)
         } else {

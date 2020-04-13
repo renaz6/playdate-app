@@ -87,6 +87,7 @@ extension EventDataType {
         let isoFormatter = DateFormatter()
         isoFormatter.locale = Locale(identifier: "en_US_POSIX")
         isoFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+        isoFormatter.timeZone = TimeZone(identifier: "UTC")
         
         var startDate: Date?
         if !tmEvent.dates.start.dateTBA {
