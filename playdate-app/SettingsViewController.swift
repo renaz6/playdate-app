@@ -213,6 +213,10 @@ class SettingsViewController: UITableViewController, LoggedIn {
             let destination = segue.destination as! LoginViewController
             destination.settingsDelegate = self
         }
+        if segue.identifier == "SignUpFromSettings" {
+            let destination = segue.destination as! SignUpViewController
+            destination.settingsDelegate = self
+        }
         if segue.identifier == changeDetailVC {
             let destination = segue.destination as! ChangeDetailsViewController
             destination.delegate = self

@@ -18,6 +18,7 @@ class SignUpViewController: UIViewController {
     
     var delegate: UIViewController!
     var logInDelegate: UIViewController!
+    var settingsDelegate: UIViewController!
     var theMessage = ""
     
     var firestore: Firestore!
@@ -64,6 +65,11 @@ class SignUpViewController: UIViewController {
                         let otherVC = self.logInDelegate as! NotLoggedIn
                         otherVC.isLogged()
                         self.theMessage = "Return to My Events"
+                    }
+                    if(self.settingsDelegate != nil) {
+                        let otherVC = self.settingsDelegate as! LoggedIn
+                        self.theMessage = "Return to Settings Page"
+                        otherVC.isNowSignedIn()
                     }
                     let alert = UIAlertController(
                         title: "Sign Up Successful",
