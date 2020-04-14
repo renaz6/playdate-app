@@ -61,6 +61,12 @@ class EventDetailViewController: UIViewController {
         let initialLocation = CLLocation(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
         mapView.centerToLocation(initialLocation)
         
+        // Map annotations
+        let venueBuilding = MKPointAnnotation()
+        venueBuilding.title = eventData.venueName
+        venueBuilding.coordinate = CLLocationCoordinate2D(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
+        mapView.addAnnotation(venueBuilding)
+        
         // Buttons
         favButton.setImage(favBtnImage , for: .normal)
     }
@@ -110,6 +116,24 @@ class EventDetailViewController: UIViewController {
         } else {
             return ""
         }
+    }
+    
+    // Converts the map annotation into a view that can be displayed on the app
+    // For drisplaying a pin at the given coordinates
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+
+        return annotationView
     }
     
     
