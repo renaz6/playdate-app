@@ -30,6 +30,17 @@ class SignUpViewController: UIViewController {
         firestore = Firestore.firestore()
     }
     
+    // code to dismiss keyboard when user clicks on background
+
+    func textFieldShouldReturn(textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 
     @IBAction func signUpDidTouch(_ sender: Any) {
         guard let email = textFieldLoginEmail.text,

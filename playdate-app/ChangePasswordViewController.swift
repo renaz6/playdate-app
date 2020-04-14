@@ -18,6 +18,16 @@ class ChangePasswordViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // code to dismiss keyboard when user clicks on background
 
+    func textFieldShouldReturn(textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 
 }

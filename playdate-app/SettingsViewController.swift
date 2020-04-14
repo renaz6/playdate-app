@@ -208,6 +208,17 @@ class SettingsViewController: UITableViewController, LoggedIn {
         return cell
     }
     
+    // code to dismiss keyboard when user clicks on background
+
+    func textFieldShouldReturn(textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SettingstoSignInSegue" {
             let destination = segue.destination as! LoginViewController
