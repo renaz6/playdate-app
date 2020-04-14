@@ -22,12 +22,11 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventLocation: UILabel!
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var urlIcon: UIImageView!
     @IBOutlet weak var venueLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var urlLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    
     
     
     var favBtnImage = UIImage(named: "favIcon")
@@ -56,14 +55,6 @@ class EventDetailViewController: UIViewController {
         // Date/Time
         dateLabel.text = describeDate(eventData.datesStart?.dateValue())
         timeLabel.text = describeTime(eventData.datesStart?.dateValue())
-        
-        // URL
-        if(eventData.ticketsURL != "") {
-            urlLabel.text = eventData.ticketsURL
-        }
-        else {
-            urlIcon.isHidden = true
-        }
         
         // Set location on the map using MapKit and coordinates from the event
         coordinates = eventData.venueCoordinates
