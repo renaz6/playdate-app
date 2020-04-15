@@ -11,7 +11,7 @@ import CoreData
 import Firebase
 
 protocol LoggedIn {
-    func isNowSignedIn()
+    func isNowSignedIn(withDisplayName: String?)
 }
 
 class SettingsViewController: UITableViewController, LoggedIn {
@@ -37,7 +37,9 @@ class SettingsViewController: UITableViewController, LoggedIn {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if(user != nil) {
                 self.userEmail = user!.email!
-                self.displayName = user?.displayName ?? ""
+                if let name = user?.displayName {
+                    self.displayName = name
+                }
             }
             
         }
@@ -46,11 +48,14 @@ class SettingsViewController: UITableViewController, LoggedIn {
     }
 
     
-    func isNowSignedIn() {
+    func isNowSignedIn(withDisplayName displayName: String?) {
         signedIn = true
+        if let name = displayName {
+            self.displayName = name
+        }
         if (delegate != nil) {
             let otherVC = self.delegate as! LogIn
-            otherVC.signedIn()
+            otherVC.signedIn(withDisplayName: displayName)
         }
         tableView.reloadData()
     }

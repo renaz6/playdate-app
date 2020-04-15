@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 protocol LogIn {
-    func signedIn()
+    func signedIn(withDisplayName: String?)
 }
 
 class MyEventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, LogIn {
@@ -156,9 +156,13 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         self.view.endEditing(true)
     }
     
-    func signedIn() {
+    func signedIn(withDisplayName displayName: String?) {
         loggedIn = true
         myEventsVCNotSignedIn.isHidden = true
         myEventsVCSignedIn.isHidden = false
+        
+        if let name = displayName {
+            self.displayName = name
+        }
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 protocol NotLoggedIn {
-    func isLogged()
+    func isLogged(withDisplayName: String?)
 }
 
 class LoginViewController: UIViewController, NotLoggedIn {
@@ -82,12 +82,12 @@ class LoginViewController: UIViewController, NotLoggedIn {
                 print("Login In Successful!")
                 if(self.delegate != nil) {
                     let otherVC = self.delegate as! LogIn
-                    otherVC.signedIn()
+                    otherVC.signedIn(withDisplayName: nil)
                 }
                 else if(self.settingsDelegate != nil){
                     let otherVC = self.settingsDelegate as! LoggedIn
                     message = "Return to Settings Page"
-                    otherVC.isNowSignedIn()
+                    otherVC.isNowSignedIn(withDisplayName: nil)
                 }
                 //self.performSegue(withIdentifier: "LoggedIn", sender: nil)
                 let alert = UIAlertController(
@@ -111,10 +111,10 @@ class LoginViewController: UIViewController, NotLoggedIn {
         }
     }
     
-    func isLogged() {
+    func isLogged(withDisplayName displayName: String?) {
         if (delegate != nil) {
             let otherVC = self.delegate as! LogIn
-            otherVC.signedIn()
+            otherVC.signedIn(withDisplayName: displayName)
         }
     }
     

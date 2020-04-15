@@ -69,18 +69,18 @@ class SignUpViewController: UIViewController {
                                        password: self.textFieldLoginPassword.text!)
                     if(self.delegate != nil) {
                         let otherVC = self.delegate as! LogIn
-                        otherVC.signedIn()
+                        otherVC.signedIn(withDisplayName: self.textFieldName.text)
                         self.theMessage = "Return to My Events"
                     }
                     if(self.logInDelegate != nil) {
                         let otherVC = self.logInDelegate as! NotLoggedIn
-                        otherVC.isLogged()
+                        otherVC.isLogged(withDisplayName: self.textFieldName.text)
                         self.theMessage = "Return to My Events"
                     }
                     if(self.settingsDelegate != nil) {
                         let otherVC = self.settingsDelegate as! LoggedIn
                         self.theMessage = "Return to Settings Page"
-                        otherVC.isNowSignedIn()
+                        otherVC.isNowSignedIn(withDisplayName: self.textFieldName.text)
                     }
                     let alert = UIAlertController(
                         title: "Sign Up Successful",
