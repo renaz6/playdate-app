@@ -9,8 +9,6 @@
 import UIKit
 import WebKit
 
-
-
 class WebsiteViewController: UIViewController, WKUIDelegate {
     
     var webView: WKWebView!
@@ -24,30 +22,13 @@ class WebsiteViewController: UIViewController, WKUIDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let myURL = URL(string:ticketsUrl)
+        let myURL = URL(string: ticketsUrl)
         let myRequest = URLRequest(url: myURL!)
         webView.load(myRequest)
+        
+//        while(webView.isLoading)
+//        {
+//
+//        }
     }
 }
-//    @IBOutlet weak var webViewOutlet: WKWebView!
-//
-//    var webView: WKWebView!
-//    var ticketsUrl: String!
-//
-////    override func loadView() {
-////        self.view = webView
-////    }
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//    }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//        webView = webViewOutlet
-//        let url = URL(string: ticketsUrl)
-//        let request = URLRequest(url: url!)
-//        webView.load(request)
-//    }
-
-

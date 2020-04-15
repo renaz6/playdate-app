@@ -68,6 +68,7 @@ class EventDetailViewController: UIViewController {
         
         // Set URL
         url = eventData.ticketsURL
+        print(url!)
         
         // Buttons
         favButton.setImage(favBtnImage , for: .normal)
