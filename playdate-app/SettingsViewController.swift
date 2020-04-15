@@ -1,6 +1,6 @@
 //
 //  SettingsViewController.swift
-//  playdate-sandbox
+//  playdate-app
 //
 //  Created by Jared Rankin on 2020-02-28.
 //  Copyright © 2020 Jared Rankin. All rights reserved.
@@ -189,27 +189,33 @@ class SettingsViewController: UITableViewController, LoggedIn {
     
     private func cellInMiscSection(for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath)
-        switch indexPath.row {
-        case 0:
-            (cell.contentView.viewWithTag(1) as? UILabel)?.text = "Dark Mode"
-            (cell.contentView.viewWithTag(2) as? UISwitch)?.addTarget(self,action: #selector(switchValueDidChange(_:)), for: .valueChanged)
-            let isDarkMode = (settings[0].value(forKeyPath: "isDarkMode") as! Bool)
-            (cell.contentView.viewWithTag(2) as? UISwitch)?.setOn(isDarkMode, animated: false)
-        case 1:
-            (cell.contentView.viewWithTag(1) as? UILabel)?.text = "Send Push Notifications"
-        default:
-            (cell.contentView.viewWithTag(1) as? UILabel)?.text = "Something else \(indexPath.row)"
+        if let customCell = cell as? SettingsTableViewCellWithSwitch {
+            switch indexPath.row {
+            case 0:
+                customCell.titleLabel.text = "Dark Mode"
+                customCell.settingSwitch.addTarget(self,action: #selector(switchValueDidChange(_:)), for: .valueChanged)
+                
+                let isDarkMode = (settings[0].value(forKeyPath: "isDarkMode") as! Bool)
+                customCell.settingSwitch.setOn(isDarkMode, animated: false)
+            case 1:
+                customCell.titleLabel.text = "Send Push Notifications"
+            default:
+                customCell.titleLabel.text = "Something else \(indexPath.row)"
+            }
+            return customCell
         }
         return cell
     }
     
     private func userInfoCell(for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userInfoCell", for: indexPath)
-        
-        (cell.contentView.viewWithTag(1) as? UIImageView)?.image = UIImage(systemName: "person.fill")
-        (cell.contentView.viewWithTag(2) as? UILabel)?.text = "\(displayName)"
-        (cell.contentView.viewWithTag(3) as? UILabel)?.text = "\(userEmail)"
-        
+        if let customCell = cell as? SettingsUserInfoTableViewCell {
+            customCell.profilePicView.image = UIImage(systemName: "person.fill")
+            customCell.displayNameLabel.text = displayName
+            customCell.emailLabel.text = userEmail
+            
+            return customCell
+        }
         return cell
     }
     
