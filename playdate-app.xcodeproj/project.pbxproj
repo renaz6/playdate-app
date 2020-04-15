@@ -24,7 +24,6 @@
 		7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34838241473E900B00C31 /* MyEventsViewController.swift */; };
 		7FA3483E2414768A00B00C31 /* EventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3483D2414768A00B00C31 /* EventDataSource.swift */; };
 		7FA3483F2414768A00B00C31 /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3483C2414768A00B00C31 /* EventData.swift */; };
-		7FA348402414768A00B00C31 /* MockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3483B2414768A00B00C31 /* MockDataSource.swift */; };
 		7FD67DA624477D1E001783D0 /* SettingsTableViewCellWithSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD67DA524477D1E001783D0 /* SettingsTableViewCellWithSwitch.swift */; };
 		7FF4BAA62434DD3000A2F595 /* StyledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4BAA52434DD3000A2F595 /* StyledNavigationController.swift */; };
 		7FF4BAC82434E67200A2F595 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4BAC72434E67200A2F595 /* EventTableViewCell.swift */; };
@@ -78,7 +77,6 @@
 		7F9F47C92446B30200E64B33 /* WebsiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
 		7FA34834241472E000B00C31 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7FA34838241473E900B00C31 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
-		7FA3483B2414768A00B00C31 /* MockDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataSource.swift; sourceTree = "<group>"; };
 		7FA3483C2414768A00B00C31 /* EventData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
 		7FA3483D2414768A00B00C31 /* EventDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataSource.swift; sourceTree = "<group>"; };
 		7FD67DA524477D1E001783D0 /* SettingsTableViewCellWithSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCellWithSwitch.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 				7FF4BB10243D51A600A2F595 /* FirestoreDataSource.swift */,
 				7F8182EE2443DC4300F82AFC /* TMEvent.swift */,
 				7F8182F02444B12D00F82AFC /* TMEventCollection.swift */,
-				7FA3483B2414768A00B00C31 /* MockDataSource.swift */,
 				7F8182EC24414CFB00F82AFC /* EventDataUtil.swift */,
 			);
 			path = datasources;
@@ -504,7 +501,6 @@
 				23A15B2924240FD3003E7151 /* SignUpViewController.swift in Sources */,
 				7F8182F12444B12D00F82AFC /* TMEventCollection.swift in Sources */,
 				7F4A61152422B8C000E9C206 /* EventsHomeViewController.swift in Sources */,
-				7FA348402414768A00B00C31 /* MockDataSource.swift in Sources */,
 				7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */,
 				7F8182EF2443DC4300F82AFC /* TMEvent.swift in Sources */,
 				7FF4BAC82434E67200A2F595 /* EventTableViewCell.swift in Sources */,

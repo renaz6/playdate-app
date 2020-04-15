@@ -10,6 +10,8 @@ import Foundation
 
 protocol EventDataSource {
     
+    func allEvents(completion: @escaping ([EventDataType]) -> Void)
+    
     func homePageEvents(completion: @escaping ([EventDataType]) -> Void)
     
     func starredEvents(completion: @escaping ([EventDataType]) -> Void)

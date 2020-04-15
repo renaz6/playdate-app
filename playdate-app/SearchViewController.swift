@@ -19,7 +19,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         searchBar.delegate = self
         dataSource = AppDelegate.instance.dataSource
-        dataSource.homePageEvents { events in
+        dataSource.allEvents { events in
             self.events = events
         }
         // Uncomment the following line to preserve selection between presentations
