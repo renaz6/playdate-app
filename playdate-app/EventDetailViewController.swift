@@ -87,8 +87,6 @@ class EventDetailViewController: UIViewController {
         // Set the star button image
         // Check to see if the user has the event saved
         // If the user has the event saved, show the saved icon
-        print(event.id)
-        
         favBtnImage = UIImage(named: "favIcon")
         favButton.setImage(favBtnImage, for: .normal)
         dataSource.isEventStarred(withId: event.id) { starred in
