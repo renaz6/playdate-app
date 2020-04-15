@@ -210,7 +210,7 @@ class SettingsViewController: UITableViewController, LoggedIn {
     private func userInfoCell(for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userInfoCell", for: indexPath)
         if let customCell = cell as? SettingsUserInfoTableViewCell {
-            customCell.profilePicView.image = UIImage(systemName: "person.fill")
+            customCell.profilePicView.image = UIImage(named: "Avatar")
             customCell.displayNameLabel.text = displayName
             customCell.emailLabel.text = userEmail
             
