@@ -7,13 +7,23 @@
 //
 
 import UIKit
+import Firebase
 
-class SearchViewController: UITableViewController {
+class SearchViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
+    private var events: [EventDataType] = []
+    private var results: [EventDataType] = []
+    private var dataSource: EventDataSource!
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchBar.delegate = self
+        dataSource = AppDelegate.instance.dataSource
+        dataSource.homePageEvents { events in
+            self.events = events
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -22,26 +32,49 @@ class SearchViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return results.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        let eventData = results[indexPath.row]
+        
+        let reusableCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+        if let cell = reusableCell as? EventTableViewCell {
+            cell.index = indexPath.row
+            cell.eventId = eventData.id
+            cell.eventImageView.image = UIImage(systemName: eventData.imageId)
+            cell.eventTitleLabel.text = eventData.title
+            cell.eventVenueLabel.text = eventData.venueName
+            cell.setDate(eventData.datesStart?.dateValue())
+            return cell
+        } else {
+            return reusableCell
+        }
     }
-    */
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let query = searchBar.text, query != "" else {
+            return
+        }
+        results = events.filter {$0.title == query}
+        self.tableView.reloadData()
+    }
+    
+    // code to dismiss keyboard when user clicks on background
+    func textFieldShouldReturn(textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
     /*
     // Override to support conditional editing of the table view.
