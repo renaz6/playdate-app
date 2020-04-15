@@ -69,7 +69,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
             let dest = segue.destination as? EventDetailViewController,
             let cell = sender as? EventTableViewCell {
 
-            dest.event = events[cell.index]
+            dest.event = results[cell.index]
             }
     }
     
