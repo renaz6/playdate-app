@@ -15,6 +15,8 @@ class EventDetailViewController: UIViewController {
     var event: EventDataType!
     var coordinates: GeoPoint?
     private var dataSource: EventDataSource!
+    var url:String!
+    let toWebsite = "toWebsiteSegue"
     
     // Outlets
     @IBOutlet weak var imageOutlet: UIImageView!
@@ -27,13 +29,10 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
-    
-    
     var favBtnImage = UIImage(named: "favIcon")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,11 +66,21 @@ class EventDetailViewController: UIViewController {
         venueBuilding.coordinate = CLLocationCoordinate2D(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
         mapView.addAnnotation(venueBuilding)
         
+        // Set URL
+        url = eventData.ticketsURL
+        
         // Buttons
         favButton.setImage(favBtnImage , for: .normal)
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == toWebsite,
+            let dest = segue.destination as? WebsiteViewController{
+
+            dest.ticketsUrl = url
+        }
+    }
+
     @IBAction func favButtonClicked(_ sender: Any) {
         
         if favBtnImage == UIImage(named: "favIcon"){
