@@ -65,7 +65,7 @@
 /* Begin PBXFileReference section */
 		2395479524229355007D0EAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23A15B2824240FD3003E7151 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		23D6D72A2445057800C02A48 /* ChangeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeDetailsViewController.swift; path = datasources/ChangeDetailsViewController.swift; sourceTree = "<group>"; };
+		23D6D72A2445057800C02A48 /* ChangeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeDetailsViewController.swift; path = ChangeDetailsViewController.swift; sourceTree = "<group>"; };
 		23D6D72C244505A500C02A48 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		6FB30AF0243D2E0800C5C945 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7F4A61142422B8C000E9C206 /* EventsHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsHomeViewController.swift; sourceTree = "<group>"; };
