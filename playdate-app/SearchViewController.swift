@@ -64,6 +64,15 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         self.tableView.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEventDetail",
+            let dest = segue.destination as? EventDetailViewController,
+            let cell = sender as? EventTableViewCell {
+
+            dest.event = events[cell.index]
+            }
+    }
+    
     // code to dismiss keyboard when user clicks on background
     func textFieldShouldReturn(textField:UITextField) -> Bool {
         textField.resignFirstResponder()
