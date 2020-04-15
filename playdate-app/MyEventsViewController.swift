@@ -71,7 +71,14 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
 //
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        if loggedIn {
+            dataSource.starredEvents { events in
+                self.myEvents = events
+                self.myEventsVCSignedIn.reloadData()
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myEvents.count

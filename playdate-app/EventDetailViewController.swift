@@ -86,18 +86,18 @@ class EventDetailViewController: UIViewController {
         
         // Set the star button image
         // Check to see if the user has the event saved
-        print(event.id)
-        dataSource.isEventStarred(withId: event.id) { (result) in
-            self.starred = result
-        }
-        
         // If the user has the event saved, show the saved icon
-               
-        if(starred) {
-            favBtnImage = UIImage(named: "favIconSelected")
-        }
+        print(event.id)
         
-        favButton.setImage(favBtnImage , for: .normal)
+        favBtnImage = UIImage(named: "favIcon")
+        favButton.setImage(favBtnImage, for: .normal)
+        dataSource.isEventStarred(withId: event.id) { starred in
+            self.starred = starred
+            if starred {
+                self.favBtnImage = UIImage(named: "favIconSelected")
+                self.favButton.setImage(self.favBtnImage, for: .normal)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -111,18 +111,19 @@ class EventDetailViewController: UIViewController {
     @IBAction func favButtonClicked(_ sender: Any) {
         
         // Saving an event
-        var error: Bool!
         if favBtnImage == UIImage(named: "favIcon"){
             
             if(userEmail != nil) {
                 favBtnImage = UIImage(named: "favIconSelected")
                 
                 // Add the starred events
-                dataSource.setEventStarred(withId: event.id, starred: true) { (result) in
-                    error = result
+                dataSource.setEventStarred(withId: event.id, starred: true) { newState in
+                    // if newState == true, we successfully starred the event
+                    if newState {
+                        self.favBtnImage = UIImage(named: "favIconSelected")
+                        self.favButton.setImage(self.favBtnImage, for: .normal)
+                    }
                 }
-                
-                print(error ?? "-")
             }
             else {
                 let alert = UIAlertController(title: "Please Sign In.", message: "Please sign in or make an account to save this event.", preferredStyle: .alert)
@@ -135,13 +136,14 @@ class EventDetailViewController: UIViewController {
         }
         else { // Unsaving an event
             
-            favBtnImage = UIImage(named: "favIcon")
-            dataSource.setEventStarred(withId: event.id, starred: false) { (result) in
-                error = result
+            dataSource.setEventStarred(withId: event.id, starred: false) { newState in
+                // if newState == false, we successfully unstarred the event
+                if !newState {
+                    self.favBtnImage = UIImage(named: "favIcon")
+                    self.favButton.setImage(self.favBtnImage, for: .normal)
+                }
             }
         }
-      
-        favButton.setImage(favBtnImage, for: .normal)
     }
     
     // Function that formats the date for the date label

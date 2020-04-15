@@ -119,13 +119,19 @@ class FirestoreDataSource: EventDataSource {
             firestore.collection("users").document(user.uid).getDocument { doc, error in
                 if let savedEventIds = doc?.data()?["savedEvents"] as? [String] {
                     var savedEventsMutable = savedEventIds
-                    if starred, !savedEventsMutable.contains(id) {
+                    let starredNow = savedEventsMutable.contains(id)
+                    
+                    if starred, !starredNow {
                         savedEventsMutable.append(id)
                     } else if !starred, let index = savedEventsMutable.firstIndex(of: id) {
                         savedEventsMutable.remove(at: index)
                     }
                     self.firestore.collection("users").document(user.uid).updateData(["savedEvents": savedEventsMutable]) { error in
-                        handler(true)
+                        if error == nil {
+                            handler(starred)
+                        } else {
+                            handler(starredNow)
+                        }
                     }
                 }
             }
