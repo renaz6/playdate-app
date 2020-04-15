@@ -19,6 +19,7 @@
 		7F8182ED24414CFB00F82AFC /* EventDataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8182EC24414CFB00F82AFC /* EventDataUtil.swift */; };
 		7F8182EF2443DC4300F82AFC /* TMEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8182EE2443DC4300F82AFC /* TMEvent.swift */; };
 		7F8182F12444B12D00F82AFC /* TMEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8182F02444B12D00F82AFC /* TMEventCollection.swift */; };
+		7F9F47CA2446B30200E64B33 /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9F47C92446B30200E64B33 /* WebsiteViewController.swift */; };
 		7FA34835241472E000B00C31 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34834241472E000B00C31 /* SettingsViewController.swift */; };
 		7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34838241473E900B00C31 /* MyEventsViewController.swift */; };
 		7FA3483E2414768A00B00C31 /* EventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3483D2414768A00B00C31 /* EventDataSource.swift */; };
@@ -72,6 +73,7 @@
 		7F8182EE2443DC4300F82AFC /* TMEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMEvent.swift; sourceTree = "<group>"; };
 		7F8182F02444B12D00F82AFC /* TMEventCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMEventCollection.swift; sourceTree = "<group>"; };
 		7F8EB47573C19437B0ECFF1D /* Pods-playdate-app-playdate-appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playdate-app-playdate-appUITests.debug.xcconfig"; path = "Target Support Files/Pods-playdate-app-playdate-appUITests/Pods-playdate-app-playdate-appUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7F9F47C92446B30200E64B33 /* WebsiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
 		7FA34834241472E000B00C31 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7FA34838241473E900B00C31 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		7FA3483B2414768A00B00C31 /* MockDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataSource.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				7F4A61142422B8C000E9C206 /* EventsHomeViewController.swift */,
 				7FA34838241473E900B00C31 /* MyEventsViewController.swift */,
 				A5DA8CF42436FC94008A313C /* EventDetailViewController.swift */,
+				7F9F47C92446B30200E64B33 /* WebsiteViewController.swift */,
 				7FA34834241472E000B00C31 /* SettingsViewController.swift */,
 				7FF919BB23FCC56B004B8CF9 /* Assets.xcassets */,
 				7FF919BD23FCC56B004B8CF9 /* LaunchScreen.storyboard */,
@@ -500,6 +503,7 @@
 				7F8182EF2443DC4300F82AFC /* TMEvent.swift in Sources */,
 				7FF4BAC82434E67200A2F595 /* EventTableViewCell.swift in Sources */,
 				7FF4BAA62434DD3000A2F595 /* StyledNavigationController.swift in Sources */,
+				7F9F47CA2446B30200E64B33 /* WebsiteViewController.swift in Sources */,
 				7F8182ED24414CFB00F82AFC /* EventDataUtil.swift in Sources */,
 				A5DA8CF52436FC94008A313C /* EventDetailViewController.swift in Sources */,
 				7FF919BA23FCC56A004B8CF9 /* playdate_app.xcdatamodeld in Sources */,
