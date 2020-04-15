@@ -53,6 +53,15 @@ class ChangeDetailsViewController: UIViewController {
                       }
                       else {
                           if(self.userEmailTextField.text != nil || self.userEmailTextField.text != "") {
+                              let alert = UIAlertController(
+                                title: "Change Details",
+                                message: "Changing your email address is not yet implemented.",
+                                preferredStyle: .alert)
+                              
+                              alert.addAction(UIAlertAction(title:"OK",style:.default))
+                              self.present(alert, animated: true, completion: nil)
+                              return;
+                              
                               //self.reautheticateUser()
                               Auth.auth().currentUser?.updateEmail(to: self.userEmailTextField.text!) { (error) in
                                 if(error != nil) {
