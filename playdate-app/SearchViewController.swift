@@ -62,7 +62,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         guard let query = searchBar.text, query != "" else {
             return
         }
-        results = events.filter {$0.title == query}
+        results = events.filter {$0.title.localizedCaseInsensitiveContains(query)}
         self.tableView.reloadData()
     }
     
