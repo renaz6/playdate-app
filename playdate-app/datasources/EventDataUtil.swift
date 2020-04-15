@@ -131,7 +131,7 @@ extension EventDataType {
             "sourceId": tmEvent.id,
             "title": tmEvent.name,
             "buyTicketsUrl": tmEvent.url,
-            "imageId": "calendar",
+            "imageId": "theatreMasks",
             
             "category": [
                 "category": category,

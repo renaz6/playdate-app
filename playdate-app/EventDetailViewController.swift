@@ -43,7 +43,7 @@ class EventDetailViewController: UIViewController {
         // Text Labels an Images
         
         // Large Heading: Main icon, name, location
-        imageOutlet.image = UIImage(systemName: eventData.imageId)
+        imageOutlet.image = UIImage(named: eventData.imageId)
         eventName.text = eventData.title
         eventLocation.text = eventData.venueName
         
