@@ -15,8 +15,6 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     private var results: [EventDataType] = []
     private var dataSource: EventDataSource!
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -48,7 +46,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         if let cell = reusableCell as? EventTableViewCell {
             cell.index = indexPath.row
             cell.eventId = eventData.id
-            cell.eventImageView.image = UIImage(systemName: eventData.imageId)
+            cell.eventImageView.image = UIImage(named: eventData.imageId)
             cell.eventTitleLabel.text = eventData.title
             cell.eventVenueLabel.text = eventData.venueName
             cell.setDate(eventData.datesStart?.dateValue())
