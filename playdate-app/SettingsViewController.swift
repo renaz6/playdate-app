@@ -255,15 +255,11 @@ class SettingsViewController: UITableViewController, LoggedIn {
     
     @objc func switchValueDidChange(_ sender: UISwitch!) {
         if (sender.isOn == true){
-            //inDarkMode = true
-            //print("on!!!")
             UIApplication.shared.windows.forEach { window in
                 window.overrideUserInterfaceStyle = .dark
             }
         }
         else{
-            //inDarkMode = false
-            //print("off!!!!!!!")
             UIApplication.shared.windows.forEach { window in
                 window.overrideUserInterfaceStyle = .light
             }

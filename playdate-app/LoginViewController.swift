@@ -27,26 +27,7 @@ class LoginViewController: UIViewController, NotLoggedIn {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        Auth.auth().addStateDidChangeListener() {
-//          auth, user in
-//
-//          if user != nil {
-//            //self.performSegue(withIdentifier: "LoggedIn", sender: nil)
-//            let otherVC = self.delegate as! LogIn
-//            otherVC.signedIn()
-//            let alert = UIAlertController(
-//              title: "Sign in Successful",
-//              message: "Return to MyEvents Page",
-//              preferredStyle: .alert)
-//
-//            alert.addAction(UIAlertAction(title:"OK",style:.default))
-//            self.present(alert, animated: true, completion: nil)
-//
-//            self.textFieldLoginEmail.text = nil
-//            self.textFieldLoginPassword.text = nil
-//          }
-//        }
+        
         if(settingsDelegate != nil) {
             signUpLabel.isHidden = true
             signUpButton.isHidden = true

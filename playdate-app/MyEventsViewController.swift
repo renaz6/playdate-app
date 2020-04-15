@@ -34,13 +34,6 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         dataSource = AppDelegate.instance.dataSource
         
-//        do {
-//            try Auth.auth().signOut()
-//        } catch let signOutError as NSError {
-//            // Show error message
-//            print(signOutError)
-//        }
-        
         Auth.auth().addStateDidChangeListener { auth, user in
             self.loggedIn = (user != nil)
 
@@ -57,18 +50,6 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             }
         }
-        
-// TODO: if a account is deleted Listener still finds an User
-//        if(loggedIn == false) {
-//            self.myEventsVCNotSignedIn.isHidden = self.loggedIn
-//            self.myEventsVCSignedIn.isHidden = !self.loggedIn
-//        }
-//        else {
-//            self.myEventsVCNotSignedIn.isHidden = self.loggedIn
-//            self.myEventsVCSignedIn.isHidden = !self.loggedIn
-//        }
-//
-//
     }
     
     override func viewWillAppear(_ animated: Bool) {
