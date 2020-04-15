@@ -88,7 +88,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         if let cell = reusableCell as? EventTableViewCell {
             cell.index = indexPath.row
             cell.eventId = eventData.id
-            cell.eventImageView.image = UIImage(systemName: eventData.imageId)
+            cell.eventImageView.image = UIImage(named: eventData.imageId)
             cell.eventTitleLabel.text = eventData.title
             cell.eventVenueLabel.text = eventData.venueName
             cell.setDate(eventData.datesStart?.dateValue())

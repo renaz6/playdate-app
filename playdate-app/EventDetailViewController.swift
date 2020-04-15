@@ -15,7 +15,11 @@ class EventDetailViewController: UIViewController {
     var event: EventDataType!
     var coordinates: GeoPoint?
     private var dataSource: EventDataSource!
-    
+    var url:String!
+    let toWebsite = "toWebsiteSegue"
+    var userEmail: String!
+    var starred: Bool! = false
+
     // Outlets
     @IBOutlet weak var imageOutlet: UIImageView!
     @IBOutlet weak var eventName: UILabel!
@@ -27,12 +31,11 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
-    
-    
     var favBtnImage = UIImage(named: "favIcon")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
     }
     
@@ -40,11 +43,22 @@ class EventDetailViewController: UIViewController {
         dataSource = AppDelegate.instance.dataSource
         let eventData = event!
         
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if(user != nil) {
+                self.userEmail = user!.email!
+
+                if(user == nil)
+                {
+                    self.favBtnImage = UIImage(named: "favIconSelected")
+                }
+            }
+        }
+        
         // Set Event Data
-        // Text Labels an Images
+        // Text Labels and Images
         
         // Large Heading: Main icon, name, location
-        imageOutlet.image = UIImage(systemName: eventData.imageId)
+        imageOutlet.image = UIImage(named: eventData.imageId)
         eventName.text = eventData.title
         eventLocation.text = eventData.venueName
         
@@ -67,24 +81,67 @@ class EventDetailViewController: UIViewController {
         venueBuilding.coordinate = CLLocationCoordinate2D(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
         mapView.addAnnotation(venueBuilding)
         
-        // Buttons
+        // Set URL
+        url = eventData.ticketsURL
+        
+        // Set the star button image
+        // Check to see if the user has the event saved
+        print(event.id)
+        dataSource.isEventStarred(withId: event.id) { (result) in
+            self.starred = result
+        }
+        
+        // If the user has the event saved, show the saved icon
+               
+        if(starred) {
+            favBtnImage = UIImage(named: "favIconSelected")
+        }
+        
         favButton.setImage(favBtnImage , for: .normal)
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == toWebsite,
+            let dest = segue.destination as? WebsiteViewController{
+
+            dest.ticketsUrl = url
+        }
+    }
+
     @IBAction func favButtonClicked(_ sender: Any) {
         
+        // Saving an event
+        var error: Bool!
         if favBtnImage == UIImage(named: "favIcon"){
             
-            favBtnImage = UIImage(named: "favIconSelected")
- 
+            if(userEmail != nil) {
+                favBtnImage = UIImage(named: "favIconSelected")
+                
+                // Add the starred events
+                dataSource.setEventStarred(withId: event.id, starred: true) { (result) in
+                    error = result
+                }
+                
+                print(error ?? "-")
+            }
+            else {
+                let alert = UIAlertController(title: "Please Sign In.", message: "Please sign in or make an account to save this event.", preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+
+                self.present(alert, animated: true)
+            }
+            
         }
-        else{
+        else { // Unsaving an event
             
             favBtnImage = UIImage(named: "favIcon")
+            dataSource.setEventStarred(withId: event.id, starred: false) { (result) in
+                error = result
+            }
         }
-        favButton.setImage(favBtnImage , for: .normal)
-        
+      
+        favButton.setImage(favBtnImage, for: .normal)
     }
     
     // Function that formats the date for the date label
@@ -136,18 +193,6 @@ class EventDetailViewController: UIViewController {
         return annotationView
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 private extension MKMapView {
