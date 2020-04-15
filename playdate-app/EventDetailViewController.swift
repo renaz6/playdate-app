@@ -109,10 +109,9 @@ class EventDetailViewController: UIViewController {
     @IBAction func favButtonClicked(_ sender: Any) {
         
         // Saving an event
-        if favBtnImage == UIImage(named: "favIcon"){
+        if favBtnImage == UIImage(named: "favIcon") {
             
             if(userEmail != nil) {
-                favBtnImage = UIImage(named: "favIconSelected")
                 
                 // Add the starred events
                 dataSource.setEventStarred(withId: event.id, starred: true) { newState in
@@ -120,14 +119,19 @@ class EventDetailViewController: UIViewController {
                     if newState {
                         self.favBtnImage = UIImage(named: "favIconSelected")
                         self.favButton.setImage(self.favBtnImage, for: .normal)
+                        
+                        // Alert user about saved event
+                        let alert = UIAlertController(title: "Event Saved.", message: "You've saved this event to your profile.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                        self.present(alert, animated: true)
                     }
                 }
             }
             else {
+                
+                // Alert user to sign in
                 let alert = UIAlertController(title: "Please Sign In.", message: "Please sign in or make an account to save this event.", preferredStyle: .alert)
-
                 alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-
                 self.present(alert, animated: true)
             }
             
