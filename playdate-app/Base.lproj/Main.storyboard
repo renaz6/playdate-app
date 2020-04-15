@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDe-iY-a3p">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
-    <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
-=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDe-iY-a3p">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
->>>>>>> 26624bdd73f4d4efa0864304eeb19a6253da0784
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,13 +41,8 @@
         <scene sceneID="Obf-b6-IeX">
             <objects>
                 <tableViewController id="PD3-wK-Kqk" customClass="SearchViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
-<<<<<<< HEAD
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="128" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vh8-Of-l6B">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
-=======
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vh8-Of-l6B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
->>>>>>> 26624bdd73f4d4efa0864304eeb19a6253da0784
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" text="" id="rV7-9m-9dr">
@@ -1257,12 +1245,4 @@
             <color red="0.55294117647058827" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
-<<<<<<< HEAD
-    <inferredMetricsTieBreakers>
-        <segue reference="nDb-ev-aBj"/>
-        <segue reference="fZM-ec-Jqf"/>
-        <segue reference="49C-DC-4xg"/>
-    </inferredMetricsTieBreakers>
-=======
->>>>>>> 26624bdd73f4d4efa0864304eeb19a6253da0784
 </document>
