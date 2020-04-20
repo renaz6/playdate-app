@@ -12,6 +12,8 @@ protocol EventDataSource {
     
     func allEvents(completion: @escaping ([EventDataType]) -> Void)
     
+    func eventsOnDate(year: Int, month: Int, day: Int, completion: @escaping ([EventDataType]) -> Void)
+    
     func homePageEvents(completion: @escaping ([EventDataType]) -> Void)
     
     func starredEvents(completion: @escaping ([EventDataType]) -> Void)

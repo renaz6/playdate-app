@@ -16,6 +16,7 @@ class FirestoreDataSource: EventDataSource {
     let tmFilterClassification = "KZFzniwnSyZfZ7v7na" // "Arts & Theatre"
     let tmGeoPoint = "9v6kpz7ds" // rough approximation of Texas Capitol Building, Austin, TX
     let tmMilesRadius = 50
+    let tmSort = "date,name,asc"
     
     var firestore: Firestore
     var tmApiKey: String
@@ -41,13 +42,30 @@ class FirestoreDataSource: EventDataSource {
     // MARK: - EventDataSource implementation
     
     func allEvents(completion handler: @escaping ([EventDataType]) -> Void) {
-        // query: at most N events happening now or in the future
         firestore.collection("events")
             .getDocuments(completion: { result, error in
                 if error == nil, let docs = result?.documents {
                     handler(docs.map { $0.data() })
                 }
             })
+    }
+    
+    func eventsOnDate(year: Int, month: Int, day: Int, completion handler: @escaping ([EventDataType]) -> Void) {
+        // query: all events happening on (within 24 hours of) year-month-day in the user's time zone
+        if let beginningOfDay = DateComponents(year: year, month: month, day: day).date,
+            let nextDay = DateComponents(year: year, month: month, day: day).date?.addingTimeInterval(60*60*24) {
+            
+            firestore.collection("events")
+            .whereField(FieldPath(["dates", "start", "timestamp"]),
+                        isGreaterThanOrEqualTo: Timestamp(date: beginningOfDay))
+            .whereField(FieldPath(["dates", "start", "timestamp"]),
+                        isLessThan: Timestamp(date: nextDay))
+            .getDocuments(completion: { result, error in
+                if error == nil, let docs = result?.documents {
+                    handler(docs.map { $0.data() })
+                }
+            })
+        }
     }
     
     func homePageEvents(completion handler: @escaping ([EventDataType]) -> Void) {
@@ -155,7 +173,7 @@ class FirestoreDataSource: EventDataSource {
     func downloadPageOfTMEvents(limit: Int, completion handler: @escaping ([EventDataType]) -> Void) {
         let eventsDownloadUrl = "https://app.ticketmaster.com/discovery/v2/events.json"
         + "?size=\(limit)&classificationId=\(tmFilterClassification)"
-        + "&geoPoint=\(tmGeoPoint)&radius=\(tmMilesRadius)&unit=miles&apikey=\(tmApiKey)"
+        + "&geoPoint=\(tmGeoPoint)&radius=\(tmMilesRadius)&sort=\(tmSort)&unit=miles&apikey=\(tmApiKey)"
         
         AF.request(eventsDownloadUrl)
             .responseDecodable(of: TMEventCollectionEmbedder.self) { response in
@@ -181,5 +199,16 @@ class FirestoreDataSource: EventDataSource {
                     handler(EventDataType.from(tmEvent))
                 }
         }
+    }
+}
+
+extension DateComponents {
+    init(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, second: Int = 0, nanosecond: Int = 0) {
+        self.init(
+            calendar: .autoupdatingCurrent,
+            timeZone: .autoupdatingCurrent,
+            year: year, month: month, day: day,
+            hour: hour, minute: minute, second: second, nanosecond: nanosecond
+        )
     }
 }
