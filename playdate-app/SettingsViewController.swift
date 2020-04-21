@@ -199,6 +199,10 @@ class SettingsViewController: UITableViewController, LoggedIn {
                 customCell.settingSwitch.setOn(isDarkMode, animated: false)
             case 1:
                 customCell.titleLabel.text = "Send Push Notifications"
+                customCell.settingSwitch.addTarget(self,action: #selector(notificationValueDidChange(_:)), for: .valueChanged)
+                
+                let isNotifications = (settings[0].value(forKeyPath: "isNotifications") as! Bool)
+                customCell.settingSwitch.setOn(isNotifications, animated: false)
             default:
                 customCell.titleLabel.text = "Something else \(indexPath.row)"
             }
@@ -264,10 +268,14 @@ class SettingsViewController: UITableViewController, LoggedIn {
                 window.overrideUserInterfaceStyle = .light
             }
         }
-        updateDarkModeSettings(darkMode: sender.isOn)
+        updateSettings(changeValue: sender.isOn, key: "isDarkMode")
+    }
+    
+    @objc func notificationValueDidChange(_ sender: UISwitch!) {
+        updateSettings(changeValue: sender.isOn, key: "isNotifications")
     }
 
-    func updateDarkModeSettings(darkMode: Bool) {
+    func updateSettings(changeValue: Bool, key: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
                
@@ -279,7 +287,7 @@ class SettingsViewController: UITableViewController, LoggedIn {
             try fetchedResults = context.fetch(request) as? [NSManagedObject]
             if(fetchedResults!.count != 0) {
                 let setting = fetchedResults![0]
-                setting.setValue(darkMode, forKey: "isDarkMode")
+                setting.setValue(changeValue, forKey: key)
             }
             try context.save()
         } catch {

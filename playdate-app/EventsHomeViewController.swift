@@ -9,14 +9,16 @@
 import UIKit
 import CoreData
 import Firebase
+import UserNotifications
 
-class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UNUserNotificationCenterDelegate  {
     
     private let eventDetailSegueId = "homeToEventDetail"
     @IBOutlet weak var tableView: UITableView!
     
     private var dataSource: EventDataSource!
     private var events: [EventDataType] = []
+    private var isNotifications: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +29,12 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             self.events = events
             self.tableView.reloadData()
         }
+        UNUserNotificationCenter.current().delegate = self
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        sendNotification()
         return events.count
     }
     
@@ -110,6 +115,37 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
                     window.overrideUserInterfaceStyle = .light
                 }
             }
+            isNotifications = fetchedSettings![0].value(forKeyPath: "isNotifications") as! Bool
+        }
+    }
+    
+    func sendNotification () {
+        if(isNotifications && events.count > 0) {
+               // create an object that holds the data for our notification
+            let randomEvent = Int.random(in: 0 ..< events.count)
+            
+            let notificationTitle = "Check out this show"
+            let eventData = events[randomEvent]
+            let notification = UNMutableNotificationContent()
+            notification.title = notificationTitle
+            notification.subtitle = eventData.title
+            notification.body = eventData.venueName
+            //notification.badge = 17
+               
+            // set up the notification to trigger after a delay of "seconds"
+            let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 8, repeats: false)
+               
+            // set up a request to tell iOS to submit the notification with that trigger
+            let request = UNNotificationReqsuest(identifier: notificationTitle,
+                                                   content: notification,
+                                                   trigger: notificationTrigger)
+               
+               
+               // submit the request to iOS
+            UNUserNotificationCenter.current().add(request) { (error) in
+                print("Request error: ",error as Any)
+            }
+            print("Submitted")
         }
     }
 }
