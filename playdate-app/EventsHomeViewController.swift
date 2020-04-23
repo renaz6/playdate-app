@@ -19,6 +19,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     private var dataSource: EventDataSource!
     private var events: [EventDataType] = []
     private var isNotifications: Bool = true
+    private let seconds:TimeInterval = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +69,6 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         if segue.identifier == eventDetailSegueId,
             let dest = segue.destination as? EventDetailViewController,
             let cell = sender as? EventTableViewCell {
-
             dest.event = events[cell.index]
         }
     }
@@ -133,10 +133,10 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             //notification.badge = 17
                
             // set up the notification to trigger after a delay of "seconds"
-            let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 8, repeats: false)
+            let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: seconds, repeats: false)
                
             // set up a request to tell iOS to submit the notification with that trigger
-            let request = UNNotificationReqsuest(identifier: notificationTitle,
+            let request = UNNotificationRequest(identifier: notificationTitle,
                                                    content: notification,
                                                    trigger: notificationTrigger)
                

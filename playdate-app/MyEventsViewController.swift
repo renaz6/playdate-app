@@ -51,7 +51,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         if loggedIn {
             dataSource.starredEvents { events in
