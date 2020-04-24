@@ -11,6 +11,8 @@ import FSCalendar
 
 class CalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let eventDetailSegueId = "calendarToEventDetail"
+    
     fileprivate weak var calendar: FSCalendar!
     
     @IBOutlet weak var tableView: UITableView!
@@ -70,7 +72,14 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
             return reusableCell
         }
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == eventDetailSegueId,
+            let dest = segue.destination as? EventDetailViewController,
+            let cell = sender as? EventTableViewCell {
+            dest.event = eventsForThisDate[cell.index]
+        }
+    }
 }
 
 extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate {

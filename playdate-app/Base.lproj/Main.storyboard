@@ -1266,6 +1266,7 @@
                                             <outlet property="eventImageView" destination="XpK-3e-oll" id="SlL-Za-HYM"/>
                                             <outlet property="eventTitleLabel" destination="Nbh-xB-Ksc" id="uqE-Vn-ter"/>
                                             <outlet property="eventVenueLabel" destination="qsq-4Z-Tyh" id="lVS-Ds-bZH"/>
+                                            <segue destination="jEi-hy-iJ5" kind="show" identifier="calendarToEventDetail" id="eP2-An-JAM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1289,7 +1290,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hwx-dX-2Iz"/>
+        <segue reference="nDb-ev-aBj"/>
         <segue reference="o0N-Kk-TAR"/>
         <segue reference="K6Y-3j-XIl"/>
     </inferredMetricsTieBreakers>
