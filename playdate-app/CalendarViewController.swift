@@ -12,11 +12,13 @@ import FSCalendar
 class CalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     fileprivate weak var calendar: FSCalendar!
-    private var tableView: UITableView!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     private var events: [EventDataType] = []
     private var eventsForThisDate: [EventDataType] = []
     private var dataSource: EventDataSource!
-    private var playdateRed = UIColor(displayP3Red: 141.0/255.0, green: 1.0/255.0, blue: 1.0/255.0, alpha: 1)
+    private var playdateRed = UIColor(named: "High Contrast Accent")
     private var playdateRedButLighter = UIColor(displayP3Red: 196/255.0, green: 120/255.0, blue: 120/255.0, alpha: 1)
     
     override func viewDidLoad() {
@@ -31,15 +33,14 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         calendar.appearance.headerTitleColor = playdateRed
         calendar.appearance.selectionColor = playdateRedButLighter
         calendar.appearance.eventSelectionColor = playdateRedButLighter
-        calendar.appearance.weekdayTextColor = .black
+        calendar.appearance.weekdayTextColor = .label
+        calendar.appearance.titleWeekendColor = .label
+        calendar.appearance.titleDefaultColor = .label
         self.calendar = calendar
         
-        // Load table view.
-        let tableView = UITableView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height * 0.42, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (UIScreen.main.bounds.height * 0.42)))
+        // Size table view.
+        tableView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height * 0.42, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (UIScreen.main.bounds.height * 0.42))
         tableView.rowHeight = 100.0
-        tableView.register(EventTableViewCell.self, forCellReuseIdentifier: "eventCell")
-        self.tableView = tableView
-        view.addSubview(self.tableView)
         
         // Load all events.
         dataSource = AppDelegate.instance.dataSource
@@ -63,7 +64,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.eventImageView.image = UIImage(named: eventData.imageId)
             cell.eventTitleLabel.text = eventData.title
             cell.eventVenueLabel.text = eventData.venueName
-            cell.setDate(eventData.datesStart?.dateValue())
+            cell.eventDatesLabel.text = eventData.startDateTimeDescription
             return cell
         } else {
             return reusableCell

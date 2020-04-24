@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDe-iY-a3p">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1197,18 +1197,99 @@
                     <view key="view" contentMode="scaleToFill" id="6Me-DJ-wWn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sCZ-jz-fUM" userLabel="Events Table View">
+                                <rect key="frame" x="0.0" y="440" width="414" height="373"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="100" id="6eZ-eg-KrT" customClass="EventTableViewCell" customModule="PlayDate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6eZ-eg-KrT" id="bZ4-ty-kj0">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbh-xB-Ksc">
+                                                    <rect key="frame" x="106" y="8" width="269" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="lcJ-hF-gUC"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsq-4Z-Tyh">
+                                                    <rect key="frame" x="106" y="42" width="269" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="WcO-Gk-STK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6V-cg-pks">
+                                                    <rect key="frame" x="106" y="68" width="269" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="YI7-2a-EuG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="theatreMasks" translatesAutoresizingMaskIntoConstraints="NO" id="XpK-3e-oll">
+                                                    <rect key="frame" x="20" y="14" width="72" height="72"/>
+                                                    <color key="tintColor" name="High Contrast Accent"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="72" id="QYN-wk-RyN"/>
+                                                        <constraint firstAttribute="height" constant="72" id="ZkI-Hu-TRo"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XpK-3e-oll" firstAttribute="leading" secondItem="bZ4-ty-kj0" secondAttribute="leadingMargin" id="3U6-Nc-BYt"/>
+                                                <constraint firstAttribute="trailing" secondItem="Nbh-xB-Ksc" secondAttribute="trailing" constant="8" id="3sl-Er-vek"/>
+                                                <constraint firstItem="z6V-cg-pks" firstAttribute="trailing" secondItem="Nbh-xB-Ksc" secondAttribute="trailing" id="9nM-es-yOj"/>
+                                                <constraint firstItem="qsq-4Z-Tyh" firstAttribute="leading" secondItem="XpK-3e-oll" secondAttribute="trailing" constant="14" id="G1e-Or-rIX"/>
+                                                <constraint firstItem="Nbh-xB-Ksc" firstAttribute="leading" secondItem="XpK-3e-oll" secondAttribute="trailing" constant="14" id="GpS-Gx-uC5"/>
+                                                <constraint firstItem="z6V-cg-pks" firstAttribute="top" secondItem="qsq-4Z-Tyh" secondAttribute="bottom" constant="5" id="IDH-XK-cBF"/>
+                                                <constraint firstItem="qsq-4Z-Tyh" firstAttribute="trailing" secondItem="Nbh-xB-Ksc" secondAttribute="trailing" id="IUB-Vx-VHt"/>
+                                                <constraint firstItem="qsq-4Z-Tyh" firstAttribute="top" secondItem="Nbh-xB-Ksc" secondAttribute="bottom" constant="5" id="KnZ-Rr-4XN"/>
+                                                <constraint firstItem="XpK-3e-oll" firstAttribute="centerY" secondItem="bZ4-ty-kj0" secondAttribute="centerY" id="M5b-h5-ON2"/>
+                                                <constraint firstItem="Nbh-xB-Ksc" firstAttribute="top" secondItem="bZ4-ty-kj0" secondAttribute="top" constant="8" id="PZj-Ep-amN"/>
+                                                <constraint firstItem="qsq-4Z-Tyh" firstAttribute="trailing" secondItem="bZ4-ty-kj0" secondAttribute="trailingMargin" id="qrC-zR-Yhi"/>
+                                                <constraint firstItem="z6V-cg-pks" firstAttribute="leading" secondItem="XpK-3e-oll" secondAttribute="trailing" constant="14" id="vba-aa-N4V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="eventDatesLabel" destination="z6V-cg-pks" id="eqy-ut-oEO"/>
+                                            <outlet property="eventImageView" destination="XpK-3e-oll" id="SlL-Za-HYM"/>
+                                            <outlet property="eventTitleLabel" destination="Nbh-xB-Ksc" id="uqE-Vn-ter"/>
+                                            <outlet property="eventVenueLabel" destination="qsq-4Z-Tyh" id="lVS-Ds-bZH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1qw-l2-6Nx" id="IZx-f0-vem"/>
+                                    <outlet property="delegate" destination="1qw-l2-6Nx" id="f6O-4n-10D"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="IsO-OF-7b1"/>
                     </view>
                     <navigationItem key="navigationItem" title="Calendar" id="uon-Sr-F1i"/>
+                    <connections>
+                        <outlet property="tableView" destination="sCZ-jz-fUM" id="MFk-lh-QFq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQw-PM-njh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1945" y="17"/>
+            <point key="canvasLocation" x="1944.9275362318842" y="16.741071428571427"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xgT-3t-j3p"/>
+        <segue reference="Hwx-dX-2Iz"/>
         <segue reference="o0N-Kk-TAR"/>
         <segue reference="K6Y-3j-XIl"/>
     </inferredMetricsTieBreakers>
