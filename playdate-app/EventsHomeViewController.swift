@@ -53,7 +53,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             cell.eventImageView.image = UIImage(named: eventData.imageId)
             cell.eventTitleLabel.text = eventData.title
             cell.eventVenueLabel.text = eventData.venueName
-            cell.setDate(eventData.datesStart?.dateValue())
+            cell.eventDatesLabel.text = eventData.startDateTimeDescription
             return cell
         } else {
             return reusableCell

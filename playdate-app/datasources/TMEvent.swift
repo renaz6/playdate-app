@@ -61,7 +61,8 @@ class TMVenue: Decodable {
 }
 
 class TMDates: Decodable {
-    var start: TMDate
+    var start: TMDate?
+    var end: TMEndDate?
     var status: TMStatusCode
     
     class TMDate: Decodable {
@@ -71,6 +72,14 @@ class TMDates: Decodable {
         var dateTBD: Bool
         var dateTBA: Bool
         var timeTBA: Bool
+        var noSpecificTime: Bool
+    }
+    
+    class TMEndDate: Decodable {
+        var localDate: String?
+        var localTime: String?
+        var dateTime: String?
+        var approximate: Bool
         var noSpecificTime: Bool
     }
     

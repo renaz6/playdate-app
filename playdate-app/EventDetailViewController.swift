@@ -67,8 +67,8 @@ class EventDetailViewController: UIViewController {
         addressLabel.text = eventData.venueAddressStreet[0]
         
         // Date/Time
-        dateLabel.text = describeDate(eventData.datesStart?.dateValue())
-        timeLabel.text = describeTime(eventData.datesStart?.dateValue())
+        dateLabel.text = eventData.startDateDescription
+        timeLabel.text = eventData.startTimeDescription
         
         // Set location on the map using MapKit and coordinates from the event
         coordinates = eventData.venueCoordinates

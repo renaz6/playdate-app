@@ -31,6 +31,14 @@ extension EventDataType {
         return self["title"] as! String
     }
     
+    var description: String {
+        return self["description"] as! String
+    }
+    
+    var cancelled: Bool {
+        return self["cancelled"] as! Bool
+    }
+    
     var imageId: String {
         return self["imageId"] as! String
     }
@@ -79,6 +87,94 @@ extension EventDataType {
         return self["buyTicketsUrl"] as? String ?? ""
     }
     
+    // MARK: - Date description
+    
+    var startDateTimeDescription: String {
+        let startDateComp = (self["dates"] as! [String: Any])["start"] as! [String: Any]
+        
+        let dateDesc = describeDateComponent(startDateComp)
+        if let time = dateDesc.time {
+            return dateDesc.date + ", " + time
+        } else {
+            return dateDesc.date
+        }
+    }
+    
+    var startDateDescription: String {
+        let startDateComp = (self["dates"] as! [String: Any])["start"] as! [String: Any]
+        return describeDateComponent(startDateComp).date
+    }
+    
+    var startTimeDescription: String {
+        let startDateComp = (self["dates"] as! [String: Any])["start"] as! [String: Any]
+        return describeDateComponent(startDateComp).time ?? ""
+    }
+    
+    var endDateTimeDescription: String {
+        let endDateComp = (self["dates"] as! [String: Any])["end"] as! [String: Any]
+        
+        let dateDesc = describeDateComponent(endDateComp)
+        if let time = dateDesc.time {
+            return dateDesc.date + ", " + time
+        } else {
+            return dateDesc.date
+        }
+    }
+    
+    var endDateDescription: String {
+        let endDateComp = (self["dates"] as! [String: Any])["end"] as! [String: Any]
+        return describeDateComponent(endDateComp).date
+    }
+    
+    var endTimeDescription: String {
+        let endDateComp = (self["dates"] as! [String: Any])["end"] as! [String: Any]
+        return describeDateComponent(endDateComp).time ?? ""
+    }
+    
+    private func describeDateComponent(_ dateComponent: [String: Any]) -> (date: String, time: String?) {
+        if let _ = dateComponent["localDate"] as? String,
+            let timestamp = dateComponent["timestamp"] as? Timestamp {
+            
+            // we interpret timestamp as a UTC date
+            // localDate is redundant, and only present to trigger this behaviour
+            return (date: describeUTCDate(timestamp.dateValue()), time: nil)
+        }
+        else if let timestamp = dateComponent["timestamp"] as? Timestamp {
+            return describeDateTime(timestamp.dateValue())
+        } else {
+            return (date: "TBD", time: nil)
+        }
+    }
+    
+    // Describe a date and time in the system's date format and time zone.
+    private func describeDateTime(_ date: Date?) -> (date: String, time: String?) {
+        if let date = date {
+            let dateFormat = DateFormatter()
+            let timeFormat = DateFormatter()
+            dateFormat.dateStyle = .medium
+            timeFormat.timeStyle = .short
+            dateFormat.timeZone = .autoupdatingCurrent
+            timeFormat.timeZone = .autoupdatingCurrent
+            
+            return (date: dateFormat.string(from: date), time: timeFormat.string(from: date))
+        } else {
+            return (date: "TBD", time: nil)
+        }
+    }
+    
+    // Describe a date (by itself) in the system locale's date format.
+    private func describeUTCDate(_ date: Date?) -> String {
+        if let date = date {
+            let dateFormat = DateFormatter()
+            dateFormat.dateStyle = .medium
+            dateFormat.timeZone = TimeZone(identifier: "UTC")
+            
+            return dateFormat.string(from: date)
+        } else {
+            return "TBD"
+        }
+    }
+    
     // MARK: - Conversion from TMEvent
     
     static func from(_ tmEvent: TMEvent) -> EventDataType {
@@ -89,9 +185,46 @@ extension EventDataType {
         isoFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
         isoFormatter.timeZone = TimeZone(identifier: "UTC")
         
-        var startDate: Date?
-        if !tmEvent.dates.start.dateTBA {
-            startDate = isoFormatter.date(from: tmEvent.dates.start.dateTime ?? "")
+        // TM can give us a few different types of dates
+        //   - the standard one, where dateTime is set
+        //   - "non-specific time", where dateTime is unset, localDate is set and noSpecificTime is true
+        //   - TBA, where dateTBA is true
+        var startDateComponent: [String: Any] = [:]
+        if let startDateWrapper = tmEvent.dates.start, !startDateWrapper.dateTBA {
+            if startDateWrapper.noSpecificTime {
+                let localDate = startDateWrapper.localDate
+                startDateComponent["localDate"] = localDate
+                
+                // add redundant timestamp for sorting, description
+                // note that the time will be [date], 00:00:00 UTC
+                // so consumers must use UTC when displaying the date if localDate is present
+                let format = DateFormatter()
+                format.dateFormat = "yyyy-MM-dd"
+                if let date = format.date(from: localDate ?? "") {
+                    startDateComponent["timestamp"] = Timestamp(date: date)
+                }
+            } else {
+                let startDate = isoFormatter.date(from: startDateWrapper.dateTime ?? "")
+                startDateComponent["timestamp"] = startDate != nil ? Timestamp(date: startDate!) : nil
+            }
+        }
+        
+        var endDateComponent: [String: Any] = [:]
+        if let endDateWrapper = tmEvent.dates.end {
+            if endDateWrapper.noSpecificTime {
+                let localDate = endDateWrapper.localDate
+                endDateComponent["localDate"] = localDate
+                
+                // add redundant timestamp for sorting, description
+                let format = DateFormatter()
+                format.dateFormat = "yyyy-MM-dd"
+                if let date = format.date(from: localDate ?? "") {
+                    endDateComponent["timestamp"] = Timestamp(date: date)
+                }
+            } else {
+                let endDate = isoFormatter.date(from: endDateWrapper.dateTime ?? "")
+                endDateComponent["timestamp"] = endDate != nil ? Timestamp(date: endDate!) : nil
+            }
         }
         
         // see if TM gave us at least one category to go off of
@@ -123,13 +256,15 @@ extension EventDataType {
             streets.append(street2)
         }
         
-        let event: EventDataType = [
+        var event: EventDataType = [
             "updated": Timestamp(),
             
             "id": "tm-\(tmEvent.id)",
             "source": "ticketmaster",
             "sourceId": tmEvent.id,
             "title": tmEvent.name,
+            "description": tmEvent.info ?? "",
+            "cancelled": tmEvent.dates.status.code == "cancelled",
             "buyTicketsUrl": tmEvent.url,
             "imageId": "theatreMasks",
             
@@ -139,25 +274,27 @@ extension EventDataType {
             ],
             
             "dates": [
-                "start": [
-                    "timestamp": startDate != nil ? Timestamp(date: startDate!) : nil
-                ]
-            ],
-            
-            "venue": [
-                "name": venue?.name ?? "Unknown",
-                "timeZone": venue?.timezone ?? "UTC",
-                "address": [
-                    "street": streets,
-                    "city": (venue?.city?.name) ?? "",
-                    "state": (venue?.state?.stateCode) ?? "",
-                    "postCode": (venue?.postalCode) ?? ""
-                ],
-                "coordinates": GeoPoint(
-                    latitude: Double(venue?.location?.latitude ?? "") ?? 0.0,
-                    longitude: Double(venue?.location?.longitude ?? "") ?? 0.0
-                )
+                "start": startDateComponent,
+                "end": endDateComponent
             ]
+            
+            // the compiler can't handle the size of this structure
+            // so I've moved venue out of it
+        ]
+        
+        event["venue"] = [
+            "name": venue?.name ?? "Unknown",
+            "timeZone": venue?.timezone ?? "UTC",
+            "address": [
+                "street": streets,
+                "city": (venue?.city?.name) ?? "",
+                "state": (venue?.state?.stateCode) ?? "",
+                "postCode": (venue?.postalCode) ?? ""
+            ],
+            "coordinates": GeoPoint(
+                latitude: Double(venue?.location?.latitude ?? "") ?? 0.0,
+                longitude: Double(venue?.location?.longitude ?? "") ?? 0.0
+            )
         ]
         
         return event

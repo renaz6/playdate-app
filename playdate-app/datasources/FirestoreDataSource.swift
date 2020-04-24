@@ -34,9 +34,35 @@ class FirestoreDataSource: EventDataSource {
         
         downloadPageOfTMEvents(limit: 200) { events in
             events.forEach { event in
-                self.firestore.collection("events").document(event.id).setData(event)
+                if event.cancelled {
+                    self.firestore.collection("events").document(event.id).delete()
+                } else {
+                    self.firestore.collection("events").document(event.id).setData(event)
+                }
             }
         }
+        
+//        // TODO take this out when all events conform
+//        self.firestore.collection("events")
+//        .getDocuments(completion: { result, error in
+//            if error == nil, let docs = result?.documents {
+//                docs.forEach { qds in
+//                    let sid = qds.data()["sourceId"] as! String
+//                    let ref = qds.reference
+//                    let id = qds.documentID
+//                    print("updating event \(id) (\(sid))")
+//                    self.downloadTMEvent(withId: sid) { event in
+//                        if event == nil {
+//                            ref.delete()
+//                        } else {
+//                            ref.setData(event!)
+//                        }
+//                    }
+//                    // rate limit is 5 requests per second
+//                    usleep(250000)
+//                }
+//            }
+//        })
     }
     
     // MARK: - EventDataSource implementation
