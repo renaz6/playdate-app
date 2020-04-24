@@ -78,8 +78,25 @@ class EventDetailViewController: UIViewController {
         // Map annotations
         let venueBuilding = MKPointAnnotation()
         venueBuilding.title = eventData.venueName
-        venueBuilding.coordinate = CLLocationCoordinate2D(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
-        mapView.addAnnotation(venueBuilding)
+//        venueBuilding.coordinate = CLLocationCoordinate2D(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
+//        mapView.addAnnotation(venueBuilding)
+        
+        let location = "\(eventData.venueAddressStreet),\(String(describing: eventData.venueAddressCity)), \(String(describing: eventData.venueAddressState)), \(String(describing: eventData.venueAddressPostCode))"
+        //let location = "some address, state, and zip"
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(location) { [weak self] placemarks, error in
+            if let placemark = placemarks?.first, let location = placemark.location {
+                let mark = MKPlacemark(placemark: placemark)
+
+                if var region = self?.mapView.region {
+                    region.center = location.coordinate
+                    region.span.longitudeDelta /= 8.0
+                    region.span.latitudeDelta /= 8.0
+                    self?.mapView.setRegion(region, animated: true)
+                    self?.mapView.addAnnotation(mark)
+                }
+            }
+        }
         
         // Set URL
         url = eventData.ticketsURL
