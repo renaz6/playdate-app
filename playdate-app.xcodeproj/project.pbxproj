@@ -13,6 +13,7 @@
 		23D6D72B2445057800C02A48 /* ChangeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6D72A2445057800C02A48 /* ChangeDetailsViewController.swift */; };
 		23D6D72D244505A500C02A48 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6D72C244505A500C02A48 /* ChangePasswordViewController.swift */; };
 		6DBB768A012FF76E9D27D6CD /* Pods_playdate_app_playdate_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86A54DA98FAA723E151B7D6 /* Pods_playdate_app_playdate_appUITests.framework */; };
+		6F01F2EE2450EA1500E3ED62 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F01F2ED2450EA1500E3ED62 /* CalendarViewController.swift */; };
 		6FB30AF1243D2E0800C5C945 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB30AF0243D2E0800C5C945 /* SearchViewController.swift */; };
 		7F4A61152422B8C000E9C206 /* EventsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A61142422B8C000E9C206 /* EventsHomeViewController.swift */; };
 		7F8182EB244123BE00F82AFC /* TM-API-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F8182EA244123BD00F82AFC /* TM-API-Info.plist */; };
@@ -67,6 +68,7 @@
 		23A15B2824240FD3003E7151 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		23D6D72A2445057800C02A48 /* ChangeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDetailsViewController.swift; sourceTree = "<group>"; };
 		23D6D72C244505A500C02A48 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		6F01F2ED2450EA1500E3ED62 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		6FB30AF0243D2E0800C5C945 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7F4A61142422B8C000E9C206 /* EventsHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsHomeViewController.swift; sourceTree = "<group>"; };
 		7F8182EA244123BD00F82AFC /* TM-API-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TM-API-Info.plist"; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				7FF919B123FCC56A004B8CF9 /* SceneDelegate.swift */,
 				6FB30AF0243D2E0800C5C945 /* SearchViewController.swift */,
 				7FF919B523FCC56A004B8CF9 /* Main.storyboard */,
+				6F01F2ED2450EA1500E3ED62 /* CalendarViewController.swift */,
 				A5F463AE2446DCFD00E97AAD /* TabBarViewController.swift */,
 				23D6D72C244505A500C02A48 /* ChangePasswordViewController.swift */,
 				23D6D72A2445057800C02A48 /* ChangeDetailsViewController.swift */,
@@ -503,6 +506,7 @@
 				7F4A61152422B8C000E9C206 /* EventsHomeViewController.swift in Sources */,
 				7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */,
 				7F8182EF2443DC4300F82AFC /* TMEvent.swift in Sources */,
+				6F01F2EE2450EA1500E3ED62 /* CalendarViewController.swift in Sources */,
 				7FF4BAC82434E67200A2F595 /* EventTableViewCell.swift in Sources */,
 				7FF4BAA62434DD3000A2F595 /* StyledNavigationController.swift in Sources */,
 				7F9F47CA2446B30200E64B33 /* WebsiteViewController.swift in Sources */,

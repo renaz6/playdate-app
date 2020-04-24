@@ -9,7 +9,7 @@ target 'playdate-app' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
-
+  pod 'FSCalendar'
   pod 'Alamofire'
 
   target 'playdate-appTests' do
