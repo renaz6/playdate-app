@@ -252,6 +252,7 @@ class SettingsViewController: UITableViewController, LoggedIn {
         if segue.identifier == changePasswordVC {
             let destination = segue.destination as! ChangePasswordViewController
             destination.delegate = self
+            destination.email = self.userEmail
         }
     }
     
