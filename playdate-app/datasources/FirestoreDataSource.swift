@@ -73,6 +73,17 @@ class FirestoreDataSource: EventDataSource {
         }
     }
     
+    func eventsWithCategory(_ category: String, completion handler: @escaping ([EventDataType]) -> Void) {
+        // query: events where localCategory == category
+        firestore.collection("events")
+            .whereField("localCategory", isEqualTo: category)
+            .getDocuments(completion: { result, error in
+                if error == nil, let docs = result?.documents {
+                    handler(docs.map { $0.data() })
+                }
+            })
+    }
+    
     func homePageEvents(completion handler: @escaping ([EventDataType]) -> Void) {
         // query: at most N events happening now or in the future
         firestore.collection("events")
