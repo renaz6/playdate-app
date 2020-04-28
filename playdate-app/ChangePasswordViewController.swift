@@ -74,3 +74,17 @@ class ChangePasswordViewController: UIViewController {
         }
     }
 }
+
+extension ChangePasswordViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == currentPassword {
+            newPassword.becomeFirstResponder()
+        } else if textField == newPassword {
+            repeatPassword.becomeFirstResponder()
+        } else if textField == repeatPassword {
+            textField.resignFirstResponder()
+            changePasswordBtnPressed(textField)
+        }
+        return true
+    }
+}

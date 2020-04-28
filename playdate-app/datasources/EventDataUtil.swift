@@ -247,29 +247,25 @@ extension EventDataType {
             subcategory = tmEvent.classifications[0].subGenre?.name ?? "Other"
         }
         
-        var localCategory: String?
-        var icon: String?
+        // choose a local category and an icon
+        var localCategory = "miscellaneous"
+        var icon = "misc"
         
-        if(category == "Children's Theatre" || category == "Miscellaneous Theatre" || category == "Puppetry" || category == "Variety" || category == "Theatre") {
+        switch category {
+        case "Children's Theatre", "Miscellaneous Theatre", "Puppetry", "Variety", "Theatre":
             localCategory = "Theatre"
             icon = "theatreMasks"
-        }
-        else if(category == "Classical" || category == "Music" || category == "Opera"){
+        case "Classical", "Music", "Opera":
             localCategory = "Music"
             icon = "music"
-        }
-        else if(category == "Comedy"){
+        case "Comedy":
             localCategory = "Comedy"
             icon = "comedy"
-        }
-        else if(category == "Dance" || category == "Fine Art" || category == "Multimedia" || category == "Performance Art" || category == "Spectacular"){
+        case "Dance", "Fine Art", "Multimedia", "Performance Art", "Spectacular":
             localCategory = "Fine Art"
             icon = "art"
-        }
-        else
-        {
-            localCategory = "miscellaneous"
-            icon = "misc"
+        default:
+            break
         }
         
         // make sure we have at least one venue
@@ -298,8 +294,8 @@ extension EventDataType {
             "description": tmEvent.info ?? "",
             "cancelled": tmEvent.dates.status.code == "cancelled",
             "buyTicketsUrl": tmEvent.url,
-            "imageId": icon!,
-            "localCategory": localCategory!,
+            "imageId": icon,
+            "localCategory": localCategory,
             
             "category": [
                 "category": category,

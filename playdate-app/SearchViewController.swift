@@ -23,17 +23,17 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
             self.events = events
         }
     }
-
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let eventData = results[indexPath.row]
         
@@ -57,6 +57,8 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         }
         results = events.filter {$0.title.localizedCaseInsensitiveContains(query) || $0.venueName.localizedCaseInsensitiveContains(query)} 
         self.tableView.reloadData()
+        
+        searchBar.resignFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

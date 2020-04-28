@@ -31,17 +31,12 @@ class SignUpViewController: UIViewController {
     }
     
     // code to dismiss keyboard when user clicks on background
-
-    func textFieldShouldReturn(textField:UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
-
+    
     @IBAction func signUpDidTouch(_ sender: Any) {
         guard let email = textFieldLoginEmail.text,
               let password = textFieldLoginPassword.text,
@@ -50,58 +45,60 @@ class SignUpViewController: UIViewController {
               password.count > 0,
               repeatPassword.count > 0
         else {
-          return
+            return
         }
-        if(password == repeatPassword) {
+        if password == repeatPassword {
             Auth.auth().createUser(withEmail: email, password: password) { user, error in
                 if error == nil, let userInfo = user {
                     // add display name
                     let changeRequest = userInfo.user.createProfileChangeRequest()
                     changeRequest.displayName = self.textFieldName.text
                     changeRequest.commitChanges(completion: { error in
-                        print("Error setting your display name: ", error ?? "")
+                        print("Error setting display name: ", error ?? "")
                     })
                     // create entry (saved events) in database
                     let userDocRef = self.firestore.collection("users").document(userInfo.user.uid)
                     userDocRef.setData(["savedEvents": []])
                     
-                    Auth.auth().signIn(withEmail: self.textFieldLoginEmail.text!,
-                                       password: self.textFieldLoginPassword.text!)
-                    if(self.delegate != nil) {
+                    if self.delegate != nil {
                         let otherVC = self.delegate as! LogIn
                         otherVC.signedIn(withDisplayName: self.textFieldName.text)
-                        self.theMessage = "Return to My Events"
+                        self.theMessage = "You will be returned to My Events."
                     }
-                    if(self.logInDelegate != nil) {
+                    if self.logInDelegate != nil {
                         let otherVC = self.logInDelegate as! NotLoggedIn
                         otherVC.isLogged(withDisplayName: self.textFieldName.text)
-                        self.theMessage = "Return to My Events"
+                        self.theMessage = "You will be returned to My Events."
                     }
-                    if(self.settingsDelegate != nil) {
+                    if self.settingsDelegate != nil {
                         let otherVC = self.settingsDelegate as! LoggedIn
-                        self.theMessage = "Return to Settings Page"
+                        self.theMessage = "You will be returned to Settings."
                         otherVC.isNowSignedIn(withDisplayName: self.textFieldName.text)
                     }
+                    self.view.endEditing(false)
                     let alert = UIAlertController(
                         title: "Sign Up Successful",
                         message: self.theMessage,
                         preferredStyle: .alert
                     )
-                    alert.addAction(UIAlertAction(title:"OK",style:.default))
-                    self.present(alert, animated: true, completion: nil)
-                }
-                else {
+                    alert.addAction(UIAlertAction(title:"OK", style: .default) { action in
+                        // return them to the last screen
+                        if let navigator = self.navigationController {
+                            navigator.popViewController(animated: true)
+                        }
+                    })
+                    self.present(alert, animated: true)
+                } else {
                     let alert = UIAlertController(
                         title: "Error",
                         message: error?.localizedDescription,
                         preferredStyle: .alert
                     )
-                    alert.addAction(UIAlertAction(title:"OK",style:.default))
+                    alert.addAction(UIAlertAction(title: "OK",style: .default))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
-        }
-        else{
+        } else {
             let alert = UIAlertController(
                 title: "Passwords do not match",
                 message: "Please make sure passwords are the same",
@@ -111,7 +108,20 @@ class SignUpViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
-
 }
 
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == textFieldName {
+            textFieldLoginEmail.becomeFirstResponder()
+        } else if textField == textFieldLoginEmail {
+            textFieldLoginPassword.becomeFirstResponder()
+        } else if textField == textFieldLoginPassword {
+            textFieldLoginPasswordRepeat.becomeFirstResponder()
+        } else if textField == textFieldLoginPasswordRepeat {
+            textField.resignFirstResponder()
+            signUpDidTouch(textField)
+        }
+        return true
+    }
+}

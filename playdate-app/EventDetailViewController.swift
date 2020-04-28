@@ -21,6 +21,7 @@ class EventDetailViewController: UIViewController {
     var starred: Bool! = false
 
     // Outlets
+    @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var imageOutlet: UIImageView!
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventLocation: UILabel!
@@ -37,7 +38,7 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        navBar.title = event.title
     }
     
     override func viewWillAppear(_ animated: Bool) {

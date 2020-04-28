@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ChangeDetailsViewController: UIViewController {
+class ChangeDetailsViewController: UIViewController, UITextFieldDelegate {
 
     var delegate: UIViewController!
     var userEmail: String = ""
@@ -27,8 +27,9 @@ class ChangeDetailsViewController: UIViewController {
     
     // code to dismiss keyboard when user clicks on background
 
-    func textFieldShouldReturn(textField:UITextField) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        saveButtonPressed(textField)
         return true
     }
     
@@ -37,33 +38,29 @@ class ChangeDetailsViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        if(nameTextField.text != ""){
-                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                changeRequest?.displayName = nameTextField.text
-                changeRequest?.commitChanges { (error) in
-                if(error != nil) {
-                        let alert = UIAlertController(
-                        title: "changing Name error",
-                        message: error?.localizedDescription,
-                        preferredStyle: .alert)
-                          
-                        alert.addAction(UIAlertAction(title:"OK",style:.default))
-                        self.present(alert, animated: true, completion: nil)
-                        return
-                }
-                else {
-                        let alert = UIAlertController(
-                        title: "Succesfully Changed Account Details",
-                        message: "next time PlayDate is opened details will be changed",
-                        preferredStyle: .alert)
-                                                 
-                        alert.addAction(UIAlertAction(title:"OK",style:.default))
-                        self.present(alert, animated: true, completion: nil)
-                }
+        if nameTextField.text != "" {
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = nameTextField.text
+            changeRequest?.commitChanges { (error) in
+            if error != nil {
+                let alert = UIAlertController(
+                    title: "Changing Name error",
+                    message: error?.localizedDescription,
+                    preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title:"OK",style:.default))
+                self.present(alert, animated: true, completion: nil)
+                return
+            } else {
+                let alert = UIAlertController(
+                    title: "Succesfully Changed Account Details",
+                    message: "Next time PlayDate is opened details will be changed",
+                    preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title:"OK",style:.default))
+                self.present(alert, animated: true, completion: nil)
+            }
             }
         }
     }
-
-
-    
 }

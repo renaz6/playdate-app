@@ -47,37 +47,37 @@ class LoginViewController: UIViewController, NotLoggedIn {
           return
         }
 
-        Auth.auth().signIn(withEmail: email, password: password) {
-          user, error in
-          if let error = error, user == nil {
-            let alert = UIAlertController(
-              title: "Sign in failed",
-              message: error.localizedDescription,
-              preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title:"OK",style:.default))
-            self.present(alert, animated: true, completion: nil)
-          }
-          else {
+        Auth.auth().signIn(withEmail: email, password: password) { user, error in
+            if let error = error, user == nil {
+                let alert = UIAlertController(
+                title: "Sign in failed",
+                message: error.localizedDescription,
+                preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title:"OK",style:.default))
+                self.present(alert, animated: true, completion: nil)
+            } else {
                 var message = "Return to MyEvents Page"
                 print("Login In Successful!")
-                if(self.delegate != nil) {
+                if self.delegate != nil {
                     let otherVC = self.delegate as! LogIn
                     otherVC.signedIn(withDisplayName: nil)
-                }
-                else if(self.settingsDelegate != nil){
+                } else if self.settingsDelegate != nil {
                     let otherVC = self.settingsDelegate as! LoggedIn
                     message = "Return to Settings Page"
                     otherVC.isNowSignedIn(withDisplayName: nil)
                 }
-                //self.performSegue(withIdentifier: "LoggedIn", sender: nil)
-                let alert = UIAlertController(
-                  title: "Sign in Successful",
-                  message: message,
-                  preferredStyle: .alert)
+//                let alert = UIAlertController(
+//                    title: "Sign in Successful",
+//                    message: message,
+//                    preferredStyle: .alert)
+//
+//                alert.addAction(UIAlertAction(title:"OK",style:.default))
+//                self.present(alert, animated: true, completion: nil)
                 
-                alert.addAction(UIAlertAction(title:"OK",style:.default))
-                self.present(alert, animated: true, completion: nil)
+                if let navigator = self.navigationController {
+                    navigator.popViewController(animated: true)
+                }
             }
         }
     }
@@ -112,15 +112,13 @@ class LoginViewController: UIViewController, NotLoggedIn {
 }
 
 extension LoginViewController: UITextFieldDelegate {
-      
-      func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == textFieldLoginEmail {
-          textFieldLoginPassword.becomeFirstResponder()
-        }
-        if textField == textFieldLoginPassword {
-          textField.resignFirstResponder()
+            textFieldLoginPassword.becomeFirstResponder()
+        } else if textField == textFieldLoginPassword {
+            textField.resignFirstResponder()
+            loginDidTouch(signUpButton!)
         }
         return true
-      }
+    }
 }
-
