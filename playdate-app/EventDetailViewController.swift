@@ -30,6 +30,7 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     var favBtnImage = UIImage(named: "favIcon")
     
@@ -61,6 +62,11 @@ class EventDetailViewController: UIViewController {
         imageOutlet.image = UIImage(named: eventData.imageId)
         eventName.text = eventData.title
         eventLocation.text = eventData.venueName
+        
+
+        descriptionLabel.text = eventData.categorySubcategory
+        
+
         
         // Location/venue: icon and headings
         venueLabel.text = eventData.venueName
