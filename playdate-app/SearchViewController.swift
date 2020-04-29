@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class SearchViewController: UITableViewController, UISearchBarDelegate {
+    
     @IBOutlet weak var searchBar: UISearchBar!
     private var events: [EventDataType] = []
     private var results: [EventDataType] = []
@@ -51,14 +52,70 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
+    // Scope button changed
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        
+        let index = selectedScope
+        print(index)
+        
+        switch index {
+        case 0:
+            dataSource.allEvents { events in
+                self.events = events
+                self.performQuery()
+            }
+            
+        case 1:
+            dataSource.eventsWithCategory("Theatre") { events in
+                self.events = events
+                self.performQuery()
+            }
+            
+        case 2:
+        dataSource.eventsWithCategory("Music") { events in
+            self.events = events
+            self.performQuery()
+        }
+            
+        case 3:
+        dataSource.eventsWithCategory("Comedy") { events in
+            self.events = events
+            self.performQuery()
+        }
+            
+        case 4:
+        dataSource.eventsWithCategory("Fine Art") { events in
+            self.events = events
+            self.performQuery()
+        }
+            
+        case 5:
+        dataSource.eventsWithCategory("miscellaneous") { events in
+            self.events = events
+            self.performQuery()
+        }
+            
+        default:
+            dataSource.allEvents { events in
+                self.events = events
+                self.performQuery()
+            }
+        }
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        performQuery()
+        searchBar.resignFirstResponder()
+    }
+    
+    func performQuery(){
         guard let query = searchBar.text, query != "" else {
             return
         }
-        results = events.filter {$0.title.localizedCaseInsensitiveContains(query) || $0.venueName.localizedCaseInsensitiveContains(query)} 
-        self.tableView.reloadData()
+        results = events.filter {$0.title.localizedCaseInsensitiveContains(query) || $0.venueName.localizedCaseInsensitiveContains(query)}
+        tableView.reloadData()
         
-        searchBar.resignFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

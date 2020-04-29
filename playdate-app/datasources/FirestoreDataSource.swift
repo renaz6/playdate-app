@@ -48,6 +48,7 @@ class FirestoreDataSource: EventDataSource {
     
     func allEvents(completion handler: @escaping ([EventDataType]) -> Void) {
         firestore.collection("events")
+            .whereField(FieldPath(["dates", "start", "timestamp"]), isGreaterThanOrEqualTo: Timestamp())
             .getDocuments(completion: { result, error in
                 if error == nil, let docs = result?.documents {
                     handler(docs.map { $0.data() })
