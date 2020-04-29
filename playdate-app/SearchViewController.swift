@@ -56,7 +56,6 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         
         let index = selectedScope
-        print(index)
         
         switch index {
         case 0:

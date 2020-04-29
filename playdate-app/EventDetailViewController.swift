@@ -85,8 +85,6 @@ class EventDetailViewController: UIViewController {
         // Map annotations
         let venueBuilding = MKPointAnnotation()
         venueBuilding.title = eventData.venueName
-//        venueBuilding.coordinate = CLLocationCoordinate2D(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
-//        mapView.addAnnotation(venueBuilding)
         
         let location = "\(eventData.venueAddressStreet),\(String(describing: eventData.venueAddressCity)), \(String(describing: eventData.venueAddressState)), \(String(describing: eventData.venueAddressPostCode))"
         //let location = "some address, state, and zip"
