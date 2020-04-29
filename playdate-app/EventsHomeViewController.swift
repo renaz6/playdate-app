@@ -15,9 +15,11 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     
     private let eventDetailSegueId = "homeToEventDetail"
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segCtrl: UISegmentedControl!
     
     private var dataSource: EventDataSource!
     private var events: [EventDataType] = []
+    private var theatreEvents: [EventDataType] = []
     private var isNotifications: Bool = true
     private let seconds:TimeInterval = 8
     
@@ -32,6 +34,46 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         }
         UNUserNotificationCenter.current().delegate = self
         
+    }
+    @IBAction func onSegmentChanged(_ sender: Any) {
+        
+        switch segCtrl.selectedSegmentIndex {
+        case 0:
+                dataSource.homePageEvents { events in
+                    self.events = events
+                    self.tableView.reloadData()
+                }
+        case 1:
+                dataSource.eventsWithCategory("Theatre") { events in
+                    self.events = events
+                    self.tableView.reloadData()
+                }
+        case 2:
+                dataSource.eventsWithCategory("Music") { events in
+                    self.events = events
+                    self.tableView.reloadData()
+                }
+        case 3:
+                dataSource.eventsWithCategory("Comedy") { events in
+                    self.events = events
+                    self.tableView.reloadData()
+                }
+        case 4:
+                dataSource.eventsWithCategory("Fine Art") { events in
+                    self.events = events
+                    self.tableView.reloadData()
+                }
+        case 5:
+                dataSource.eventsWithCategory("miscellaneous") { events in
+                    self.events = events
+                    self.tableView.reloadData()
+                }
+        default:
+            dataSource.homePageEvents { events in
+                self.events = events
+                self.tableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

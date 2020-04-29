@@ -77,6 +77,7 @@ class FirestoreDataSource: EventDataSource {
         // query: events where localCategory == category
         firestore.collection("events")
             .whereField("localCategory", isEqualTo: category)
+            .whereField(FieldPath(["dates", "start", "timestamp"]), isGreaterThanOrEqualTo: Timestamp()) 
             .getDocuments(completion: { result, error in
                 if error == nil, let docs = result?.documents {
                     handler(docs.map { $0.data() })
@@ -88,7 +89,6 @@ class FirestoreDataSource: EventDataSource {
         // query: at most N events happening now or in the future
         firestore.collection("events")
             .whereField(FieldPath(["dates", "start", "timestamp"]), isGreaterThanOrEqualTo: Timestamp())
-            .limit(to: homePageEventsCap)
             .getDocuments(completion: { result, error in
                 if error == nil, let docs = result?.documents {
                     handler(docs.map { $0.data() })
@@ -107,6 +107,7 @@ class FirestoreDataSource: EventDataSource {
                     } else {
                         self.firestore.collection("events")
                             .whereField("id", in: savedEventIds)
+                            .whereField(FieldPath(["dates", "start", "timestamp"]), isGreaterThanOrEqualTo: Timestamp())
                             .getDocuments { result, error in
                                 
                                 if error == nil, let docs = result?.documents {
