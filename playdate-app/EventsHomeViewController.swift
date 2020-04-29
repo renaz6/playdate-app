@@ -19,7 +19,6 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     
     private var dataSource: EventDataSource!
     private var events: [EventDataType] = []
-    private var theatreEvents: [EventDataType] = []
     private var isNotifications: Bool = true
     private let seconds:TimeInterval = 8
     
@@ -35,6 +34,8 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         UNUserNotificationCenter.current().delegate = self
         
     }
+    
+    // When the category selected is changed
     @IBAction func onSegmentChanged(_ sender: Any) {
         
         switch segCtrl.selectedSegmentIndex {
