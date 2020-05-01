@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDe-iY-a3p">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -175,7 +175,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kLg-rg-uKz" userLabel="Events Table View">
-                                <rect key="frame" x="-1" y="-2" width="414" height="814.5"/>
+                                <rect key="frame" x="-1" y="-2" width="414" height="815"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Jxg-te-g4o">
@@ -339,19 +339,19 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pAq-Tf-1SN" userLabel="Events Table View">
-                                <rect key="frame" x="-3" y="-2.5" width="414.5" height="814.5"/>
+                                <rect key="frame" x="-3" y="-2" width="415" height="814"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="100" id="Lbh-8c-20n" customClass="EventTableViewCell" customModule="PlayDate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414.33333333333331" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="415" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lbh-8c-20n" id="WdB-L6-vkc">
-                                            <rect key="frame" x="0.0" y="0.0" width="383.33333333333331" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="JLU-vQ-m20">
-                                                    <rect key="frame" x="106" y="8" width="269.33333333333331" height="29"/>
+                                                    <rect key="frame" x="106" y="8" width="270" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="YjC-M6-AwW"/>
                                                     </constraints>
@@ -360,7 +360,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-hD-PST">
-                                                    <rect key="frame" x="106" y="42" width="269.33333333333331" height="21"/>
+                                                    <rect key="frame" x="106" y="42" width="270" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="3eK-Wn-pca"/>
                                                     </constraints>
@@ -369,7 +369,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lez-SS-obu">
-                                                    <rect key="frame" x="106" y="68" width="269.33333333333331" height="21"/>
+                                                    <rect key="frame" x="106" y="68" width="270" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="uC1-Iy-O3M"/>
                                                     </constraints>
@@ -1186,6 +1186,19 @@
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avc-fN-Kmn">
+                                <rect key="frame" x="222" y="95" width="35" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" name="Accent"/>
+                                <state key="normal" image="square.and.arrow.up" catalog="system">
+                                    <color key="titleColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareButtonClicked:" destination="jEi-hy-iJ5" eventType="touchUpInside" id="YB5-Zr-p6x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="tintColor" name="Accent"/>
@@ -1202,6 +1215,7 @@
                         <outlet property="imageOutlet" destination="CZ1-MI-2eC" id="7Pv-MJ-ueY"/>
                         <outlet property="mapView" destination="JL1-uD-4Qa" id="PvZ-AG-sFb"/>
                         <outlet property="navBar" destination="p8P-Ih-Pop" id="LA4-Dn-uSp"/>
+                        <outlet property="shareButton" destination="avc-fN-Kmn" id="wMR-v7-xVq"/>
                         <outlet property="timeLabel" destination="KaW-Km-RVy" id="Jfv-QA-bSO"/>
                         <outlet property="venueLabel" destination="0YK-TE-f0h" id="bfi-FK-fZP"/>
                     </connections>
@@ -1284,19 +1298,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sCZ-jz-fUM" userLabel="Events Table View">
-                                <rect key="frame" x="-1" y="440" width="414.5" height="373"/>
+                                <rect key="frame" x="-1" y="440" width="415" height="373"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="100" id="6eZ-eg-KrT" customClass="EventTableViewCell" customModule="PlayDate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414.33333333333331" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="415" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6eZ-eg-KrT" id="bZ4-ty-kj0">
-                                            <rect key="frame" x="0.0" y="0.0" width="383.33333333333331" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Nbh-xB-Ksc">
-                                                    <rect key="frame" x="106" y="8" width="269.33333333333331" height="29"/>
+                                                    <rect key="frame" x="106" y="8" width="270" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="lcJ-hF-gUC"/>
                                                     </constraints>
@@ -1305,7 +1319,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsq-4Z-Tyh">
-                                                    <rect key="frame" x="106" y="42" width="269.33333333333331" height="21"/>
+                                                    <rect key="frame" x="106" y="42" width="270" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="WcO-Gk-STK"/>
                                                     </constraints>
@@ -1314,7 +1328,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6V-cg-pks">
-                                                    <rect key="frame" x="106" y="68" width="269.33333333333331" height="21"/>
+                                                    <rect key="frame" x="106" y="68" width="270" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="YI7-2a-EuG"/>
                                                     </constraints>
@@ -1397,6 +1411,7 @@
         <image name="safari" catalog="system" width="128" height="121"/>
         <image name="signIn" width="295" height="48"/>
         <image name="signUpSettings" width="295" height="48"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="theatreMasks" width="130" height="130"/>
         <image name="time" width="22" height="22"/>
         <image name="wrench.fill" catalog="system" width="128" height="120"/>

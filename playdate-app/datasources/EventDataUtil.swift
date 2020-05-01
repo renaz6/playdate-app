@@ -93,6 +93,14 @@ extension EventDataType {
         return self["localCategory"] as! String
     }
     
+    // MARK: - Self-description
+    
+    var shareDescription: String {
+        return "Check out this event: " + title + " @ " + venueName + "\n"
+            + startDateTimeDescription + "\n"
+            + ticketsURL + "\n\nSent from PlayDate"
+    }
+    
     
     // MARK: - Date description
     
