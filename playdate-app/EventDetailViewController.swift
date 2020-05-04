@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import MapKit
 import MessageUI
+import EventKit
 
 class EventDetailViewController: UIViewController {
 
@@ -20,6 +21,7 @@ class EventDetailViewController: UIViewController {
     let toWebsite = "toWebsiteSegue"
     var userEmail: String!
     var starred: Bool! = false
+    let eventStore = EKEventStore()
 
     // Outlets
     @IBOutlet weak var navBar: UINavigationItem!
@@ -27,6 +29,7 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventLocation: UILabel!
     @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var venueLabel: UILabel!
@@ -211,6 +214,62 @@ class EventDetailViewController: UIViewController {
 
         return annotationView
     }
+    
+    
+    // MARK: Calendar Stuff
+    
+    @IBAction func calendarButtonClicked(_ sender: Any) {
+        let startDate = self.event.datesStart?.dateValue()
+        let endDate = self.event.datesEnd?.dateValue()
+        
+        if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
+            eventStore.requestAccess(to: .event, completion: {
+                granted, error in
+                self.createEvent(title: self.event.title,
+                                 startDate: startDate,
+                                 endDate: endDate)
+            })
+        } else {
+            createEvent(title: event.title,
+                        startDate: startDate,
+                        endDate: endDate)
+        }
+    }
+    
+    func createEvent(title:String, startDate:Date?, endDate:Date?) {
+        
+        let event = EKEvent(eventStore: eventStore)
+        
+        // Construct the event
+        event.title = title
+        event.startDate = startDate
+        event.endDate = endDate ?? startDate?.addingTimeInterval(60 * 60)
+        event.notes = self.event.shareDescription
+        event.calendar = eventStore.defaultCalendarForNewEvents
+        
+        do {
+            // Save the event to the calendar
+            // "span" means "just this one" or "all subsequent events"
+            try eventStore.save(event, span: .thisEvent)
+
+            // Alert user about saved event
+            let alert = UIAlertController(title: "Event Added.", message: "You've saved this event to your device's Calendar.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            
+            // save an identifier so I can refer to this event later
+            //savedEventId = event.eventIdentifier
+            
+            //eventLabel.text = "Event added to calendar"
+        } catch let error as NSError {
+            print("Error: \(error).")
+            let alert = UIAlertController(title: "Error", message: "We couldn't save this event.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
     
 }
 
