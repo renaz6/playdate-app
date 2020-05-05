@@ -67,20 +67,25 @@ class EventDetailViewController: UIViewController {
         // Large Heading: Main icon, name, location
         imageOutlet.image = UIImage(named: eventData.imageId)
         eventName.text = eventData.title
-        eventLocation.text = eventData.venueName
+        eventName.font = UIFont(name: "Gibson-Bold", size: 24)
         
+        eventLocation.text = eventData.venueName
+        eventLocation.font = UIFont(name: "Gibson-Regular", size: 20)
 
         descriptionLabel.text = eventData.categorySubcategory
-        
-
-        
+        descriptionLabel.font = UIFont(name: "Gibson-Regular", size: 20)
+                
         // Location/venue: icon and headings
         venueLabel.text = eventData.venueName
+        venueLabel.font = UIFont(name: "Gibson-Regular", size: 20)
         addressLabel.text = eventData.venueAddressStreet[0]
+        addressLabel.font = UIFont(name: "Gibson-Regular", size: 20)
         
         // Date/Time
         dateLabel.text = eventData.startDateDescription
+        dateLabel.font = UIFont(name: "Gibson-Regular", size: 20)
         timeLabel.text = eventData.startTimeDescription
+        timeLabel.font = UIFont(name: "Gibson-Regular", size: 20)
         
         // Set location on the map using MapKit and coordinates from the event
         coordinates = eventData.venueCoordinates

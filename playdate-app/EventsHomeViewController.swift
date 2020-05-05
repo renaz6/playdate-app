@@ -95,11 +95,11 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             cell.eventId = eventData.id
             cell.eventImageView.image = UIImage(named: eventData.imageId)
             cell.eventTitleLabel.text = eventData.title
-            cell.eventTitleLabel.font = UIFont(name: "Gibson-Bold", size: 20)
+            cell.eventTitleLabel.font = UIFont(name: "Gibson-Bold", size: 16)
             cell.eventVenueLabel.text = eventData.venueName
-            cell.eventVenueLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+            cell.eventVenueLabel.font = UIFont(name: "Gibson-Regular", size: 14)
             cell.eventDatesLabel.text = eventData.startDateTimeDescription
-            cell.eventDatesLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+            cell.eventDatesLabel.font = UIFont(name: "Gibson-Regular", size: 14)
             return cell
         } else {
             return reusableCell
