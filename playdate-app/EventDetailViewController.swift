@@ -13,16 +13,16 @@ import MessageUI
 import EventKit
 
 class EventDetailViewController: UIViewController {
-
+    
     var event: EventDataType!
     var coordinates: GeoPoint?
     private var dataSource: EventDataSource!
-    var url:String!
+    var url: String!
     let toWebsite = "toWebsiteSegue"
     var userEmail: String!
     var starred: Bool! = false
     let eventStore = EKEventStore()
-
+    
     // MARK: - Outlets
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var imageOutlet: UIImageView!
@@ -52,14 +52,9 @@ class EventDetailViewController: UIViewController {
         dataSource = AppDelegate.instance.dataSource
         let eventData = event!
         
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if(user != nil) {
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
                 self.userEmail = user!.email!
-
-                if(user == nil)
-                {
-                    self.favBtnImage = UIImage(named: "favIconSelected")
-                }
             }
         }
         
@@ -73,10 +68,10 @@ class EventDetailViewController: UIViewController {
         
         eventLocation.text = eventData.venueName
         eventLocation.font = UIFont(name: "Gibson-Regular", size: 20)
-
+        
         descriptionLabel.text = eventData.categorySubcategory
         descriptionLabel.font = UIFont(name: "Gibson-Regular", size: 20)
-                
+        
         // Location/venue: icon and headings
         venueLabel.text = eventData.venueName
         venueLabel.font = UIFont(name: "Gibson-Regular", size: 20)
@@ -104,7 +99,7 @@ class EventDetailViewController: UIViewController {
         geocoder.geocodeAddressString(location) { [weak self] placemarks, error in
             if let placemark = placemarks?.first, let location = placemark.location {
                 let mark = MKPlacemark(placemark: placemark)
-
+                
                 if var region = self?.mapView.region {
                     region.center = location.coordinate
                     region.span.longitudeDelta /= 8.0
@@ -185,7 +180,6 @@ class EventDetailViewController: UIViewController {
     }
     
     @IBAction func shareButtonClicked(_ sender: Any) {
-        print("shareButtonClicked(_:):", event.shareDescription)
         let activityController = UIActivityViewController(activityItems: [event.shareDescription], applicationActivities: nil)
         activityController.excludedActivityTypes = [.assignToContact, .openInIBooks, .saveToCameraRoll]
         if !MFMessageComposeViewController.canSendText() {
@@ -193,14 +187,6 @@ class EventDetailViewController: UIViewController {
         }
         if !MFMailComposeViewController.canSendMail() {
             activityController.excludedActivityTypes?.append(.mail)
-        }
-        
-        activityController.completionWithItemsHandler = { type, completed, returnedItems, error in
-            if completed {
-                print("shareButtonClicked(_:): user selected activity", type.debugDescription)
-            } else {
-                print("shareButtonClicked(_:): user did not complete activity")
-            }
         }
         
         present(activityController, animated: true)

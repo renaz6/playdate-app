@@ -21,7 +21,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     private var eventsForThisDate: [EventDataType] = []
     private var dataSource: EventDataSource!
     private var playdateRed = UIColor(named: "High Contrast Accent")
-    private var playdateRedButLighter = UIColor(displayP3Red: 196/255.0, green: 120/255.0, blue: 120/255.0, alpha: 1)
+    private var playdateRedButLighter = UIColor(named: "Calendar Selection")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         calendar.dataSource = self
         calendar.delegate = self
         view.addSubview(calendar)
+        
         calendar.appearance.eventDefaultColor = playdateRed
         calendar.appearance.headerTitleColor = playdateRed
         calendar.appearance.selectionColor = playdateRedButLighter
@@ -48,8 +49,9 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         dataSource = AppDelegate.instance.dataSource
         dataSource.allEvents { events in
             self.events = events
+            
+            self.calendar.reloadData()
         }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,5 +111,4 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate {
         
         self.tableView.reloadData()
     }
-    
 }

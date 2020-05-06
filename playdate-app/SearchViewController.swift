@@ -111,13 +111,12 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
     
-    func performQuery(){
+    func performQuery() {
         guard let query = searchBar.text, query != "" else {
             return
         }
         results = events.filter {$0.title.localizedCaseInsensitiveContains(query) || $0.venueName.localizedCaseInsensitiveContains(query)}
         tableView.reloadData()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -126,15 +125,10 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
             let cell = sender as? EventTableViewCell {
 
             dest.event = results[cell.index]
-            }
+        }
     }
     
-    // code to dismiss keyboard when user clicks on background
-    func textFieldShouldReturn(textField:UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
+    // dismiss keyboard on background touch
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

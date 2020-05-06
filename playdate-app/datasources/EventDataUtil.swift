@@ -101,7 +101,6 @@ extension EventDataType {
             + ticketsURL + "\n\nSent from PlayDate"
     }
     
-    
     // MARK: - Date description
     
     var startDateTimeDescription: String {

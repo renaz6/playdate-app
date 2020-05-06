@@ -8,8 +8,7 @@
 
 import UIKit
 
-class TabBarViewController: UITabBarController,
-UITabBarControllerDelegate {
+class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,10 +17,9 @@ UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController,
                           didSelect viewController: UIViewController) {
-            if let vc = viewController as? UINavigationController {
-                vc.popToRootViewController(animated: false);
-            }
+        
+        if let vc = viewController as? UINavigationController {
+            vc.popToRootViewController(animated: false);
+        }
     }
-    
-
 }

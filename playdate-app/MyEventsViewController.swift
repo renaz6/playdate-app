@@ -27,19 +27,19 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private var dataSource: EventDataSource!
     
-    private var loggedIn: Bool = false
+    private var loggedIn = false
     private var myEvents: [EventDataType] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = AppDelegate.instance.dataSource
         
         Auth.auth().addStateDidChangeListener { auth, user in
             self.loggedIn = (user != nil)
-
+            
             self.myEventsVCNotSignedIn.isHidden = self.loggedIn
             self.myEventsVCSignedIn.isHidden = !self.loggedIn
-            if(user != nil) {
+            if user != nil {
                 self.userEmail = (user?.email)!
                 self.displayName = user?.displayName ?? ""
                 
@@ -51,7 +51,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         if loggedIn {
             dataSource.starredEvents { events in
@@ -70,7 +70,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let eventData = myEvents[indexPath.row] // TODO
+        let eventData = myEvents[indexPath.row]
         
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         if let cell = reusableCell as? EventTableViewCell {
@@ -111,32 +111,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    private func describeDate(_ date: Date?) -> String {
-        if let date = date {
-            let dateFormat = DateFormatter()
-            let timeFormat = DateFormatter()
-            dateFormat.dateStyle = .medium
-            timeFormat.timeStyle = .short
-            dateFormat.timeZone = .autoupdatingCurrent
-            timeFormat.timeZone = .autoupdatingCurrent
-            
-            return dateFormat.string(from: date) + ", " + timeFormat.string(from: date)
-        } else {
-            return ""
-        }
-    }
-    
-    // code to dismiss keyboard when user clicks on background
-
-    func textFieldShouldReturn(textField:UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
+    // called by login controller to notify us that the user has logged in,
+    // optionally with a specified display name (for new accounts)
     func signedIn(withDisplayName displayName: String?) {
         loggedIn = true
         myEventsVCNotSignedIn.isHidden = true

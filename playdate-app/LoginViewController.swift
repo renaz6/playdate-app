@@ -57,23 +57,15 @@ class LoginViewController: UIViewController, NotLoggedIn {
                 alert.addAction(UIAlertAction(title:"OK",style:.default))
                 self.present(alert, animated: true, completion: nil)
             } else {
-                var message = "Return to MyEvents Page"
-                print("Login In Successful!")
-                if self.delegate != nil {
+                print("Login Successful!")
+                // notify ancestor (My Events or Settings)
+                if self.delegate != nil { // My Events
                     let otherVC = self.delegate as! LogIn
                     otherVC.signedIn(withDisplayName: nil)
-                } else if self.settingsDelegate != nil {
+                } else if self.settingsDelegate != nil { // Settings
                     let otherVC = self.settingsDelegate as! LoggedIn
-                    message = "Return to Settings Page"
                     otherVC.isNowSignedIn(withDisplayName: nil)
                 }
-//                let alert = UIAlertController(
-//                    title: "Sign in Successful",
-//                    message: message,
-//                    preferredStyle: .alert)
-//
-//                alert.addAction(UIAlertAction(title:"OK",style:.default))
-//                self.present(alert, animated: true, completion: nil)
                 
                 if let navigator = self.navigationController {
                     navigator.popViewController(animated: true)
@@ -92,6 +84,8 @@ class LoginViewController: UIViewController, NotLoggedIn {
         }
     }
     
+    // notify ancestor (My Events) that login has completed
+    // in response to such a notification from Sign Up
     func isLogged(withDisplayName displayName: String?) {
         if (delegate != nil) {
             let otherVC = self.delegate as! LogIn
@@ -100,18 +94,13 @@ class LoginViewController: UIViewController, NotLoggedIn {
     }
     
     // code to dismiss keyboard when user clicks on background
-
-    func textFieldShouldReturn(textField:UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 }
 
 extension LoginViewController: UITextFieldDelegate {
+    // navigate to next field or perform action by pressing return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == textFieldLoginEmail {
             textFieldLoginPassword.becomeFirstResponder()

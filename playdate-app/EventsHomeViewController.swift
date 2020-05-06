@@ -11,7 +11,7 @@ import CoreData
 import Firebase
 import UserNotifications
 
-class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UNUserNotificationCenterDelegate  {
+class EventsHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UNUserNotificationCenterDelegate {
     
     private let eventDetailSegueId = "homeToEventDetail"
     @IBOutlet weak var tableView: UITableView!
@@ -32,7 +32,6 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             self.tableView.reloadData()
         }
         UNUserNotificationCenter.current().delegate = self
-        
     }
     
     // When the category selected is changed
@@ -40,35 +39,35 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         
         switch segCtrl.selectedSegmentIndex {
         case 0:
-                dataSource.homePageEvents { events in
-                    self.events = events
-                    self.tableView.reloadData()
-                }
+            dataSource.homePageEvents { events in
+                self.events = events
+                self.tableView.reloadData()
+            }
         case 1:
-                dataSource.eventsWithCategory("Theatre") { events in
-                    self.events = events
-                    self.tableView.reloadData()
-                }
+            dataSource.eventsWithCategory("Theatre") { events in
+                self.events = events
+                self.tableView.reloadData()
+            }
         case 2:
-                dataSource.eventsWithCategory("Music") { events in
-                    self.events = events
-                    self.tableView.reloadData()
-                }
+            dataSource.eventsWithCategory("Music") { events in
+                self.events = events
+                self.tableView.reloadData()
+            }
         case 3:
-                dataSource.eventsWithCategory("Comedy") { events in
-                    self.events = events
-                    self.tableView.reloadData()
-                }
+            dataSource.eventsWithCategory("Comedy") { events in
+                self.events = events
+                self.tableView.reloadData()
+            }
         case 4:
-                dataSource.eventsWithCategory("Fine Art") { events in
-                    self.events = events
-                    self.tableView.reloadData()
-                }
+            dataSource.eventsWithCategory("Fine Art") { events in
+                self.events = events
+                self.tableView.reloadData()
+            }
         case 5:
-                dataSource.eventsWithCategory("miscellaneous") { events in
-                    self.events = events
-                    self.tableView.reloadData()
-                }
+            dataSource.eventsWithCategory("miscellaneous") { events in
+                self.events = events
+                self.tableView.reloadData()
+            }
         default:
             dataSource.homePageEvents { events in
                 self.events = events
@@ -135,8 +134,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func fetchSettings() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        let context = AppDelegate.instance.persistentContainer.viewContext
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Settings")
         var fetchedSettings:[NSManagedObject]? = nil
@@ -150,13 +148,12 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             abort()
         }
         
-        if (fetchedSettings!.count != 0) {
-            if (fetchedSettings![0].value(forKeyPath: "isDarkMode") as! Bool) {
+        if fetchedSettings!.count != 0 {
+            if fetchedSettings![0].value(forKeyPath: "isDarkMode") as! Bool {
                 UIApplication.shared.windows.forEach { window in
                     window.overrideUserInterfaceStyle = .dark
                 }
-            }
-            else {
+            } else {
                 UIApplication.shared.windows.forEach { window in
                     window.overrideUserInterfaceStyle = .light
                 }
@@ -165,9 +162,9 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func sendNotification () {
-        if(isNotifications && events.count > 0) {
-               // create an object that holds the data for our notification
+    func sendNotification() {
+        if isNotifications && events.count > 0 {
+            // create an object that holds the data for our notification
             let randomEvent = Int.random(in: 0 ..< events.count)
             
             let notificationTitle = "Check out this show"
@@ -176,18 +173,17 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             notification.title = notificationTitle
             notification.subtitle = eventData.title
             notification.body = eventData.venueName
-            //notification.badge = 17
-               
+            
             // set up the notification to trigger after a delay of "seconds"
             let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: seconds, repeats: false)
                
             // set up a request to tell iOS to submit the notification with that trigger
             let request = UNNotificationRequest(identifier: notificationTitle,
-                                                   content: notification,
-                                                   trigger: notificationTrigger)
+                                                content: notification,
+                                                trigger: notificationTrigger)
                
-               
-               // submit the request to iOS
+            
+            // submit the request to iOS
             UNUserNotificationCenter.current().add(request) { (error) in
                 print("Request error: ",error as Any)
             }

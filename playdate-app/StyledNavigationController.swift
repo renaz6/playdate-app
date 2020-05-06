@@ -12,8 +12,10 @@ class StyledNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        // since IB can't set the status bar and top colour correctly,
+        // we do it programmatically here
         navigationBar.barStyle = .black
         navigationBar.barTintColor = UIColor(named: "Accent")
         navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]

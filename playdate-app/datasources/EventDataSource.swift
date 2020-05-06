@@ -20,8 +20,10 @@ protocol EventDataSource {
     
     func starredEvents(completion: @escaping ([EventDataType]) -> Void)
     
+    // not used
     func searchEvents(_: String, completion: @escaping ([EventDataType]) -> Void)
     
+    // not used
     func searchEvents(_: String, withCategory: String, completion: @escaping ([EventDataType]) -> Void)
     
     func event(withId: String, completion: @escaping (EventDataType?) -> Void)

@@ -124,12 +124,12 @@ class FirestoreDataSource: EventDataSource {
     }
     
     func searchEvents(_ query: String, completion handler: @escaping ([EventDataType]) -> Void) {
-        // query: events with titles or descriptions like query
+        // not used
         handler([])
     }
     
     func searchEvents(_ query: String, withCategory category: String, completion handler: @escaping ([EventDataType]) -> Void) {
-        // query: events with titles or descriptions like query, and categorised as category
+        // not used
         handler([])
     }
     

@@ -19,7 +19,7 @@ class SettingsViewController: UITableViewController, LoggedIn {
     var signedIn = true
     let sectionTitles = ["User Account", "Miscellaneous"]
     var delegate: UIViewController!
-    var settings:[NSManagedObject] = []
+    var settings: [NSManagedObject] = []
     var userEmail: String = "user@example.com"
     var displayName: String = "User Name"
     let changeDetailVC: String = "changeDetailSegue"
@@ -30,12 +30,12 @@ class SettingsViewController: UITableViewController, LoggedIn {
 
         // Do any additional setup after loading the view.
         settings = fetchData()
-        if(settings.count == 0) {
+        if settings.count == 0 {
             createSettingsEntity()
         }
         
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if(user != nil) {
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
                 self.userEmail = user!.email!
                 if let name = user?.displayName {
                     self.displayName = name
@@ -43,29 +43,25 @@ class SettingsViewController: UITableViewController, LoggedIn {
             }
             
         }
-        
-        
     }
 
-    
     func isNowSignedIn(withDisplayName displayName: String?) {
         signedIn = true
         if let name = displayName {
             self.displayName = name
         }
-        if (delegate != nil) {
+        if delegate != nil {
             let otherVC = self.delegate as! LogIn
             otherVC.signedIn(withDisplayName: displayName)
         }
         tableView.reloadData()
     }
     
-    func fetchData() -> [NSManagedObject]{
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+    func fetchData() -> [NSManagedObject] {
+        let context = AppDelegate.instance.persistentContainer.viewContext
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Settings")
-        var fetchedSettings:[NSManagedObject]? = nil
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
+        var fetchedSettings: [NSManagedObject]? = nil
         
         do {
             try fetchedSettings = context.fetch(request) as? [NSManagedObject]
@@ -75,12 +71,11 @@ class SettingsViewController: UITableViewController, LoggedIn {
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
             abort()
         }
-        return (fetchedSettings)!
+        return fetchedSettings!
     }
     
     func createSettingsEntity() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        let context = AppDelegate.instance.persistentContainer.viewContext
         
         let setting = NSEntityDescription.insertNewObject(
             forEntityName: "Settings", into: context)
@@ -99,7 +94,7 @@ class SettingsViewController: UITableViewController, LoggedIn {
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
             abort()
         }
-        //update the local copy
+        // update the local copy
         settings.append(setting)
     }
     
@@ -193,13 +188,13 @@ class SettingsViewController: UITableViewController, LoggedIn {
             switch indexPath.row {
             case 0:
                 customCell.titleLabel.text = "Dark Mode"
-                customCell.settingSwitch.addTarget(self,action: #selector(switchValueDidChange(_:)), for: .valueChanged)
+                customCell.settingSwitch.addTarget(self, action: #selector(switchValueDidChange(_:)), for: .valueChanged)
                 
                 let isDarkMode = (settings[0].value(forKeyPath: "isDarkMode") as! Bool)
                 customCell.settingSwitch.setOn(isDarkMode, animated: false)
             case 1:
                 customCell.titleLabel.text = "Send Push Notifications"
-                customCell.settingSwitch.addTarget(self,action: #selector(notificationValueDidChange(_:)), for: .valueChanged)
+                customCell.settingSwitch.addTarget(self, action: #selector(notificationValueDidChange(_:)), for: .valueChanged)
                 
                 let isNotifications = (settings[0].value(forKeyPath: "isNotifications") as! Bool)
                 customCell.settingSwitch.setOn(isNotifications, animated: false)
@@ -221,17 +216,6 @@ class SettingsViewController: UITableViewController, LoggedIn {
             return customCell
         }
         return cell
-    }
-    
-    // code to dismiss keyboard when user clicks on background
-
-    func textFieldShouldReturn(textField:UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -256,18 +240,10 @@ class SettingsViewController: UITableViewController, LoggedIn {
         }
     }
     
-    
-    
     @objc func switchValueDidChange(_ sender: UISwitch!) {
-        if (sender.isOn == true){
-            UIApplication.shared.windows.forEach { window in
-                window.overrideUserInterfaceStyle = .dark
-            }
-        }
-        else{
-            UIApplication.shared.windows.forEach { window in
-                window.overrideUserInterfaceStyle = .light
-            }
+        
+        UIApplication.shared.windows.forEach { window in
+            window.overrideUserInterfaceStyle = sender.isOn ? .dark : .light
         }
         updateSettings(changeValue: sender.isOn, key: "isDarkMode")
     }
@@ -277,16 +253,14 @@ class SettingsViewController: UITableViewController, LoggedIn {
     }
 
     func updateSettings(changeValue: Bool, key: String) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-               
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Settings")
-               
+        let context = AppDelegate.instance.persistentContainer.viewContext
         
-        var fetchedResults:[NSManagedObject]? = nil
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
+        
+        var fetchedResults: [NSManagedObject]? = nil
         do {
             try fetchedResults = context.fetch(request) as? [NSManagedObject]
-            if(fetchedResults!.count != 0) {
+            if fetchedResults!.count != 0 {
                 let setting = fetchedResults![0]
                 setting.setValue(changeValue, forKey: key)
             }

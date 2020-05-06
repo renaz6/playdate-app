@@ -31,7 +31,6 @@ class SignUpViewController: UIViewController {
     }
     
     // code to dismiss keyboard when user clicks on background
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -53,9 +52,9 @@ class SignUpViewController: UIViewController {
                     // add display name
                     let changeRequest = userInfo.user.createProfileChangeRequest()
                     changeRequest.displayName = self.textFieldName.text
-                    changeRequest.commitChanges(completion: { error in
+                    changeRequest.commitChanges { error in
                         print("Error setting display name: ", error ?? "")
-                    })
+                    }
                     // create entry (saved events) in database
                     let userDocRef = self.firestore.collection("users").document(userInfo.user.uid)
                     userDocRef.setData(["savedEvents": []])
@@ -94,8 +93,8 @@ class SignUpViewController: UIViewController {
                         message: error?.localizedDescription,
                         preferredStyle: .alert
                     )
-                    alert.addAction(UIAlertAction(title: "OK",style: .default))
-                    self.present(alert, animated: true, completion: nil)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
                 }
             }
         } else {
@@ -104,13 +103,14 @@ class SignUpViewController: UIViewController {
                 message: "Please make sure passwords are the same",
                 preferredStyle: .alert
             )
-            alert.addAction(UIAlertAction(title:"OK",style:.default))
-            self.present(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
         }
     }
 }
 
 extension SignUpViewController: UITextFieldDelegate {
+    // navigate to next field or perform action by pressing return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == textFieldName {
             textFieldLoginEmail.becomeFirstResponder()

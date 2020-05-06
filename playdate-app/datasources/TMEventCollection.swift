@@ -8,6 +8,7 @@
 
 import Foundation
 
+// JSON structure for return from Ticketmaster API (many events - e.g. search result)
 class TMEventCollection: Decodable {
     var events: [TMEvent]
 }
