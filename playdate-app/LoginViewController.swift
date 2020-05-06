@@ -20,8 +20,6 @@ class LoginViewController: UIViewController, NotLoggedIn {
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var textFieldLoginPassword: UITextField!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var passwordLabel: UILabel!
     
     var delegate: UIViewController!
     var settingsDelegate: UIViewController!
@@ -40,8 +38,10 @@ class LoginViewController: UIViewController, NotLoggedIn {
         }
         
         // Set fonts
-        emailLabel.font = UIFont(name: "Gibson-Regular", size: 18)
-        passwordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        textFieldLoginPassword.font = UIFont(name: "Gibson-Regular", size: 18)
+        textFieldLoginEmail.font = UIFont(name: "Gibson-Regular", size: 18)
+        textFieldLoginPassword.setPaddingPoints(12)
+        textFieldLoginEmail.setPaddingPoints(12)
         signUpLabel.font = UIFont(name: "Gibson-Regular", size: 18)
     }
     

@@ -216,8 +216,6 @@ class EventDetailViewController: UIViewController {
     // MARK: - Calendar Stuff
     
     @IBAction func calendarButtonClicked(_ sender: Any) {
-        print("*** calendarButtonClicked(_:): on main thread:", Thread.current.isMainThread)
-        
         let startDate = self.event.datesStart?.dateValue()
         let endDate = self.event.datesEnd?.dateValue()
         
@@ -227,7 +225,7 @@ class EventDetailViewController: UIViewController {
                 
                 guard error == nil else {
                     DispatchQueue.main.async {
-                        print("[WARN] Couldn't access user's calendar: \(error!.localizedDescription)")
+                        print("calendarButtonClicked(_:): Couldn't access user's calendar: \(error!.localizedDescription)")
                         self.alertErrorMessage("We couldn't access your calendar due to an error.")
                     }
                     return
@@ -242,7 +240,7 @@ class EventDetailViewController: UIViewController {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        print("[WARN] calendarButtonClicked(_:): User denied access to the calendar.")
+                        print("calendarButtonClicked(_:): User denied access to the calendar.")
                         self.alertErrorMessage("This feature requires access to your calendar. Please grant PlayDate access to Calendars in Settings.")
                     }
                 }
@@ -255,8 +253,6 @@ class EventDetailViewController: UIViewController {
     }
     
     func createEvent(title:String, startDate:Date?, endDate:Date?) {
-        print("*** createEvent(title:startDate:endDate:): on main thread:", Thread.current.isMainThread)
-        
         let event = EKEvent(eventStore: eventStore)
         
         // Construct the event
@@ -283,9 +279,7 @@ class EventDetailViewController: UIViewController {
             //eventLabel.text = "Event added to calendar"
         } catch let error as NSError {
             print("Error: \(error).")
-            let alert = UIAlertController(title: "Error", message: "We couldn't save this event.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-            self.present(alert, animated: true)
+            alertErrorMessage("We couldn't save this event.")
         }
     }
     
@@ -299,15 +293,12 @@ class EventDetailViewController: UIViewController {
 // MARK: -
 
 private extension MKMapView {
-  func centerToLocation(
-    _ location: CLLocation,
-    regionRadius: CLLocationDistance = 1000
-  ) {
-    let coordinateRegion = MKCoordinateRegion(
-      center: location.coordinate,
-      latitudinalMeters: regionRadius,
-      longitudinalMeters: regionRadius)
-    setRegion(coordinateRegion, animated: true)
-  }
+    func centerToLocation(_ location: CLLocation, regionRadius: CLLocationDistance = 1000) {
+        let coordinateRegion = MKCoordinateRegion(
+            center: location.coordinate,
+            latitudinalMeters: regionRadius,
+            longitudinalMeters: regionRadius)
+        setRegion(coordinateRegion, animated: true)
+    }
 }
 

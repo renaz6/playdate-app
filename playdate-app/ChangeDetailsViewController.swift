@@ -24,6 +24,7 @@ class ChangeDetailsViewController: UIViewController, UITextFieldDelegate {
         nameTextField.text = displayName
         
         emailTitleLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        nameTextField.font = UIFont(name: "Gibson-Regular", size: 18)
         nameTextField.setPaddingPoints(12)
     }
     

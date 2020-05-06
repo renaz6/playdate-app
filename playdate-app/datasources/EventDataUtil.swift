@@ -278,7 +278,7 @@ extension EventDataType {
         // make sure we have at least one venue
         var venue: TMVenue?
         if tmEvent._embedded.venues.isEmpty {
-            print("no venue found")
+            print("\(tmEvent.id): no venue found")
         } else {
             venue = tmEvent._embedded.venues[0]
         }
