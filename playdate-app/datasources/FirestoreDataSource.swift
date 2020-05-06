@@ -12,6 +12,7 @@ import Alamofire
 
 class FirestoreDataSource: EventDataSource {
     
+    let tmPageCap = 200
     let homePageEventsCap = 40
     let tmFilterClassification = "KZFzniwnSyZfZ7v7na" // "Arts & Theatre"
     let tmGeoPoint = "9v6kpz7ds" // rough approximation of Texas Capitol Building, Austin, TX
@@ -32,8 +33,7 @@ class FirestoreDataSource: EventDataSource {
             abort()
         }
         
-        // 200 is TM-imposed cap per page
-        downloadPageOfTMEvents(limit: 200) { events in
+        downloadAllTMEvents { events in
             events.forEach { event in
                 if event.cancelled {
                     self.firestore.collection("events").document(event.id).delete()
@@ -41,7 +41,6 @@ class FirestoreDataSource: EventDataSource {
                     self.firestore.collection("events").document(event.id).setData(event)
                 }
             }
-            
             self.firestore.collection("lastUpdate").document("update").setData(["update": Timestamp()])
         }
     }
@@ -190,9 +189,63 @@ class FirestoreDataSource: EventDataSource {
     
     // MARK: - Support methods
     
-    func downloadPageOfTMEvents(limit: Int, completion handler: @escaping ([EventDataType]) -> Void) {
+    // attempt to page through and download all events matching our query
+    func downloadAllTMEvents(completion handler: @escaping ([EventDataType]) -> Void) {
+        var events: [EventDataType] = []
+        
+        downloadAllTMEvents(accumulator: { events.append(contentsOf: $0) }) { success in
+            print("downloadAllTMEvents(completion:): downloaded all events")
+            print(events.debugDescription)
+            handler(events)
+        }
+    }
+    
+    // attempt to page through and download all events matching our query, starting on the given page index
+    // accumulator is called once for each page downloaded, passing the list of events on that page
+    // completion is called once when downloading is finished, passing true if downloading was successful,
+    // or false if downloading ended abruptly or was otherwise unsuccessful
+    func downloadAllTMEvents(startingOnPage page: Int = 0, accumulator: @escaping ([EventDataType]) -> Void,
+                             completion handler: @escaping (Bool) -> Void) {
+        
+        // TM imposed limit on overall page access (we'd have to pay to go any further)
+        let maxPage = 4
+        
+        guard page <= maxPage else {
+            handler(false)
+            return
+        }
+        
         let eventsDownloadUrl = "https://app.ticketmaster.com/discovery/v2/events.json"
-        + "?size=\(limit)&classificationId=\(tmFilterClassification)"
+        + "?size=\(tmPageCap)&page=\(page)&classificationId=\(tmFilterClassification)"
+        + "&geoPoint=\(tmGeoPoint)&radius=\(tmMilesRadius)&sort=\(tmSort)&unit=miles&apikey=\(tmApiKey)"
+        
+        print("downloadAllTMEvents(startingOnPage:accumulator:completion:): attempting to download page \(page)")
+        
+        AF.request(eventsDownloadUrl)
+            .responseDecodable(of: TMEventCollectionEmbedder.self) { response in
+                if response.error != nil {
+                    print("Invalid response received from TM")
+                    print(response.error!)
+                    handler(false)
+                } else if let embedder = response.value {
+                    let tmEventCollection = embedder._embedded
+                    accumulator(tmEventCollection.events.map { EventDataType.from($0) })
+                    
+                    if embedder.page.number < min(maxPage, embedder.page.totalPages - 1) {
+                        // we can download another page
+                        self.downloadAllTMEvents(startingOnPage: page + 1, accumulator: accumulator, completion: handler)
+                    } else {
+                        // we're done
+                        handler(true)
+                    }
+                }
+        }
+    }
+    
+    // just download one page of events at the page index specified
+    func downloadPageOfTMEvents(limit: Int, page: Int, completion handler: @escaping ([EventDataType]) -> Void) {
+        let eventsDownloadUrl = "https://app.ticketmaster.com/discovery/v2/events.json"
+        + "?size=\(limit)&page=\(page)&classificationId=\(tmFilterClassification)"
         + "&geoPoint=\(tmGeoPoint)&radius=\(tmMilesRadius)&sort=\(tmSort)&unit=miles&apikey=\(tmApiKey)"
         
         AF.request(eventsDownloadUrl)
@@ -208,6 +261,7 @@ class FirestoreDataSource: EventDataSource {
         }
     }
     
+    // just download one event with the given id
     func downloadTMEvent(withId id: String, completion handler: @escaping (EventDataType?) -> Void) {
         AF.request("https://app.ticketmaster.com/discovery/v2/events/\(id)?locale=en-us&apikey=\(tmApiKey)")
             .responseDecodable(of: TMEvent.self) { response in

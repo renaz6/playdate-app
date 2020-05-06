@@ -15,4 +15,10 @@ class TMEventCollection: Decodable {
 
 class TMEventCollectionEmbedder: Decodable {
     var _embedded: TMEventCollection
+    var page: TMPage
+}
+
+class TMPage: Decodable {
+    var totalPages: Int
+    var number: Int
 }
