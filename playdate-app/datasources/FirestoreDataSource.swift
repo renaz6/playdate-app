@@ -194,8 +194,7 @@ class FirestoreDataSource: EventDataSource {
         var events: [EventDataType] = []
         
         downloadAllTMEvents(accumulator: { events.append(contentsOf: $0) }) { success in
-            print("downloadAllTMEvents(completion:): downloaded all events")
-            print(events.debugDescription)
+            print("downloadAllTMEvents(completion:): downloaded \(events.count) events")
             handler(events)
         }
     }
