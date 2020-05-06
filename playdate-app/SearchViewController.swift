@@ -23,6 +23,9 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         dataSource.allEvents { events in
             self.events = events
         }
+
+        searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Gibson-Regular", size: 14)!], for: .normal)
+        searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Gibson-Regular", size: 14)!], for: .selected)
     }
     
     // MARK: - Table view data source
@@ -57,7 +60,6 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     
     // Scope button changed
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        
         let index = selectedScope
         
         switch index {

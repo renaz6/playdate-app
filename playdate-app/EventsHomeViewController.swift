@@ -32,6 +32,8 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             self.tableView.reloadData()
         }
         UNUserNotificationCenter.current().delegate = self
+        segCtrl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Gibson-Regular", size: 16)!], for: .selected)
+        segCtrl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Gibson-Regular", size: 16)!], for: .normal)
     }
     
     // When the category selected is changed
