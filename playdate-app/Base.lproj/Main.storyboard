@@ -13,7 +13,7 @@
             <objects>
                 <tableViewController id="PD3-wK-Kqk" customClass="SearchViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vh8-Of-l6B">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" fixedFrame="YES" text="" placeholder="Search for events in Austin" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rV7-9m-9dr">
@@ -78,7 +78,9 @@
                             <outlet property="delegate" destination="PD3-wK-Kqk" id="wly-cA-Pl5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search &amp; Browse" id="LtU-P2-Jhh"/>
+                    <navigationItem key="navigationItem" title="Search &amp; Browse" id="LtU-P2-Jhh">
+                        <barButtonItem key="backBarButtonItem" title=" " id="q5s-Hd-UXw"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="rV7-9m-9dr" id="uAr-pQ-TIo"/>
                     </connections>
@@ -171,11 +173,11 @@
             <objects>
                 <viewController id="ttb-th-R4C" customClass="EventsHomeViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f1K-2L-T9u">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kLg-rg-uKz" userLabel="Events Table View">
-                                <rect key="frame" x="-1" y="-2" width="414" height="815"/>
+                                <rect key="frame" x="-1" y="-2" width="414" height="727"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Jxg-te-g4o">
@@ -270,7 +272,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="zxr-9a-WhR"/>
                     </view>
-                    <navigationItem key="navigationItem" title="PlayDate" id="8w1-Mb-vW1"/>
+                    <navigationItem key="navigationItem" title="PlayDate" id="8w1-Mb-vW1">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Xaf-oS-Xds"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="segCtrl" destination="Jxg-te-g4o" id="Dyq-Dn-D7T"/>
                         <outlet property="tableView" destination="kLg-rg-uKz" id="pdt-m7-paf"/>
@@ -285,7 +289,7 @@
             <objects>
                 <viewController title="My Events Not Signed in " id="nPX-bc-zvf" customClass="MyEventsViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M8y-kG-ehD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tqa-8I-KA0" userLabel="Sign In Promo View">
@@ -339,7 +343,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pAq-Tf-1SN" userLabel="Events Table View">
-                                <rect key="frame" x="-3" y="-2" width="415" height="814"/>
+                                <rect key="frame" x="-3" y="-2" width="415" height="726"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -426,6 +430,7 @@
                         <viewLayoutGuide key="safeArea" id="1zr-ao-ikM"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Events" id="DS6-wZ-TX4">
+                        <barButtonItem key="backBarButtonItem" title=" " id="oCa-2U-e1m"/>
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="wrench.fill" catalog="system" id="s5M-b0-deJ">
                             <connections>
                                 <segue destination="b9l-mR-iQf" kind="show" identifier="SettingsIdentifier" id="XCQ-jW-38s"/>
@@ -446,7 +451,7 @@
             <objects>
                 <viewController id="hUk-7s-cMF" customClass="LoginViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fZV-k8-Or2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="you@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yHI-f1-GIn">
@@ -550,7 +555,7 @@
             <objects>
                 <viewController id="aKS-RF-XRG" customClass="SignUpViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ozp-Lu-Fmh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="you@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ph-8L-L6M">
@@ -684,7 +689,7 @@
             <objects>
                 <tableViewController id="b9l-mR-iQf" customClass="SettingsViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="T6k-Bd-agx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -808,14 +813,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCell" id="nn5-42-bFw" customClass="SettingsTableViewCellWithSwitch" customModule="PlayDate" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="370.66667175292969" width="414" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="370.66667175292969" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nn5-42-bFw" id="YHh-h0-n6c">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="42.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell with Switch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPM-P4-1Ze">
-                                            <rect key="frame" x="20" y="11.000000000000002" width="321" height="20.666666666666671"/>
+                                            <rect key="frame" x="20" y="11.000000000000002" width="321" height="21.666666666666671"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="321" id="Uff-Iv-nKK"/>
                                             </constraints>
@@ -824,7 +829,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gbb-I2-Gwq">
-                                            <rect key="frame" x="349" y="6" width="51" height="31"/>
+                                            <rect key="frame" x="349" y="6.3333333333333321" width="51" height="30.999999999999996"/>
                                             <color key="onTintColor" name="Accent"/>
                                         </switch>
                                     </subviews>
@@ -842,7 +847,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="signInCell" textLabel="shm-Z9-dEE" style="IBUITableViewCellStyleDefault" id="Nl7-f0-Ei2">
-                                <rect key="frame" x="0.0" y="413.33333969116211" width="414" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="414.33333969116211" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nl7-f0-Ei2" id="Q7J-xf-jWK">
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="43.666667938232422"/>
@@ -862,7 +867,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="signUpCell" textLabel="vWn-td-inP" style="IBUITableViewCellStyleDefault" id="pX8-KV-Gr7">
-                                <rect key="frame" x="0.0" y="457.00000762939453" width="414" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="458.00000762939453" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pX8-KV-Gr7" id="ibm-Me-PL5">
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="43.666667938232422"/>
@@ -882,7 +887,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="signOutCell" textLabel="JGU-2v-rv0" style="IBUITableViewCellStyleDefault" id="Nyf-U8-aQ1">
-                                <rect key="frame" x="0.0" y="500.66667556762695" width="414" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="501.66667556762695" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nyf-U8-aQ1" id="1t9-Zm-sN7">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
@@ -904,7 +909,9 @@
                             <outlet property="delegate" destination="b9l-mR-iQf" id="DJG-PA-QQr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="kuV-hl-nUJ"/>
+                    <navigationItem key="navigationItem" title="Settings" id="kuV-hl-nUJ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="JNn-BN-LMF"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4H4-FT-TqW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -915,7 +922,7 @@
             <objects>
                 <viewController id="PMH-Ta-EeG" customClass="ChangeDetailsViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v3N-cL-K9O">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John Smith" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xZr-lk-lGM">
@@ -984,7 +991,7 @@
             <objects>
                 <viewController id="DxH-Ja-FfT" customClass="ChangePasswordViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2ag-nc-DYP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KYf-tr-gT6">
@@ -1105,7 +1112,7 @@
             <objects>
                 <viewController title="Event Detail" id="jEi-hy-iJ5" customClass="EventDetailViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="playback" id="72n-6Y-jm0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CZ1-MI-2eC">
@@ -1224,7 +1231,9 @@
                         <color key="tintColor" name="Accent"/>
                         <viewLayoutGuide key="safeArea" id="PBw-mL-4NB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="p8P-Ih-Pop"/>
+                    <navigationItem key="navigationItem" id="p8P-Ih-Pop">
+                        <barButtonItem key="backBarButtonItem" title=" " id="yUE-9P-rfJ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="nUJ-Sp-1Fy" id="W1y-v3-nGc"/>
                         <outlet property="calendarButton" destination="Bz4-Rd-q6S" id="P93-WO-eGx"/>
@@ -1250,7 +1259,7 @@
             <objects>
                 <viewController id="U8R-Il-kNs" customClass="WebsiteViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sof-fQ-YkJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-bW-rC1">
@@ -1263,7 +1272,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="saM-XY-jfQ">
-                                <rect key="frame" x="0.0" y="769" width="414" height="43"/>
+                                <rect key="frame" x="0.0" y="681" width="414" height="43"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Back" image="chevron.left" catalog="system" id="EDJ-ag-Ph8">
@@ -1315,11 +1324,11 @@
             <objects>
                 <viewController id="1qw-l2-6Nx" customClass="CalendarViewController" customModule="PlayDate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Me-DJ-wWn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sCZ-jz-fUM" userLabel="Events Table View">
-                                <rect key="frame" x="-1" y="440" width="415" height="373"/>
+                                <rect key="frame" x="-1" y="440" width="415" height="285"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -1399,7 +1408,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="IsO-OF-7b1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar" id="uon-Sr-F1i"/>
+                    <navigationItem key="navigationItem" title="Calendar" id="uon-Sr-F1i">
+                        <barButtonItem key="backBarButtonItem" title=" " id="ALd-4J-2L4"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="sCZ-jz-fUM" id="MFk-lh-QFq"/>
                     </connections>

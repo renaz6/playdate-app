@@ -19,7 +19,6 @@ class StyledNavigationController: UINavigationController {
         navigationBar.barStyle = .black
         navigationBar.barTintColor = UIColor(named: "Accent")
         navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationBar.titleTextAttributes = [.font: UIFont(name: "Montserrat-Bold", size: 20)!]
-        
+        navigationBar.titleTextAttributes = [.font: UIFont(name: "Montserrat-Bold", size: 18)!]
     }
 }
