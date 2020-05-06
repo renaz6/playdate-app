@@ -41,6 +41,8 @@ class FirestoreDataSource: EventDataSource {
                     self.firestore.collection("events").document(event.id).setData(event)
                 }
             }
+            
+            self.firestore.collection("lastUpdate").document("update").setData(["update": Timestamp()])
         }
     }
     
