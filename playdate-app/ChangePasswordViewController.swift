@@ -51,11 +51,7 @@ class ChangePasswordViewController: UIViewController {
             let emailCred = EmailAuthProvider.credential(withEmail: email, password: currentPassword.text!)
             Auth.auth().currentUser?.reauthenticate(with: emailCred) { result, err in
                 if err != nil {
-//                    print("reAuth failed with error: \(err!)")
-//                    print(err!)
-//                    self.message.text = "\(err!)"
                     if let errCode = AuthErrorCode(rawValue: err!._code) {
-
                         switch errCode {
                             case .wrongPassword:
                                 print("Wrong Password")
