@@ -187,7 +187,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
             
             // submit the request to iOS
             UNUserNotificationCenter.current().add(request) { error in
-                print("Request error: ", error as Any)
+                print("Request error:", error as Any)
             }
             print("Submitted")
         }
