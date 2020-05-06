@@ -20,7 +20,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     private var dataSource: EventDataSource!
     private var events: [EventDataType] = []
     private var isNotifications: Bool = true
-    private let seconds:TimeInterval = 8
+    private let seconds: TimeInterval = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,7 +138,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
     func fetchSettings() {
         let context = AppDelegate.instance.persistentContainer.viewContext
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Settings")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
         var fetchedSettings:[NSManagedObject]? = nil
         
         do {
@@ -186,8 +186,8 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
                
             
             // submit the request to iOS
-            UNUserNotificationCenter.current().add(request) { (error) in
-                print("Request error: ",error as Any)
+            UNUserNotificationCenter.current().add(request) { error in
+                print("Request error: ", error as Any)
             }
             print("Submitted")
         }
@@ -195,7 +195,7 @@ class EventsHomeViewController: UIViewController, UITableViewDataSource, UITable
 }
 
 extension UITextField {
-    func setPaddingPoints(_ amount:CGFloat){
+    func setPaddingPoints(_ amount: CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.leftView = paddingView
         self.leftViewMode = .always
