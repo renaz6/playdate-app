@@ -17,9 +17,9 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var repeatPassword: UITextField!
     @IBOutlet weak var message: UILabel!
-    @IBOutlet weak var currentPasswordLabel: UILabel!
-    @IBOutlet weak var newPasswordLabel: UILabel!
-    @IBOutlet weak var repeatPasswordLabel: UILabel!
+   // @IBOutlet weak var currentPasswordLabel: UILabel!
+    //@IBOutlet weak var newPasswordLabel: UILabel!
+    //@IBOutlet weak var repeatPasswordLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -29,9 +29,15 @@ class ChangePasswordViewController: UIViewController {
         message.text = ""
         message.font = UIFont(name: "Gibson-Regular", size: 18)
         
-        currentPasswordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
-        newPasswordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
-        repeatPasswordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        //currentPasswordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        //newPasswordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        //repeatPasswordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        currentPassword.setPaddingPoints(12)
+        currentPassword.font = UIFont(name: "Gibson-Regular", size: 18)
+        newPassword.setPaddingPoints(12)
+        newPassword.font = UIFont(name: "Gibson-Regular", size: 18)
+        repeatPassword.setPaddingPoints(12)
+        repeatPassword.font = UIFont(name: "Gibson-Regular", size: 18)
     
     }
     
