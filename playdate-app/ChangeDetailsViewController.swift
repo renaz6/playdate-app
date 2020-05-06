@@ -14,20 +14,17 @@ class ChangeDetailsViewController: UIViewController, UITextFieldDelegate {
     var delegate: UIViewController!
     var userEmail: String = ""
     var displayName: String = ""
-    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTitleLabel: UILabel!
-    @IBOutlet weak var nameTitleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        emailLabel.text = userEmail
         nameTextField.text = displayName
         
         emailTitleLabel.font = UIFont(name: "Gibson-Regular", size: 18)
-        nameTitleLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        nameTextField.setPaddingPoints(12)
     }
     
     // perform the action (complete details change) when user presses return key
