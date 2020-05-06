@@ -18,7 +18,7 @@ class SettingsTableViewCellWithSwitch: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        titleLabel.font = UIFont(name: "Gibson-Regular", size: 20)
+        titleLabel.font = UIFont(name: "Gibson-Regular", size: 18)
         
     }
 }
