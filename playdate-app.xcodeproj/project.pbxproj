@@ -25,6 +25,9 @@
 		7FA34839241473E900B00C31 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34838241473E900B00C31 /* MyEventsViewController.swift */; };
 		7FA3483E2414768A00B00C31 /* EventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3483D2414768A00B00C31 /* EventDataSource.swift */; };
 		7FA3483F2414768A00B00C31 /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3483C2414768A00B00C31 /* EventData.swift */; };
+		7FA956CF246265950033A701 /* gibson-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA956CC246265940033A701 /* gibson-bold.ttf */; };
+		7FA956D0246265950033A701 /* Gibson-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA956CD246265950033A701 /* Gibson-Regular.ttf */; };
+		7FA956D1246265950033A701 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA956CE246265950033A701 /* Montserrat-Bold.ttf */; };
 		7FD67DA624477D1E001783D0 /* SettingsTableViewCellWithSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD67DA524477D1E001783D0 /* SettingsTableViewCellWithSwitch.swift */; };
 		7FF4BAA62434DD3000A2F595 /* StyledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4BAA52434DD3000A2F595 /* StyledNavigationController.swift */; };
 		7FF4BAC82434E67200A2F595 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4BAC72434E67200A2F595 /* EventTableViewCell.swift */; };
@@ -81,6 +84,9 @@
 		7FA34838241473E900B00C31 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		7FA3483C2414768A00B00C31 /* EventData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
 		7FA3483D2414768A00B00C31 /* EventDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataSource.swift; sourceTree = "<group>"; };
+		7FA956CC246265940033A701 /* gibson-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gibson-bold.ttf"; sourceTree = "<group>"; };
+		7FA956CD246265950033A701 /* Gibson-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gibson-Regular.ttf"; sourceTree = "<group>"; };
+		7FA956CE246265950033A701 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		7FD67DA524477D1E001783D0 /* SettingsTableViewCellWithSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCellWithSwitch.swift; sourceTree = "<group>"; };
 		7FF4BAA52434DD3000A2F595 /* StyledNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledNavigationController.swift; sourceTree = "<group>"; };
 		7FF4BAC72434E67200A2F595 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -221,6 +227,9 @@
 				7F9F47C92446B30200E64B33 /* WebsiteViewController.swift */,
 				7FA34834241472E000B00C31 /* SettingsViewController.swift */,
 				7FF919BB23FCC56B004B8CF9 /* Assets.xcassets */,
+				7FA956CC246265940033A701 /* gibson-bold.ttf */,
+				7FA956CD246265950033A701 /* Gibson-Regular.ttf */,
+				7FA956CE246265950033A701 /* Montserrat-Bold.ttf */,
 				7FF919BD23FCC56B004B8CF9 /* LaunchScreen.storyboard */,
 				7FF919C023FCC56B004B8CF9 /* Info.plist */,
 				7FF4BAEC2437CC0B00A2F595 /* GoogleService-Info.plist */,
@@ -370,6 +379,9 @@
 				7FF919BF23FCC56B004B8CF9 /* LaunchScreen.storyboard in Resources */,
 				7F8182EB244123BE00F82AFC /* TM-API-Info.plist in Resources */,
 				7FF4BAED2437CC0B00A2F595 /* GoogleService-Info.plist in Resources */,
+				7FA956D0246265950033A701 /* Gibson-Regular.ttf in Resources */,
+				7FA956D1246265950033A701 /* Montserrat-Bold.ttf in Resources */,
+				7FA956CF246265950033A701 /* gibson-bold.ttf in Resources */,
 				7FF919BC23FCC56B004B8CF9 /* Assets.xcassets in Resources */,
 				7FF919B723FCC56A004B8CF9 /* Main.storyboard in Resources */,
 			);
