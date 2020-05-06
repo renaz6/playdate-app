@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDe-iY-a3p">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1163,8 +1163,8 @@
                                     <action selector="shareButtonClicked:" destination="jEi-hy-iJ5" eventType="touchUpInside" id="YB5-Zr-p6x"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bz4-Rd-q6S" userLabel="Calendar Button">
-                                <rect key="frame" x="238" y="98" width="30" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bz4-Rd-q6S" userLabel="Calendar Button">
+                                <rect key="frame" x="348.66666666666669" y="98" width="30" height="21"/>
                                 <state key="normal" image="calendar.badge.plus" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
@@ -1172,8 +1172,8 @@
                                     <action selector="calendarButtonClicked:" destination="jEi-hy-iJ5" eventType="touchUpInside" id="zKM-gt-UeH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3B-No-Z9D">
-                                <rect key="frame" x="158" y="98" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3B-No-Z9D">
+                                <rect key="frame" x="268.66666666666669" y="98" width="22" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="zg7-ii-D8Q"/>
                                 </constraints>
@@ -1273,18 +1273,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-bW-rC1">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-bW-rC1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="681"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="saM-XY-jfQ">
-                                <rect key="frame" x="-1" y="768" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="saM-XY-jfQ">
+                                <rect key="frame" x="0.0" y="676" width="414" height="49"/>
                                 <items>
                                     <barButtonItem title="Back" image="chevron.left" catalog="system" id="EDJ-ag-Ph8">
                                         <connections>
@@ -1315,6 +1313,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Btb-bW-rC1" firstAttribute="trailing" secondItem="5IB-34-rkA" secondAttribute="trailing" id="1IP-t3-vGx"/>
+                            <constraint firstItem="Btb-bW-rC1" firstAttribute="leading" secondItem="5IB-34-rkA" secondAttribute="leading" id="LBw-qR-bez"/>
+                            <constraint firstItem="saM-XY-jfQ" firstAttribute="leading" secondItem="Sof-fQ-YkJ" secondAttribute="leading" id="Lzr-bg-oEu"/>
+                            <constraint firstItem="5IB-34-rkA" firstAttribute="bottom" secondItem="Btb-bW-rC1" secondAttribute="bottom" constant="44" id="SCe-0Z-1D3"/>
+                            <constraint firstItem="Btb-bW-rC1" firstAttribute="top" secondItem="5IB-34-rkA" secondAttribute="top" id="XIY-fa-RF4"/>
+                            <constraint firstItem="5IB-34-rkA" firstAttribute="bottom" secondItem="saM-XY-jfQ" secondAttribute="bottom" id="cUN-V8-hvk"/>
+                            <constraint firstItem="5IB-34-rkA" firstAttribute="trailing" secondItem="saM-XY-jfQ" secondAttribute="trailing" id="mAc-AR-uSi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5IB-34-rkA"/>
                     </view>
                     <navigationItem key="navigationItem" id="o3Y-PR-AuB"/>
