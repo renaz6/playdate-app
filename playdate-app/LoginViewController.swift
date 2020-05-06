@@ -20,6 +20,8 @@ class LoginViewController: UIViewController, NotLoggedIn {
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var textFieldLoginPassword: UITextField!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
     
     var delegate: UIViewController!
     var settingsDelegate: UIViewController!
@@ -36,6 +38,11 @@ class LoginViewController: UIViewController, NotLoggedIn {
             signUpLabel.isHidden = false
             signUpButton.isHidden = false
         }
+        
+        // Set fonts
+        emailLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        passwordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        signUpLabel.font = UIFont(name: "Gibson-Regular", size: 18)
     }
     
     @IBAction func loginDidTouch(_ sender: Any) {

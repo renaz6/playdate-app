@@ -12,4 +12,13 @@ class SettingsTableViewCellWithSwitch: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var settingSwitch: UISwitch!
+    
+    override func awakeFromNib()
+    {
+        super.awakeFromNib()
+        // Initialization code
+        
+        titleLabel.font = UIFont(name: "Gibson-Regular", size: 20)
+        
+    }
 }

@@ -13,4 +13,14 @@ class SettingsUserInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var profilePicView: UIImageView!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    
+    override func awakeFromNib()
+    {
+        super.awakeFromNib()
+        // Initialization code
+        
+        displayNameLabel.font = UIFont(name: "Gibson-Bold", size: 24)
+        emailLabel.font = UIFont(name: "Gibson-Regular", size: 20)
+        
+    }
 }

@@ -17,6 +17,9 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var repeatPassword: UITextField!
     @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var currentPasswordLabel: UILabel!
+    @IBOutlet weak var newPasswordLabel: UILabel!
+    @IBOutlet weak var repeatPasswordLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -24,6 +27,12 @@ class ChangePasswordViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         message.text = ""
+        message.font = UIFont(name: "Gibson-Regular", size: 18)
+        
+        currentPasswordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        newPasswordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        repeatPasswordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+    
     }
     
     // code to dismiss keyboard when user clicks on background

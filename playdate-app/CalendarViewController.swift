@@ -39,6 +39,9 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         calendar.appearance.weekdayTextColor = .label
         calendar.appearance.titleWeekendColor = .label
         calendar.appearance.titleDefaultColor = .label
+        calendar.appearance.headerTitleFont = UIFont(name: "Gibson-Bold", size: 20)
+        calendar.appearance.weekdayFont = UIFont(name: "Gibson-Regular", size: 12)
+        calendar.appearance.titleFont = UIFont(name: "Gibson-Regular", size: 16)
         self.calendar = calendar
         
         // Size table view.
