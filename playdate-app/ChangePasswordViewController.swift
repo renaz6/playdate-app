@@ -51,9 +51,22 @@ class ChangePasswordViewController: UIViewController {
             let emailCred = EmailAuthProvider.credential(withEmail: email, password: currentPassword.text!)
             Auth.auth().currentUser?.reauthenticate(with: emailCred) { result, err in
                 if err != nil {
-                    print("reAuth failed with error: \(err!)")
-                    print(err!)
-                    self.message.text = "\(err!)"
+//                    print("reAuth failed with error: \(err!)")
+//                    print(err!)
+//                    self.message.text = "\(err!)"
+                    if let errCode = AuthErrorCode(rawValue: err!._code) {
+
+                        switch errCode {
+                            case .wrongPassword:
+                                print("Wrong Password")
+                                self.message.text = "Incorrect Password"
+                            case .tooManyRequests:
+                                print("Too Many Requests")
+                                self.message.text = "Too many incorrect requests! Try again later"
+                            default:
+                                print("reAuth failed with error: \(err!)")
+                        }
+                    }
                 } else { // User re-authenticated.
                     if self.newPassword.text == self.repeatPassword.text {
                         Auth.auth().currentUser?.updatePassword(to: self.newPassword.text!) { error in
