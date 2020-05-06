@@ -15,10 +15,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var textFieldLoginPassword: UITextField!
     @IBOutlet weak var textFieldLoginPasswordRepeat: UITextField!
     @IBOutlet weak var textFieldName: UITextField!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var passwordLabel: UILabel!
-    @IBOutlet weak var repeatPasswordLabel: UILabel!
     
     var delegate: UIViewController!
     var logInDelegate: UIViewController!
@@ -34,10 +30,15 @@ class SignUpViewController: UIViewController {
         firestore = Firestore.firestore()
         
         // Set fonts
-        nameLabel.font = UIFont(name: "Gibson-Regular", size: 18)
-        emailLabel.font = UIFont(name: "Gibson-Regular", size: 18)
-        passwordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
-        repeatPasswordLabel.font = UIFont(name: "Gibson-Regular", size: 18)
+        textFieldLoginEmail.font = UIFont(name: "Gibson-Regular", size: 18)
+        textFieldLoginPassword.font = UIFont(name: "Gibson-Regular", size: 18)
+        textFieldLoginPasswordRepeat.font = UIFont(name: "Gibson-Regular", size: 18)
+        textFieldName.font = UIFont(name: "Gibson-Regular", size: 18)
+        
+        textFieldLoginEmail.setPaddingPoints(12)
+        textFieldLoginPassword.setPaddingPoints(12)
+        textFieldLoginPasswordRepeat.setPaddingPoints(12)
+        textFieldName.setPaddingPoints(12)
     }
     
     // code to dismiss keyboard when user clicks on background
