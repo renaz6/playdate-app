@@ -23,7 +23,7 @@ class EventDetailViewController: UIViewController {
     var starred: Bool! = false
     let eventStore = EKEventStore()
 
-    // Outlets
+    // MARK: - Outlets
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var imageOutlet: UIImageView!
     @IBOutlet weak var eventName: UILabel!
@@ -39,6 +39,8 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     var favBtnImage = UIImage(named: "favIcon")
+    
+    // MARK: - Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,6 +139,8 @@ class EventDetailViewController: UIViewController {
             dest.ticketsUrl = url
         }
     }
+    
+    // MARK: - Actions
 
     @IBAction func favButtonClicked(_ sender: Any) {
         
@@ -202,6 +206,8 @@ class EventDetailViewController: UIViewController {
         present(activityController, animated: true)
     }
     
+    // MARK: - Map view delegate
+    
     // Converts the map annotation into a view that can be displayed on the app
     // For drisplaying a pin at the given coordinates
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -221,18 +227,39 @@ class EventDetailViewController: UIViewController {
     }
     
     
-    // MARK: Calendar Stuff
+    // MARK: - Calendar Stuff
     
     @IBAction func calendarButtonClicked(_ sender: Any) {
+        print("*** calendarButtonClicked(_:): on main thread:", Thread.current.isMainThread)
+        
         let startDate = self.event.datesStart?.dateValue()
         let endDate = self.event.datesEnd?.dateValue()
         
         if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
             eventStore.requestAccess(to: .event, completion: {
                 granted, error in
-                self.createEvent(title: self.event.title,
-                                 startDate: startDate,
-                                 endDate: endDate)
+                
+                guard error == nil else {
+                    DispatchQueue.main.async {
+                        print("[WARN] Couldn't access user's calendar: \(error!.localizedDescription)")
+                        self.alertErrorMessage("We couldn't access your calendar due to an error.")
+                    }
+                    return
+                }
+                
+                if granted {
+                    DispatchQueue.main.async {
+                        self.createEvent(
+                            title: self.event.title,
+                            startDate: startDate,
+                            endDate: endDate)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print("[WARN] calendarButtonClicked(_:): User denied access to the calendar.")
+                        self.alertErrorMessage("This feature requires access to your calendar. Please grant PlayDate access to Calendars in Settings.")
+                    }
+                }
             })
         } else {
             createEvent(title: event.title,
@@ -242,6 +269,7 @@ class EventDetailViewController: UIViewController {
     }
     
     func createEvent(title:String, startDate:Date?, endDate:Date?) {
+        print("*** createEvent(title:startDate:endDate:): on main thread:", Thread.current.isMainThread)
         
         let event = EKEvent(eventStore: eventStore)
         
@@ -275,8 +303,14 @@ class EventDetailViewController: UIViewController {
         }
     }
     
-    
+    private func alertErrorMessage(_ message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
 }
+
+// MARK: -
 
 private extension MKMapView {
   func centerToLocation(
